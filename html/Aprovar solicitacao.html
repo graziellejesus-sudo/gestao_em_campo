@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Aprovação de Solicitação - Gestão em Campo</title>
+
+    <link rel="stylesheet" href="../css/Aprovar solicitacao.css">
+</head>
+
+<body>
+
+    <header class="cabecalho">
+
+        <div class="logo">
+            <span>Gestão em Campo</span>
+        </div>
+
+        <nav>
+            <a href="#">Painel de Escalas</a>
+            <a href="#">Solicitações</a>
+            <a href="#">Sair</a>
+        </nav>
+
+    </header>
+
+    <main class="container">
+
+        <div class="titulo">
+            <h1>Aprovação de Solicitações</h1>
+            <p>Analise e aprove ou recuse as solicitações de escala.</p>
+        </div>
+
+        <section class="solicitacoes">
+
+            <!-- Solicitação 1 -->
+            <div class="card">
+
+                <div class="card-topo">
+                    <h2>Solicitação #001</h2>
+                    <span class="status pendente">Pendente</span>
+                </div>
+
+                <div class="informacoes">
+
+                    <div class="campo">
+                        <strong>Funcionário</strong>
+                        <span>João da Silva</span>
+                    </div>
+
+                    <div class="campo">
+                        <strong>Tipo de solicitação</strong>
+                        <span>Folga</span>
+                    </div>
+
+                    <div class="campo">
+                        <strong>Data inicial</strong>
+                        <span>15/09/2026</span>
+                    </div>
+
+                    <div class="campo">
+                        <strong>Data final</strong>
+                        <span>16/09/2026</span>
+                    </div>
+
+                    <div class="campo motivo">
+                        <strong>Motivo</strong>
+                        <span>Consulta médica</span>
+                    </div>
+
+                </div>
+
+                <div class="botoes">
+                    <button class="btn-aprovar" onclick="aprovarSolicitacao(1)">
+                        Aprovar
+                    </button>
+
+                    <button class="btn-recusar" onclick="recusarSolicitacao(1)">
+                        Recusar
+                    </button>
+                </div>
+
+            </div>
+
+
+            <!-- Solicitação 2 -->
+            <div class="card">
+
+                <div class="card-topo">
+                    <h2>Solicitação #002</h2>
+                    <span class="status pendente">Pendente</span>
+                </div>
+
+                <div class="informacoes">
+
+                    <div class="campo">
+                        <strong>Funcionário</strong>
+                        <span>Maria Oliveira</span>
+                    </div>
+
+                    <div class="campo">
+                        <strong>Tipo de solicitação</strong>
+                        <span>Troca de escala</span>
+                    </div>
+
+                    <div class="campo">
+                        <strong>Data inicial</strong>
+                        <span>20/09/2026</span>
+                    </div>
+
+                    <div class="campo">
+                        <strong>Data final</strong>
+                        <span>20/09/2026</span>
+                    </div>
+
+                    <div class="campo motivo">
+                        <strong>Motivo</strong>
+                        <span>Necessidade de troca com outro funcionário.</span>
+                    </div>
+
+                </div>
+
+                <div class="botoes">
+                    <button class="btn-aprovar" onclick="aprovarSolicitacao(2)">
+                        Aprovar
+                    </button>
+
+                    <button class="btn-recusar" onclick="recusarSolicitacao(2)">
+                        Recusar
+                    </button>
+                </div>
+
+            </div>
+
+
+            <!-- Solicitação 3 -->
+            <div class="card">
+
+                <div class="card-topo">
+                    <h2>Solicitação #003</h2>
+                    <span class="status pendente">Pendente</span>
+                </div>
+
+                <div class="informacoes">
+
+                    <div class="campo">
+                        <strong>Funcionário</strong>
+                        <span>Pedro Santos</span>
+                    </div>
+
+                    <div class="campo">
+                        <strong>Tipo de solicitação</strong>
+                        <span>Folga</span>
+                    </div>
+
+                    <div class="campo">
+                        <strong>Data inicial</strong>
+                        <span>25/09/2026</span>
+                    </div>
+
+                    <div class="campo">
+                        <strong>Data final</strong>
+                        <span>25/09/2026</span>
+                    </div>
+
+                    <div class="campo motivo">
+                        <strong>Motivo</strong>
+                        <span>Assunto pessoal.</span>
+                    </div>
+
+                </div>
+
+                <div class="botoes">
+                    <button class="btn-aprovar" onclick="aprovarSolicitacao(3)">
+                        Aprovar
+                    </button>
+
+                    <button class="btn-recusar" onclick="recusarSolicitacao(3)">
+                        Recusar
+                    </button>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="../js/Aprovacao.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Solicitação de Escala - Gestão em Campo</title>
+
+    <link rel="stylesheet" href="../css/Solicitacao.css">
+</head>
+
+<body>
+
+    <!-- MENU LATERAL -->
+    <aside class="menu-lateral">
+
+        <div class="logo">
+            Gestão em Campo
+        </div>
+
+        <nav>
+            <a href="#">Início</a>
+            <a href="#">Escalas</a>
+            <a href="#" class="ativo">Solicitações</a>
+            <a href="#">Meu Perfil</a>
+            <a href="#">Sair</a>
+        </nav>
+
+    </aside>
+
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="conteudo">
+
+        <header class="cabecalho">
+            <h1>Solicitação de Escala</h1>
+            <p>Preencha os dados abaixo para enviar sua solicitação.</p>
+        </header>
+
+
+        <!-- FORMULÁRIO -->
+        <section class="card">
+
+            <h2>Nova Solicitação</h2>
+
+            <form>
+
+                <!-- Tipo da solicitação -->
+                <div class="campo">
+                    <label for="tipo">Tipo de solicitação</label>
+
+                    <select id="tipo" name="tipo" required>
+                        <option value="">Selecione uma opção</option>
+                        <option value="folga">Solicitação de Folga</option>
+                        <option value="troca">Troca de Escala</option>
+                        <option value="alteracao">Alteração de Escala</option>
+                    </select>
+                </div>
+
+
+                <!-- Data inicial -->
+                <div class="campo">
+                    <label for="dataInicio">Data de início</label>
+
+                    <input
+                        type="date"
+                        id="dataInicio"
+                        name="dataInicio"
+                        required
+                    >
+                </div>
+
+
+                <!-- Data final -->
+                <div class="campo">
+                    <label for="dataFim">Data de fim</label>
+
+                    <input
+                        type="date"
+                        id="dataFim"
+                        name="dataFim"
+                        required
+                    >
+                </div>
+
+
+                <!-- Motivo -->
+                <div class="campo">
+                    <label for="motivo">Motivo da solicitação</label>
+
+                    <textarea
+                        id="motivo"
+                        name="motivo"
+                        rows="5"
+                        placeholder="Digite o motivo da sua solicitação..."
+                        required
+                    ></textarea>
+                </div>
+
+
+                <!-- Botões -->
+                <div class="botoes">
+
+                    <button type="reset" class="btn-cancelar">
+                        Limpar
+                    </button>
+
+                    <button type="submit" class="btn-enviar">
+                        Enviar solicitação
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+    </main>
+     <script src="solicitacao.js"></script>
+
+</body>
+
+</html>

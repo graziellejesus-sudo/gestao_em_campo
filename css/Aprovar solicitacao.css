@@ -1,0 +1,245 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(135deg, #eef2ff, #f5f3ff);
+    min-height: 100vh;
+    color: #25204a;
+}
+
+/* CABEÇALHO */
+
+.cabecalho {
+    width: 100%;
+    height: 75px;
+    background: linear-gradient(90deg, #4b2aad, #2563eb);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 50px;
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.logo span {
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.cabecalho nav {
+    display: flex;
+    gap: 30px;
+}
+
+.cabecalho nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.cabecalho nav a:hover {
+    text-decoration: underline;
+}
+
+/* CONTAINER */
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 40px auto;
+}
+
+/* TÍTULO */
+
+.titulo {
+    margin-bottom: 30px;
+}
+
+.titulo h1 {
+    font-size: 32px;
+    color: #3b2499;
+    margin-bottom: 8px;
+}
+
+.titulo p {
+    color: #666;
+    font-size: 16px;
+}
+
+/* SOLICITAÇÕES */
+
+.solicitacoes {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* CARD */
+
+.card {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+
+    box-shadow: 0 5px 20px rgba(52, 35, 120, 0.12);
+
+    border-left: 6px solid #5b35d5;
+
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(52, 35, 120, 0.18);
+}
+
+/* TOPO DO CARD */
+
+.card-topo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 22px;
+}
+
+.card-topo h2 {
+    color: #352080;
+    font-size: 21px;
+}
+
+/* STATUS */
+
+.status {
+    padding: 7px 15px;
+    border-radius: 20px;
+
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.pendente {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+/* INFORMAÇÕES */
+
+.informacoes {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+
+    margin-bottom: 25px;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.campo strong {
+    color: #555;
+    font-size: 14px;
+}
+
+.campo span {
+    color: #222;
+    font-size: 16px;
+}
+
+.motivo {
+    grid-column: 1 / -1;
+}
+
+/* BOTÕES */
+
+.botoes {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.botoes button {
+    border: none;
+    padding: 11px 25px;
+
+    border-radius: 8px;
+
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.btn-aprovar {
+    background: #2563eb;
+}
+
+.btn-aprovar:hover {
+    background: #174bb5;
+}
+
+.btn-recusar {
+    background: #6d28d9;
+}
+
+.btn-recusar:hover {
+    background: #4c1d95;
+}
+
+/* RESPONSIVO */
+
+@media (max-width: 700px) {
+
+    .cabecalho {
+        height: auto;
+        padding: 20px;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .cabecalho nav {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .container {
+        width: 94%;
+        margin: 25px auto;
+    }
+
+    .titulo h1 {
+        font-size: 25px;
+    }
+
+    .informacoes {
+        grid-template-columns: 1fr;
+    }
+
+    .motivo {
+        grid-column: auto;
+    }
+
+    .botoes {
+        flex-direction: column;
+    }
+
+    .botoes button {
+        width: 100%;
+    }
+
+}

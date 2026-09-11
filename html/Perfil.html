@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Perfil - Gestão em Campo</title>
+
+    <link rel="stylesheet" href="../css/Perfil.css">
+</head>
+
+<body>
+
+    <!-- MENU LATERAL -->
+    <aside class="menu-lateral">
+
+        <div class="logo">
+            Gestão em Campo
+        </div>
+
+        <nav>
+            <a href="#">Início</a>
+            <a href="#"> Escalas</a>
+            <a href="#"> Solicitações</a>
+            <a href="#"> Meu Perfil</a>
+            <a href="#"> Sair</a>
+        </nav>
+
+    </aside>
+
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="conteudo">
+
+        <div class="titulo">
+            <h1>Meu Perfil</h1>
+            <p>Gerencie as informações do seu perfil.</p>
+        </div>
+
+
+        <section class="perfil">
+
+            <div class="perfil-cabecalho">
+
+                <div class="icone-perfil">
+                    👤
+                </div>
+
+                <div>
+                    <h2>Perfil do usuário</h2>
+                    <p>Atualize suas informações abaixo.</p>
+                </div>
+
+            </div>
+
+
+            <div class="linha"></div>
+
+
+            <form id="formPerfil">
+
+                <div class="campo">
+                    <label for="nome">Nome</label>
+
+                    <input
+                        type="text"
+                        id="nome"
+                        placeholder="Digite seu nome">
+                </div>
+
+
+                <div class="campo">
+                    <label for="email">E-mail</label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Digite seu e-mail">
+                </div>
+
+
+                <div class="campo">
+                    <label for="cargo">Cargo</label>
+
+                    <select id="cargo">
+                        <option value="">Selecione seu cargo</option>
+                        <option value="Gestão">Gestão</option>
+                        <option value="Funcionário">Funcionário</option>
+                    </select>
+
+                </div>
+
+                </div>
+
+
+                <div class="botoes">
+
+                    <button
+                        type="button"
+                        class="btn-cancelar"
+                        onclick="cancelar()">
+                        Cancelar
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="btn-salvar">
+                        Salvar
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+    </main>
+
+
+    <script src="../js/Perfil.js"></script>
+
+</body>
+
+</html>

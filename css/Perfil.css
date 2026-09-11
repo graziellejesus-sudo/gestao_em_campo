@@ -1,0 +1,325 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(135deg, #eef2ff, #f5f3ff);
+    min-height: 100vh;
+    color: #222;
+}
+
+
+/* MENU LATERAL */
+
+.menu-lateral {
+    position: fixed;
+    left: 0;
+    top: 0;
+
+    width: 240px;
+    height: 100vh;
+
+    background: linear-gradient(180deg, #8e9cbb, #d0c6e0);
+
+    padding: 30px 20px;
+
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.15);
+
+    z-index: 1000;
+}
+
+
+/* LOGO */
+
+.logo {
+    color: #0d0f0e;
+
+    font-size: 23px;
+    font-weight: bold;
+
+    text-align: center;
+
+    margin-bottom: 45px;
+}
+
+
+/* LINKS DO MENU */
+
+.menu-lateral nav {
+    display: flex;
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+.menu-lateral nav a {
+    text-decoration: none;
+
+    color: white;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    padding: 14px 15px;
+
+    border-radius: 10px;
+
+    transition: 0.3s;
+}
+
+.menu-lateral nav a:hover {
+    background: rgba(255, 255, 255, 0.25);
+
+    transform: translateX(5px);
+}
+
+
+/* CONTEÚDO */
+
+.conteudo {
+    margin-left: 240px;
+
+    min-height: 100vh;
+
+    padding: 50px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* TÍTULO */
+
+.titulo {
+    width: 100%;
+    max-width: 650px;
+
+    margin-bottom: 25px;
+}
+
+.titulo h1 {
+    color: #4f46e5;
+
+    font-size: 32px;
+
+    margin-bottom: 8px;
+}
+
+.titulo p {
+    color: #666;
+
+    font-size: 15px;
+}
+
+
+/* CARD PERFIL */
+
+.perfil {
+    width: 100%;
+    max-width: 650px;
+
+    background: white;
+
+    padding: 35px;
+
+    border-radius: 18px;
+
+    box-shadow: 0 10px 30px rgba(37, 99, 235, 0.15);
+}
+
+
+/* CABEÇALHO DO PERFIL */
+
+.perfil-cabecalho {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+}
+
+
+/* ÍCONE */
+
+.icone-perfil {
+    width: 60px;
+    height: 60px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #eef2ff;
+
+    border-radius: 50%;
+
+    font-size: 28px;
+}
+
+.perfil-cabecalho h2 {
+    color: #4f46e5;
+
+    margin-bottom: 5px;
+}
+
+
+
+
+/* LINHA */
+
+.linha {
+    width: 100%;
+
+    height: 1px;
+
+    background: #e5e7eb;
+
+    margin: 25px 0;
+}
+
+
+/* CAMPOS */
+
+.campo {
+    display: flex;
+
+    flex-direction: column;
+
+    margin-bottom: 20px;
+}
+
+.campo label {
+    margin-bottom: 8px;
+
+    font-weight: bold;
+
+    color: #333;
+
+    font-size: 15px;
+}
+
+.campo input,
+.campo select {
+    width: 100%;
+
+    padding: 13px 14px;
+
+    border: 1px solid #d1d5db;
+
+    border-radius: 9px;
+
+    font-size: 15px;
+
+    outline: none;
+
+    background: #fafafa;
+
+    transition: 0.3s;
+}
+
+.campo input:focus,
+.campo select:focus {
+    border-color: #6366f1;
+
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+
+    background: white;
+}
+
+
+/* BOTÕES */
+
+.botoes {
+    display: flex;
+
+    gap: 15px;
+
+    margin-top: 25px;
+}
+
+.botoes button {
+    flex: 1;
+
+    padding: 13px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+
+/* CANCELAR */
+
+.btn-cancelar {
+    background: #e5e7eb;
+
+    color: #333;
+}
+
+.btn-cancelar:hover {
+    background: #7ba1da;
+}
+
+
+/* SALVAR */
+
+.btn-salvar {
+    background: linear-gradient(90deg, #25eb88, #7c3aed);
+
+    color: white;
+}
+
+.btn-salvar:hover {
+    transform: translateY(-2px);
+
+    box-shadow: 0 6px 15px rgba(99, 102, 241, 0.35);
+}
+
+
+/* CELULAR */
+
+@media (max-width: 700px) {
+
+    .menu-lateral {
+        width: 190px;
+
+        padding: 25px 15px;
+    }
+
+    .logo {
+        font-size: 19px;
+    }
+
+    .menu-lateral nav a {
+        font-size: 14px;
+
+        padding: 12px 10px;
+    }
+
+    .conteudo {
+        margin-left: 190px;
+
+        padding: 30px 15px;
+    }
+
+    .perfil {
+        padding: 25px 20px;
+    }
+
+    .botoes {
+        flex-direction: column;
+    }
+}
