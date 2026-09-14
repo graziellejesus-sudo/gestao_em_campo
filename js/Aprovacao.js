@@ -1,70 +1,85 @@
+
+// ========================================
+// APROVAR SOLICITAÇÃO
+// ========================================
+
 function aprovarSolicitacao(id) {
 
     const confirmar = confirm(
-        "Deseja realmente aprovar a solicitação #" + id + "?"
+        "Deseja realmente aprovar esta solicitação?"
     );
 
-    if (confirmar) {
-
-        alert("Solicitação #" + id + " aprovada com sucesso!");
-
-        atualizarStatus(id, "Aprovada");
-
+    if (!confirmar) {
+        return;
     }
 
+    const card = document.getElementById(
+        "solicitacao-" + id
+    );
+
+    const status = card.querySelector(".status");
+
+    status.textContent = "Aprovada";
+
+    status.classList.remove("pendente");
+
+    status.classList.add("aprovado");
+
+    alert("Solicitação aprovada com sucesso!");
+
+    desativarBotoes(card);
 }
 
+
+// ========================================
+// RECUSAR SOLICITAÇÃO
+// ========================================
 
 function recusarSolicitacao(id) {
 
     const confirmar = confirm(
-        "Deseja realmente recusar a solicitação #" + id + "?"
+        "Deseja realmente recusar esta solicitação?"
     );
 
-    if (confirmar) {
-
-        alert("Solicitação #" + id + " recusada.");
-
-        atualizarStatus(id, "Recusada");
-
+    if (!confirmar) {
+        return;
     }
 
+    const card = document.getElementById(
+        "solicitacao-" + id
+    );
+
+    const status = card.querySelector(".status");
+
+    status.textContent = "Recusada";
+
+    status.classList.remove("pendente");
+
+    status.classList.add("recusado");
+
+    alert("Solicitação recusada!");
+
+    desativarBotoes(card);
 }
 
 
-function atualizarStatus(id, novoStatus) {
+// ========================================
+// DESATIVAR BOTÕES APÓS DECISÃO
+// ========================================
 
-    const cards = document.querySelectorAll(".card");
+function desativarBotoes(card) {
 
-    cards.forEach(function(card) {
+    const botoes = card.querySelectorAll("button");
 
-        const titulo = card.querySelector("h2");
+    botoes.forEach(function(botao) {
 
-        if (titulo.textContent === "Solicitação #" + String(id).padStart(3, "0")) {
+        botao.disabled = true;
 
-            const status = card.querySelector(".status");
+        botao.style.opacity = "0.5";
 
-            status.textContent = novoStatus;
-
-            status.classList.remove("pendente");
-
-            if (novoStatus === "Aprovada") {
-
-                status.style.backgroundColor = "#d1fae5";
-                status.style.color = "#065f46";
-
-            } else {
-
-                status.style.backgroundColor = "#fee2e2";
-                status.style.color = "#991b1b";
-
-            }
-
-            const botoes = card.querySelector(".botoes");
-
-            botoes.style.display = "none";
-        }
+        botao.style.cursor = "not-allowed";
 
     });
 
 }
+

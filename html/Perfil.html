@@ -1,115 +1,240 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Perfil - Gestão em Campo</title>
 
+    <!-- CSS -->
     <link rel="stylesheet" href="../css/Perfil.css">
+
 </head>
 
 <body>
 
+
+    <!-- ================================= -->
     <!-- MENU LATERAL -->
+    <!-- ================================= -->
+
     <aside class="menu-lateral">
 
-        <div class="logo">
-            Gestão em Campo
+
+        <!-- LOGO -->
+
+        <div class="logo-area">
+
+            <img
+                src="../img/img.png"
+                alt="Logo Gestão em Campo"
+            >
+
+            <span>
+                Gestão em Campo
+            </span>
+
         </div>
 
+
+        <!-- MENU DE NAVEGAÇÃO -->
+
         <nav>
-            <a href="#">Início</a>
-            <a href="#"> Escalas</a>
-            <a href="#"> Solicitações</a>
-            <a href="#"> Meu Perfil</a>
-            <a href="#"> Sair</a>
+
+            <a href="inicio.html">
+                Início
+            </a>
+
+            <a href="Painel escala.html">
+                Escalas
+            </a>
+
+            <a href="Solicitacao.html">
+                Solicitações
+            </a>
+
+            <a href="Perfil.html" class="ativo">
+                Meu Perfil
+            </a>
+
+            <a href="login.html">
+                Sair
+            </a>
+
         </nav>
 
     </aside>
 
 
+    <!-- ================================= -->
     <!-- CONTEÚDO PRINCIPAL -->
+    <!-- ================================= -->
+
     <main class="conteudo">
 
+
+        <!-- TÍTULO -->
+
         <div class="titulo">
-            <h1>Meu Perfil</h1>
-            <p>Gerencie as informações do seu perfil.</p>
+
+            <h1>
+                Meu Perfil
+            </h1>
+
+            <p>
+                Gerencie as informações do seu perfil.
+            </p>
+
         </div>
 
 
+        <!-- ================================= -->
+        <!-- CARD DO PERFIL -->
+        <!-- ================================= -->
+
         <section class="perfil">
 
+
+            <!-- CABEÇALHO DO PERFIL -->
+
             <div class="perfil-cabecalho">
+
+
+                <!-- ÍCONE -->
 
                 <div class="icone-perfil">
                     👤
                 </div>
 
+
+                <!-- TÍTULO -->
+
                 <div>
-                    <h2>Perfil do usuário</h2>
-                    <p>Atualize suas informações abaixo.</p>
+
+                    <h2>
+                        Perfil do usuário
+                    </h2>
+
+                    <p>
+                        Atualize suas informações abaixo.
+                    </p>
+
                 </div>
 
             </div>
 
 
+            <!-- LINHA SEPARADORA -->
+
             <div class="linha"></div>
 
 
+            <!-- ================================= -->
+            <!-- FORMULÁRIO -->
+            <!-- ================================= -->
+
             <form id="formPerfil">
 
+
+                <!-- NOME -->
+
                 <div class="campo">
-                    <label for="nome">Nome</label>
+
+                    <label for="nome">
+                        Nome
+                    </label>
 
                     <input
                         type="text"
                         id="nome"
-                        placeholder="Digite seu nome">
+                        name="nome"
+                        placeholder="Digite seu nome"
+                    >
+
                 </div>
 
 
+                <!-- E-MAIL -->
+
                 <div class="campo">
-                    <label for="email">E-mail</label>
+
+                    <label for="email">
+                        E-mail
+                    </label>
 
                     <input
                         type="email"
                         id="email"
-                        placeholder="Digite seu e-mail">
+                        name="email"
+                        placeholder="Digite seu e-mail"
+                    >
+
                 </div>
 
 
-                <div class="campo">
-                    <label for="cargo">Cargo</label>
+                <!-- CARGO -->
 
-                    <select id="cargo">
-                        <option value="">Selecione seu cargo</option>
-                        <option value="Gestão">Gestão</option>
-                        <option value="Funcionário">Funcionário</option>
+                <div class="campo">
+
+                    <label for="cargo">
+                        Cargo
+                    </label>
+
+                    <select
+                        id="cargo"
+                        name="cargo"
+                    >
+
+                        <option value="">
+                            Selecione seu cargo
+                        </option>
+
+                        <option value="Gestão">
+                            Gestão
+                        </option>
+
+                        <option value="Funcionário">
+                            Funcionário
+                        </option>
+
                     </select>
 
                 </div>
 
-                </div>
 
+                <!-- ================================= -->
+                <!-- BOTÕES -->
+                <!-- ================================= -->
 
                 <div class="botoes">
+
+
+                    <!-- BOTÃO CANCELAR -->
 
                     <button
                         type="button"
                         class="btn-cancelar"
-                        onclick="cancelar()">
+                        onclick="cancelar()"
+                    >
                         Cancelar
                     </button>
 
+
+                    <!-- BOTÃO SALVAR -->
+
                     <button
                         type="submit"
-                        class="btn-salvar">
+                        class="btn-salvar"
+                    >
                         Salvar
                     </button>
 
                 </div>
+
 
             </form>
 
@@ -118,8 +243,14 @@
     </main>
 
 
+    <!-- ================================= -->
+    <!-- JAVASCRIPT -->
+    <!-- ================================= -->
+
     <script src="../js/Perfil.js"></script>
 
 </body>
 
 </html>
+
+

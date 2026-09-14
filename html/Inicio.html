@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -8,53 +9,58 @@
 
     <title>Início - Gestão em Campo</title>
 
+    <!-- CSS -->
     <link rel="stylesheet" href="../css/inicio.css">
 </head>
 
 <body>
 
-    <!-- CABEÇALHO -->
-    <header class="cabecalho">
+    <!-- ==============================
+         MENU LATERAL
+    =============================== -->
+
+    <aside class="menu-lateral">
 
         <div class="logo-area">
+
             <img src="../img/img.png" alt="Logo Gestão em Campo">
 
             <span>Gestão em Campo</span>
+
         </div>
 
         <nav>
+
             <a href="inicio.html">Início</a>
+
             <a href="Painel escala.html">Escalas</a>
+
             <a href="Solicitacao.html">Solicitações</a>
+
             <a href="perfil.html">Perfil</a>
+
+            <a href="login.html">Sair</a>
+
         </nav>
 
-        <button class="menu-mobile" onclick="abrirMenu()">
-            ☰
-        </button>
-
-    </header>
+    </aside>
 
 
-    <!-- MENU MOBILE -->
-    <div class="menu-mobile-links" id="menuMobile">
+    <!-- ==============================
+         CONTEÚDO PRINCIPAL
+    =============================== -->
 
-        <a href="inicio.html">Início</a>
-        <a href="Painel escala.html">Escalas</a>
-        <a href="Solicitacao.html">Solicitações</a>
-        <a href="perfil.html">Perfil</a>
-
-    </div>
-
-
-    <!-- CONTEÚDO PRINCIPAL -->
     <main>
 
         <section class="inicio">
 
+            <!-- TEXTO DA PÁGINA -->
+
             <div class="texto-inicio">
 
-                <span class="tag">GESTÃO DE ESCALAS</span>
+                <span class="tag">
+                    GESTÃO DE ESCALAS
+                </span>
 
                 <h1>
                     Organize suas escalas
@@ -67,14 +73,24 @@
                     único lugar.
                 </p>
 
+                <!-- BOTÕES -->
+
                 <div class="botoes">
 
-                    <button class="btn-entrar" onclick="irParaLogin()">
+                    <button
+                        class="btn-entrar"
+                        onclick="irParaLogin()">
+
                         Entrar
+
                     </button>
 
-                    <button class="btn-cadastro" onclick="irParaCadastro()">
+                    <button
+                        class="btn-cadastro"
+                        onclick="irParaCadastro()">
+
                         Criar conta
+
                     </button>
 
                 </div>
@@ -82,7 +98,10 @@
             </div>
 
 
-            <!-- ÁREA VISUAL -->
+            <!-- ==============================
+                 ÁREA VISUAL
+            =============================== -->
+
             <div class="visual">
 
                 <div class="card-visual">
@@ -91,7 +110,9 @@
                         📅
                     </div>
 
-                    <h2>Controle de Escalas</h2>
+                    <h2>
+                        Controle de Escalas
+                    </h2>
 
                     <p>
                         Consulte horários, organize folgas
@@ -100,9 +121,15 @@
 
                 </div>
 
+
+                <!-- MINI CARD 1 -->
+
                 <div class="mini-card card-1">
                     ✓ Escala organizada
                 </div>
+
+
+                <!-- MINI CARD 2 -->
 
                 <div class="mini-card card-2">
                     📋 Solicitação enviada
@@ -113,8 +140,13 @@
         </section>
 
 
-        <!-- BENEFÍCIOS -->
+        <!-- ==============================
+             BENEFÍCIOS
+        =============================== -->
+
         <section class="beneficios">
+
+            <!-- BENEFÍCIO 1 -->
 
             <div class="beneficio">
 
@@ -122,7 +154,9 @@
                     📅
                 </div>
 
-                <h3>Escalas</h3>
+                <h3>
+                    Escalas
+                </h3>
 
                 <p>
                     Consulte e acompanhe suas escalas
@@ -132,13 +166,17 @@
             </div>
 
 
+            <!-- BENEFÍCIO 2 -->
+
             <div class="beneficio">
 
                 <div class="icone-beneficio">
                     📝
                 </div>
 
-                <h3>Solicitações</h3>
+                <h3>
+                    Solicitações
+                </h3>
 
                 <p>
                     Envie solicitações de folga e troca
@@ -148,13 +186,17 @@
             </div>
 
 
+            <!-- BENEFÍCIO 3 -->
+
             <div class="beneficio">
 
                 <div class="icone-beneficio">
                     👥
                 </div>
 
-                <h3>Gestão</h3>
+                <h3>
+                    Gestão
+                </h3>
 
                 <p>
                     Facilite o gerenciamento das equipes
@@ -168,6 +210,10 @@
     </main>
 
 
+    <!-- ==============================
+         RODAPÉ
+    =============================== -->
+
     <footer>
 
         <p>
@@ -176,6 +222,10 @@
 
     </footer>
 
+
+    <!-- ==============================
+         JAVASCRIPT
+    =============================== -->
 
     <script src="../js/inicio.js"></script>
 

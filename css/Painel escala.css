@@ -1,7 +1,7 @@
 
-/* ==============================
+/* =========================================
    CONFIGURAÇÕES GERAIS
-   ============================== */
+========================================= */
 
 * {
     margin: 0;
@@ -9,88 +9,193 @@
     box-sizing: border-box;
 }
 
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background: linear-gradient(135deg, #8e9cbb, #d0c6e0);
+
+    background: linear-gradient(
+        135deg,
+        #8e9cbb,
+        #d0c6e0
+    );
+
     color: #222;
-    min-height: 100vh;
 }
 
 
-/* ==============================
-   CABEÇALHO
-   ============================== */
+/* =========================================
+   MENU LATERAL
+========================================= */
 
-.cabecalho {
+.menu-lateral {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 240px;
+    height: 100vh;
+
+    padding: 25px 20px;
+
+    background: linear-gradient(
+        180deg,
+        #8e9cbb,
+        #d0c6e0
+    );
+
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.20);
+
+    z-index: 9999;
+
+    overflow-y: auto;
+}
+
+
+/* =========================================
+   LOGO
+========================================= */
+
+.logo-area {
     width: 100%;
-    min-height: 75px;
-    background: linear-gradient(90deg, #4b1fa8, #2563eb);
 
     display: flex;
-    align-items: center;
-    justify-content: space-between;
 
-    padding: 0 60px;
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-bottom: 35px;
 }
 
-.logo {
+.logo-area img {
+    width: 100px;
+
+    height: auto;
+
+    display: block;
+
+    margin-bottom: 15px;
+}
+
+.logo-area span {
     color: white;
-    font-size: 25px;
+
+    font-size: 20px;
+
     font-weight: bold;
+
+    text-align: center;
+
+    white-space: nowrap;
 }
 
-.cabecalho nav {
+
+/* =========================================
+   LINKS DO MENU
+========================================= */
+
+.menu-lateral nav {
+    width: 100%;
+
     display: flex;
-    align-items: center;
-    gap: 30px;
+
+    flex-direction: column;
+
+    gap: 8px;
 }
 
-.cabecalho nav a {
+.menu-lateral nav a {
+    display: block;
+
+    width: 100%;
+
+    padding: 13px 15px;
+
     color: white;
+
     text-decoration: none;
+
     font-size: 16px;
+
     font-weight: bold;
+
+    border-radius: 8px;
+
+    transition: background-color 0.3s,
+                transform 0.3s;
 }
 
-.cabecalho nav a:hover {
-    opacity: 0.8;
+.menu-lateral nav a:hover {
+    background-color: rgba(255, 255, 255, 0.20);
+
+    transform: translateX(4px);
+}
+
+.menu-lateral nav a.ativo {
+    background-color: rgba(255, 255, 255, 0.28);
 }
 
 
-/* ==============================
-   CONTEÚDO
-   ============================== */
+/* =========================================
+   CONTEÚDO PRINCIPAL
+========================================= */
 
 main {
-    width: 90%;
-    max-width: 1200px;
-    margin: 40px auto;
+    width: calc(100% - 240px);
+
+    min-height: 100vh;
+
+    margin-left: 240px;
+
+    padding: 40px;
 }
 
+
+/* =========================================
+   TÍTULO
+========================================= */
+
 .titulo {
+    width: 100%;
+
     margin-bottom: 30px;
 }
 
 .titulo h1 {
     color: #4b1fa8;
+
     font-size: 32px;
-    margin-bottom: 8px;
+
+    margin-bottom: 10px;
 }
 
 .titulo p {
-    color: #666;
+    color: #555;
+
     font-size: 17px;
 }
 
 
-/* ==============================
+/* =========================================
    CARDS
-   ============================== */
+========================================= */
 
 .cards {
+    width: 100%;
+
     display: flex;
-    gap: 25px;
-    margin-bottom: 40px;
+
+    gap: 20px;
+
+    margin-bottom: 35px;
 }
 
 .card {
@@ -105,11 +210,19 @@ main {
     border-left: 5px solid #4b1fa8;
 
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.10);
+
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-4px);
 }
 
 .card h3 {
     color: #555;
+
     font-size: 18px;
+
     margin-bottom: 15px;
 }
 
@@ -125,13 +238,14 @@ main {
 
 .card p {
     color: #777;
+
     font-size: 15px;
 }
 
 
-/* ==============================
+/* =========================================
    TABELA
-   ============================== */
+========================================= */
 
 .tabela {
     width: 100%;
@@ -147,33 +261,52 @@ main {
 
 .tabela h2 {
     color: #4b1fa8;
+
     font-size: 22px;
+
     margin-bottom: 20px;
 }
 
+
+/* =========================================
+   TABELA RESPONSIVA
+========================================= */
+
 .tabela-responsiva {
     width: 100%;
+
     overflow-x: auto;
 }
 
 table {
     width: 100%;
+
     border-collapse: collapse;
+
+    min-width: 600px;
 }
 
 thead {
-    background: linear-gradient(90deg, #4b1fa8, #2563eb);
+    background: linear-gradient(
+        90deg,
+        #4b1fa8,
+        #2563eb
+    );
+
     color: white;
 }
 
 th {
     padding: 15px;
+
     text-align: left;
+
     font-size: 15px;
 }
 
 td {
     padding: 15px;
+
     text-align: left;
 
     border-bottom: 1px solid #ddd;
@@ -186,14 +319,15 @@ tbody tr:hover {
 }
 
 
-/* ==============================
-   STATUS ATIVA
-   ============================== */
+/* =========================================
+   STATUS ATIVO
+========================================= */
 
 .ativo {
     display: inline-block;
 
     background-color: #d1fae5;
+
     color: #047857;
 
     padding: 6px 12px;
@@ -201,18 +335,20 @@ tbody tr:hover {
     border-radius: 20px;
 
     font-size: 13px;
+
     font-weight: bold;
 }
 
 
-/* ==============================
+/* =========================================
    STATUS PENDENTE
-   ============================== */
+========================================= */
 
 .pendente {
     display: inline-block;
 
     background-color: #fef3c7;
+
     color: #b45309;
 
     padding: 6px 12px;
@@ -220,13 +356,14 @@ tbody tr:hover {
     border-radius: 20px;
 
     font-size: 13px;
+
     font-weight: bold;
 }
 
 
-/* ==============================
-   BOTÃO NOVA ESCALA
-   ============================== */
+/* =========================================
+   BOTÃO
+========================================= */
 
 .botao {
     margin-top: 25px;
@@ -234,57 +371,111 @@ tbody tr:hover {
     padding: 14px 25px;
 
     border: none;
+
     border-radius: 8px;
 
-    background: linear-gradient(90deg, #4b1fa8, #2563eb);
+    background: linear-gradient(
+        90deg,
+        #4b1fa8,
+        #2563eb
+    );
 
     color: white;
 
     font-size: 16px;
+
     font-weight: bold;
 
     cursor: pointer;
+
+    transition: 0.3s;
 }
 
 .botao:hover {
     opacity: 0.9;
+
+    transform: translateY(-2px);
 }
 
 
-/* ==============================
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+
+    .cards {
+        flex-direction: column;
+    }
+
+    .card {
+        width: 100%;
+    }
+}
+
+
+/* =========================================
    CELULAR
-   ============================== */
+========================================= */
 
 @media (max-width: 768px) {
 
-    .cabecalho {
+    .menu-lateral {
+        position: relative;
+
+        top: auto;
+        left: auto;
+
+        width: 100%;
+        height: auto;
+
         padding: 20px;
-
-        flex-direction: column;
-
-        gap: 15px;
     }
 
-    .logo {
-        font-size: 22px;
+    .logo-area {
+        margin-bottom: 20px;
     }
 
-    .cabecalho nav {
-        gap: 15px;
+    .logo-area img {
+        width: 80px;
+    }
+
+    .logo-area span {
+        font-size: 18px;
+    }
+
+    .menu-lateral nav {
+        flex-direction: row;
 
         flex-wrap: wrap;
 
         justify-content: center;
+
+        gap: 5px;
+    }
+
+    .menu-lateral nav a {
+        width: auto;
+
+        padding: 10px 12px;
+
+        font-size: 14px;
     }
 
     main {
-        width: 94%;
+        width: 100%;
 
-        margin: 25px auto;
+        margin-left: 0;
+
+        padding: 25px 20px;
     }
 
     .titulo h1 {
         font-size: 27px;
+    }
+
+    .titulo p {
+        font-size: 15px;
     }
 
     .cards {
@@ -297,6 +488,10 @@ tbody tr:hover {
 
     .tabela {
         padding: 20px;
+    }
+
+    .tabela h2 {
+        font-size: 20px;
     }
 
     th,
@@ -312,30 +507,36 @@ tbody tr:hover {
 }
 
 
-/* ==============================
-   CELULARES PEQUENOS
-   ============================== */
+/* =========================================
+   CELULAR PEQUENO
+========================================= */
 
 @media (max-width: 480px) {
 
-    .cabecalho nav {
-        gap: 10px;
+    .menu-lateral {
+        padding: 15px;
     }
 
-    .cabecalho nav a {
-        font-size: 14px;
+    .logo-area img {
+        width: 70px;
+    }
+
+    .logo-area span {
+        font-size: 17px;
+    }
+
+    .menu-lateral nav a {
+        font-size: 13px;
+
+        padding: 9px 10px;
+    }
+
+    main {
+        padding: 20px 15px;
     }
 
     .titulo h1 {
-        font-size: 24px;
-    }
-
-    .titulo p {
-        font-size: 15px;
-    }
-
-    .tabela h2 {
-        font-size: 19px;
+        font-size: 23px;
     }
 }
 

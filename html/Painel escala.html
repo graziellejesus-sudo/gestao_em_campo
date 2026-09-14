@@ -1,179 +1,296 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Painel de Escalas - Gestão em Campo</title>
 
+    <!-- CSS -->
     <link rel="stylesheet" href="../css/Painel escala.css">
+
 </head>
 
 <body>
 
-    <!-- CABEÇALHO -->
-    <header class="cabecalho">
+    <!-- ============================= -->
+    <!-- MENU LATERAL -->
+    <!-- ============================= -->
 
-        <div class="logo">
-            Gestão em Campo
+    <aside class="menu-lateral">
+
+        <!-- LOGO -->
+        <div class="logo-area">
+
+            <img
+                src="../img/img.png"
+                alt="Logo Gestão em Campo"
+            >
+
+            <span>
+                Gestão em Campo
+            </span>
+
         </div>
 
+
+        <!-- MENU -->
         <nav>
-            <a href="#">Início</a>
-            <a href="#">Escalas</a>
-            <a href="#">Solicitações</a>
-            <a href="#">Sair</a>
+
+            <a href="inicio.html">
+                Início
+            </a>
+
+            <a href="Painel escala.html" class="ativo">
+                Escalas
+            </a>
+
+            <a href="Solicitacao.html">
+                Solicitações
+            </a>
+
+            <a href="perfil.html">
+                Meu Perfil
+            </a>
+
+            <a href="login.html">
+                Sair
+            </a>
+
         </nav>
 
-    </header>
+    </aside>
 
 
+    <!-- ============================= -->
     <!-- CONTEÚDO PRINCIPAL -->
+    <!-- ============================= -->
+
     <main>
 
+        <!-- TÍTULO -->
         <section class="titulo">
 
-            <h1>Painel de Escalas</h1>
+            <h1>
+                Painel de Escalas
+            </h1>
 
-            <p>Confira as escalas dos funcionários.</p>
+            <p>
+                Confira as escalas dos funcionários.
+            </p>
 
         </section>
 
 
+        <!-- ============================= -->
         <!-- CARDS -->
+        <!-- ============================= -->
+
         <section class="cards">
 
+            <!-- CARD 1 -->
             <div class="card">
 
-                <h3>Funcionários</h3>
+                <h3>
+                    Funcionários
+                </h3>
 
-                <strong>25</strong>
+                <strong>
+                    25
+                </strong>
 
-                <p>Cadastrados</p>
+                <p>
+                    Funcionários cadastrados
+                </p>
 
             </div>
 
 
+            <!-- CARD 2 -->
             <div class="card">
 
-                <h3>Escalas Ativas</h3>
+                <h3>
+                    Escalas Ativas
+                </h3>
 
-                <strong>12</strong>
+                <strong>
+                    12
+                </strong>
 
-                <p>Em andamento</p>
+                <p>
+                    Escalas em andamento
+                </p>
 
             </div>
 
 
+            <!-- CARD 3 -->
             <div class="card">
 
-                <h3>Solicitações</h3>
+                <h3>
+                    Solicitações
+                </h3>
 
-                <strong>5</strong>
+                <strong>
+                    5
+                </strong>
 
-                <p>Aguardando aprovação</p>
+                <p>
+                    Solicitações pendentes
+                </p>
 
             </div>
 
         </section>
 
 
-        <!-- TABELA -->
+        <!-- ============================= -->
+        <!-- TABELA DE ESCALAS -->
+        <!-- ============================= -->
+
         <section class="tabela">
 
-            <h2>Escalas dos Funcionários</h2>
+            <h2>
+                Escalas dos Funcionários
+            </h2>
 
+
+            <!-- RESPONSIVIDADE DA TABELA -->
             <div class="tabela-responsiva">
 
                 <table>
 
+                    <!-- CABEÇALHO DA TABELA -->
                     <thead>
 
                         <tr>
-                            <th>Funcionário</th>
-                            <th>Data</th>
-                            <th>Horário</th>
-                            <th>Setor</th>
-                            <th>Status</th>
+
+                            <th>
+                                Funcionário
+                            </th>
+
+                            <th>
+                                Data de Início
+                            </th>
+
+                            <th>
+                                Data de Fim
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
                         </tr>
 
                     </thead>
 
 
+                    <!-- DADOS DA TABELA -->
                     <tbody>
 
+                        <!-- FUNCIONÁRIO 1 -->
                         <tr>
 
-                            <td>João Silva</td>
-
-                            <td>10/09/2026</td>
-
-                            <td>08:00 - 17:00</td>
-
-                            <td>Produção</td>
+                            <td>
+                                João Silva
+                            </td>
 
                             <td>
+                                15/09/2026
+                            </td>
+
+                            <td>
+                                20/09/2026
+                            </td>
+
+                            <td>
+
                                 <span class="ativo">
                                     Ativa
                                 </span>
+
                             </td>
 
                         </tr>
 
 
+                        <!-- FUNCIONÁRIO 2 -->
                         <tr>
 
-                            <td>Maria Oliveira</td>
-
-                            <td>10/09/2026</td>
-
-                            <td>07:00 - 16:00</td>
-
-                            <td>Administrativo</td>
+                            <td>
+                                Maria Santos
+                            </td>
 
                             <td>
+                                21/09/2026
+                            </td>
+
+                            <td>
+                                26/09/2026
+                            </td>
+
+                            <td>
+
                                 <span class="ativo">
                                     Ativa
                                 </span>
+
                             </td>
 
                         </tr>
 
 
+                        <!-- FUNCIONÁRIO 3 -->
                         <tr>
 
-                            <td>Pedro Santos</td>
-
-                            <td>11/09/2026</td>
-
-                            <td>12:00 - 21:00</td>
-
-                            <td>Produção</td>
+                            <td>
+                                Pedro Oliveira
+                            </td>
 
                             <td>
+                                27/09/2026
+                            </td>
+
+                            <td>
+                                02/10/2026
+                            </td>
+
+                            <td>
+
                                 <span class="pendente">
                                     Pendente
                                 </span>
+
                             </td>
 
                         </tr>
 
 
+                        <!-- FUNCIONÁRIO 4 -->
                         <tr>
 
-                            <td>Ana Costa</td>
-
-                            <td>12/09/2026</td>
-
-                            <td>08:00 - 17:00</td>
-
-                            <td>Logística</td>
+                            <td>
+                                Ana Souza
+                            </td>
 
                             <td>
+                                03/10/2026
+                            </td>
+
+                            <td>
+                                08/10/2026
+                            </td>
+
+                            <td>
+
                                 <span class="ativo">
                                     Ativa
                                 </span>
+
                             </td>
 
                         </tr>
@@ -184,20 +301,28 @@
 
             </div>
 
+
+            <!-- ============================= -->
+            <!-- BOTÃO NOVA ESCALA -->
+            <!-- ============================= -->
+
+            <button
+                class="botao"
+                onclick="novaEscala()"
+            >
+                + Nova Escala
+            </button>
+
         </section>
-
-
-        <!-- BOTÃO -->
-        <button class="botao" type="button">
-            + Nova solicitação
-        </button>
 
     </main>
 
 
     <!-- JAVASCRIPT -->
-    <script src="../js/Painel escala.js"></script>
+    <script src="../js/Painel.js"></script>
 
 </body>
 
 </html>
+
+

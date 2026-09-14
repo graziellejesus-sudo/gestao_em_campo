@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -7,179 +8,318 @@
 
     <title>Aprovação de Solicitação - Gestão em Campo</title>
 
+    <!-- CSS -->
     <link rel="stylesheet" href="../css/Aprovar solicitacao.css">
 </head>
 
 <body>
 
-    <header class="cabecalho">
+    <!-- MENU LATERAL -->
+    <aside class="menu-lateral">
 
-        <div class="logo">
-            <span>Gestão em Campo</span>
+        <div class="logo-area">
+
+            <img src="../img/img.png" alt="Logo Gestão em Campo">
+
         </div>
 
         <nav>
-            <a href="#">Painel de Escalas</a>
-            <a href="#">Solicitações</a>
-            <a href="#">Sair</a>
+
+            <a href="inicio.html">Início</a>
+
+            <a href="Painel escala.html">Escalas</a>
+
+            <a href="Solicitacao.html">Solicitações</a>
+
+            <a href="Aprovar solicitacao.html" class="ativo">
+                Aprovar Solicitações
+            </a>
+
+            <a href="perfil.html">Meu Perfil</a>
+
+            <a href="login.html">Sair</a>
+
         </nav>
 
-    </header>
+    </aside>
 
+
+    <!-- CONTEÚDO PRINCIPAL -->
     <main class="container">
 
         <div class="titulo">
+
             <h1>Aprovação de Solicitações</h1>
-            <p>Analise e aprove ou recuse as solicitações de escala.</p>
+
+            <p>
+                Analise e aprove ou recuse as solicitações de escala.
+            </p>
+
         </div>
 
+
+        <!-- LISTA DE SOLICITAÇÕES -->
         <section class="solicitacoes">
 
-            <!-- Solicitação 1 -->
-            <div class="card">
+
+            <!-- SOLICITAÇÃO 1 -->
+            <div class="card" id="solicitacao-1">
 
                 <div class="card-topo">
+
                     <h2>Solicitação #001</h2>
-                    <span class="status pendente">Pendente</span>
+
+                    <span class="status pendente">
+                        Pendente
+                    </span>
+
                 </div>
+
 
                 <div class="informacoes">
 
                     <div class="campo">
+
                         <strong>Funcionário</strong>
+
                         <span>João da Silva</span>
+
                     </div>
 
+
                     <div class="campo">
+
                         <strong>Tipo de solicitação</strong>
+
                         <span>Folga</span>
+
                     </div>
 
+
                     <div class="campo">
+
                         <strong>Data inicial</strong>
+
                         <span>15/09/2026</span>
+
                     </div>
 
+
                     <div class="campo">
+
                         <strong>Data final</strong>
+
                         <span>16/09/2026</span>
+
                     </div>
 
+
                     <div class="campo motivo">
+
                         <strong>Motivo</strong>
+
                         <span>Consulta médica</span>
+
                     </div>
 
                 </div>
 
+
                 <div class="botoes">
-                    <button class="btn-aprovar" onclick="aprovarSolicitacao(1)">
+
+                    <button
+                        class="btn-aprovar"
+                        onclick="aprovarSolicitacao(1)">
+
                         Aprovar
+
                     </button>
 
-                    <button class="btn-recusar" onclick="recusarSolicitacao(1)">
+
+                    <button
+                        class="btn-recusar"
+                        onclick="recusarSolicitacao(1)">
+
                         Recusar
+
                     </button>
+
                 </div>
 
             </div>
 
 
-            <!-- Solicitação 2 -->
-            <div class="card">
+            <!-- SOLICITAÇÃO 2 -->
+            <div class="card" id="solicitacao-2">
 
                 <div class="card-topo">
+
                     <h2>Solicitação #002</h2>
-                    <span class="status pendente">Pendente</span>
+
+                    <span class="status pendente">
+                        Pendente
+                    </span>
+
                 </div>
+
 
                 <div class="informacoes">
 
                     <div class="campo">
+
                         <strong>Funcionário</strong>
+
                         <span>Maria Oliveira</span>
+
                     </div>
 
+
                     <div class="campo">
+
                         <strong>Tipo de solicitação</strong>
+
                         <span>Troca de escala</span>
+
                     </div>
 
+
                     <div class="campo">
+
                         <strong>Data inicial</strong>
+
                         <span>20/09/2026</span>
+
                     </div>
 
+
                     <div class="campo">
+
                         <strong>Data final</strong>
+
                         <span>20/09/2026</span>
+
                     </div>
+
 
                     <div class="campo motivo">
+
                         <strong>Motivo</strong>
-                        <span>Necessidade de troca com outro funcionário.</span>
+
+                        <span>
+                            Necessidade de troca com outro funcionário.
+                        </span>
+
                     </div>
 
                 </div>
 
+
                 <div class="botoes">
-                    <button class="btn-aprovar" onclick="aprovarSolicitacao(2)">
+
+                    <button
+                        class="btn-aprovar"
+                        onclick="aprovarSolicitacao(2)">
+
                         Aprovar
+
                     </button>
 
-                    <button class="btn-recusar" onclick="recusarSolicitacao(2)">
+
+                    <button
+                        class="btn-recusar"
+                        onclick="recusarSolicitacao(2)">
+
                         Recusar
+
                     </button>
+
                 </div>
 
             </div>
 
 
-            <!-- Solicitação 3 -->
-            <div class="card">
+            <!-- SOLICITAÇÃO 3 -->
+            <div class="card" id="solicitacao-3">
 
                 <div class="card-topo">
+
                     <h2>Solicitação #003</h2>
-                    <span class="status pendente">Pendente</span>
+
+                    <span class="status pendente">
+                        Pendente
+                    </span>
+
                 </div>
+
 
                 <div class="informacoes">
 
                     <div class="campo">
+
                         <strong>Funcionário</strong>
+
                         <span>Pedro Santos</span>
+
                     </div>
 
+
                     <div class="campo">
+
                         <strong>Tipo de solicitação</strong>
+
                         <span>Folga</span>
+
                     </div>
 
+
                     <div class="campo">
+
                         <strong>Data inicial</strong>
+
                         <span>25/09/2026</span>
+
                     </div>
 
+
                     <div class="campo">
+
                         <strong>Data final</strong>
+
                         <span>25/09/2026</span>
+
                     </div>
+
 
                     <div class="campo motivo">
+
                         <strong>Motivo</strong>
+
                         <span>Assunto pessoal.</span>
+
                     </div>
 
                 </div>
 
+
                 <div class="botoes">
-                    <button class="btn-aprovar" onclick="aprovarSolicitacao(3)">
+
+                    <button
+                        class="btn-aprovar"
+                        onclick="aprovarSolicitacao(3)">
+
                         Aprovar
+
                     </button>
 
-                    <button class="btn-recusar" onclick="recusarSolicitacao(3)">
+
+                    <button
+                        class="btn-recusar"
+                        onclick="recusarSolicitacao(3)">
+
                         Recusar
+
                     </button>
+
                 </div>
 
             </div>
@@ -188,8 +328,11 @@
 
     </main>
 
+
+    <!-- JAVASCRIPT -->
     <script src="../js/Aprovacao.js"></script>
 
 </body>
 
 </html>
+

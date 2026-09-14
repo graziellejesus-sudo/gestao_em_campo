@@ -1,66 +1,125 @@
+
+
+/* ========================================= */
+/* RESET */
+/* ========================================= */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+
+/* ========================================= */
+/* CORPO */
+/* ========================================= */
+
 body {
     font-family: Arial, Helvetica, sans-serif;
+
     background: linear-gradient(135deg, #eef2ff, #f5f3ff);
+
     min-height: 100vh;
+
     color: #222;
 }
 
 
+/* ========================================= */
 /* MENU LATERAL */
+/* ========================================= */
 
 .menu-lateral {
     position: fixed;
-    left: 0;
+
     top: 0;
+    left: 0;
 
     width: 240px;
     height: 100vh;
 
-    background: linear-gradient(180deg, #8e9cbb, #d0c6e0);
-
     padding: 30px 20px;
+
+    background: linear-gradient(180deg, #8e9cbb, #d0c6e0);
 
     box-shadow: 4px 0 15px rgba(0, 0, 0, 0.15);
 
     z-index: 1000;
+
+    overflow-y: auto;
 }
 
 
-/* LOGO */
+/* ========================================= */
+/* ÁREA DA LOGO */
+/* ========================================= */
 
-.logo {
-    color: #0d0f0e;
+.logo-area {
+    width: 100%;
 
-    font-size: 23px;
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-bottom: 40px;
+}
+
+
+/* IMAGEM DA LOGO */
+
+.logo-area img {
+    width: 90px;
+
+    height: auto;
+
+    display: block;
+
+    margin-bottom: 10px;
+}
+
+
+/* NOME DO SISTEMA */
+
+.logo-area span {
+    color: white;
+
+    font-size: 20px;
+
     font-weight: bold;
 
     text-align: center;
 
-    margin-bottom: 45px;
+    white-space: nowrap;
 }
 
 
+/* ========================================= */
 /* LINKS DO MENU */
+/* ========================================= */
 
 .menu-lateral nav {
     display: flex;
+
     flex-direction: column;
 
     gap: 12px;
 }
 
+
 .menu-lateral nav a {
+    display: block;
+
     text-decoration: none;
 
     color: white;
 
     font-size: 16px;
+
     font-weight: bold;
 
     padding: 14px 15px;
@@ -70,6 +129,11 @@ body {
     transition: 0.3s;
 }
 
+
+/* ========================================= */
+/* EFEITO DOS LINKS */
+/* ========================================= */
+
 .menu-lateral nav a:hover {
     background: rgba(255, 255, 255, 0.25);
 
@@ -77,29 +141,52 @@ body {
 }
 
 
-/* CONTEÚDO */
+/* ========================================= */
+/* LINK ATIVO */
+/* ========================================= */
+
+.menu-lateral nav a.ativo {
+    background: white;
+
+    color: #4f46e5;
+
+    font-weight: bold;
+}
+
+
+/* ========================================= */
+/* CONTEÚDO PRINCIPAL */
+/* ========================================= */
 
 .conteudo {
-    margin-left: 240px;
+    width: calc(100% - 240px);
 
     min-height: 100vh;
+
+    margin-left: 240px;
 
     padding: 50px;
 
     display: flex;
+
     flex-direction: column;
+
     align-items: center;
 }
 
 
+/* ========================================= */
 /* TÍTULO */
+/* ========================================= */
 
 .titulo {
     width: 100%;
+
     max-width: 650px;
 
     margin-bottom: 25px;
 }
+
 
 .titulo h1 {
     color: #4f46e5;
@@ -109,6 +196,7 @@ body {
     margin-bottom: 8px;
 }
 
+
 .titulo p {
     color: #666;
 
@@ -116,10 +204,13 @@ body {
 }
 
 
-/* CARD PERFIL */
+/* ========================================= */
+/* CARD DO PERFIL */
+/* ========================================= */
 
 .perfil {
     width: 100%;
+
     max-width: 650px;
 
     background: white;
@@ -132,7 +223,9 @@ body {
 }
 
 
+/* ========================================= */
 /* CABEÇALHO DO PERFIL */
+/* ========================================= */
 
 .perfil-cabecalho {
     display: flex;
@@ -143,15 +236,19 @@ body {
 }
 
 
-/* ÍCONE */
+/* ========================================= */
+/* ÍCONE DO PERFIL */
+/* ========================================= */
 
 .icone-perfil {
     width: 60px;
+
     height: 60px;
 
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
     background: #eef2ff;
@@ -161,6 +258,7 @@ body {
     font-size: 28px;
 }
 
+
 .perfil-cabecalho h2 {
     color: #4f46e5;
 
@@ -168,9 +266,9 @@ body {
 }
 
 
-
-
-/* LINHA */
+/* ========================================= */
+/* LINHA SEPARADORA */
+/* ========================================= */
 
 .linha {
     width: 100%;
@@ -183,7 +281,9 @@ body {
 }
 
 
+/* ========================================= */
 /* CAMPOS */
+/* ========================================= */
 
 .campo {
     display: flex;
@@ -192,6 +292,9 @@ body {
 
     margin-bottom: 20px;
 }
+
+
+/* LABEL */
 
 .campo label {
     margin-bottom: 8px;
@@ -202,6 +305,9 @@ body {
 
     font-size: 15px;
 }
+
+
+/* INPUT E SELECT */
 
 .campo input,
 .campo select {
@@ -222,6 +328,11 @@ body {
     transition: 0.3s;
 }
 
+
+/* ========================================= */
+/* FOCO NOS CAMPOS */
+/* ========================================= */
+
 .campo input:focus,
 .campo select:focus {
     border-color: #6366f1;
@@ -232,7 +343,9 @@ body {
 }
 
 
+/* ========================================= */
 /* BOTÕES */
+/* ========================================= */
 
 .botoes {
     display: flex;
@@ -241,6 +354,7 @@ body {
 
     margin-top: 25px;
 }
+
 
 .botoes button {
     flex: 1;
@@ -261,7 +375,9 @@ body {
 }
 
 
-/* CANCELAR */
+/* ========================================= */
+/* BOTÃO CANCELAR */
+/* ========================================= */
 
 .btn-cancelar {
     background: #e5e7eb;
@@ -269,18 +385,22 @@ body {
     color: #333;
 }
 
+
 .btn-cancelar:hover {
-    background: #7ba1da;
+    background: #cbd5e1;
 }
 
 
-/* SALVAR */
+/* ========================================= */
+/* BOTÃO SALVAR */
+/* ========================================= */
 
 .btn-salvar {
-    background: linear-gradient(90deg, #25eb88, #7c3aed);
+    background: linear-gradient(90deg, #4f46e5, #7c3aed);
 
     color: white;
 }
+
 
 .btn-salvar:hover {
     transform: translateY(-2px);
@@ -289,37 +409,99 @@ body {
 }
 
 
-/* CELULAR */
+/* ========================================= */
+/* RESPONSIVIDADE */
+/* ========================================= */
 
-@media (max-width: 700px) {
+@media (max-width: 768px) {
+
+    /* MENU */
 
     .menu-lateral {
-        width: 190px;
+        position: relative;
 
-        padding: 25px 15px;
+        width: 100%;
+
+        height: auto;
+
+        min-height: auto;
+
+        padding: 20px;
     }
 
-    .logo {
-        font-size: 19px;
+
+    /* LOGO */
+
+    .logo-area {
+        margin-bottom: 20px;
     }
+
+
+    .logo-area img {
+        width: 80px;
+    }
+
+
+    .logo-area span {
+        font-size: 18px;
+    }
+
+
+    /* LINKS */
+
+    .menu-lateral nav {
+        flex-direction: row;
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+
+        gap: 8px;
+    }
+
 
     .menu-lateral nav a {
         font-size: 14px;
 
-        padding: 12px 10px;
+        padding: 10px 14px;
     }
 
+
+    /* CONTEÚDO */
+
     .conteudo {
-        margin-left: 190px;
+        width: 100%;
+
+        margin-left: 0;
 
         padding: 30px 15px;
     }
+
+
+    /* TÍTULO */
+
+    .titulo h1 {
+        font-size: 26px;
+    }
+
+
+    /* PERFIL */
 
     .perfil {
         padding: 25px 20px;
     }
 
+
+    /* BOTÕES */
+
     .botoes {
         flex-direction: column;
     }
+
+
+    .botoes button {
+        width: 100%;
+    }
+
 }
+

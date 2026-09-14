@@ -1,4 +1,8 @@
+
+/* ========================================= */
 /* RESET */
+/* ========================================= */
+
 * {
     margin: 0;
     padding: 0;
@@ -6,252 +10,457 @@
 }
 
 
-/* CORPO */
+/* ========================================= */
+/* CORPO DA PÁGINA */
+/* ========================================= */
+
 body {
     font-family: Arial, Helvetica, sans-serif;
     background: linear-gradient(135deg, #eef2ff, #f5f3ff);
     min-height: 100vh;
-    display: flex;
 }
 
 
+/* ========================================= */
 /* MENU LATERAL */
+/* ========================================= */
+
 .menu-lateral {
+    position: fixed;
+    top: 0;
+    left: 0;
+
     width: 240px;
-    min-height: 100vh;
-    background: linear-gradient(180deg, #4f46e5, #6d28d9);
+    height: 100vh;
+
     padding: 30px 20px;
+
+    background: linear-gradient(180deg, #8e9cbb, #d0c6e0);
+
     box-shadow: 4px 0 15px rgba(0, 0, 0, 0.15);
+
+    z-index: 1000;
+
+    overflow-y: auto;
 }
 
 
-/* LOGO */
-.logo {
+/* ========================================= */
+/* ÁREA DA LOGO */
+/* ========================================= */
+
+.logo-area {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 40px;
+}
+
+
+/* IMAGEM DA LOGO */
+
+.logo-area img {
+    width: 90px;
+    height: auto;
+
+    display: block;
+
+    margin-bottom: 10px;
+}
+
+
+/* NOME DO SISTEMA */
+
+.logo-area span {
     color: white;
-    font-size: 23px;
+
+    font-size: 20px;
     font-weight: bold;
+
     text-align: center;
-    margin-bottom: 45px;
+
+    white-space: nowrap;
 }
 
 
-/* LINKS DO MENU */
+/* ========================================= */
+/* NAVEGAÇÃO */
+/* ========================================= */
+
 .menu-lateral nav {
     display: flex;
     flex-direction: column;
+
     gap: 12px;
 }
 
+
+/* LINKS */
+
 .menu-lateral nav a {
+    display: block;
+
     color: white;
+
     text-decoration: none;
+
     padding: 14px 18px;
+
     border-radius: 10px;
+
     font-size: 16px;
+
     transition: 0.3s;
 }
 
 
-/* EFEITO DOS LINKS */
+/* EFEITO AO PASSAR O MOUSE */
+
 .menu-lateral nav a:hover {
     background-color: rgba(255, 255, 255, 0.18);
+
     transform: translateX(4px);
 }
 
 
 /* LINK ATIVO */
+
 .menu-lateral nav a.ativo {
     background-color: white;
+
     color: #4f46e5;
+
     font-weight: bold;
 }
 
 
-/* CONTEÚDO */
+/* ========================================= */
+/* CONTEÚDO PRINCIPAL */
+/* ========================================= */
+
 .conteudo {
-    flex: 1;
+    width: calc(100% - 240px);
+
+    min-height: 100vh;
+
+    margin-left: 240px;
+
     padding: 45px;
 }
 
 
+/* ========================================= */
 /* CABEÇALHO */
+/* ========================================= */
+
 .cabecalho {
     margin-bottom: 30px;
 }
 
+
 .cabecalho h1 {
     color: #312e81;
+
     font-size: 32px;
+
     margin-bottom: 8px;
 }
 
+
 .cabecalho p {
     color: #666;
+
     font-size: 16px;
 }
 
 
-/* CARD */
+/* ========================================= */
+/* CARD DO FORMULÁRIO */
+/* ========================================= */
+
 .card {
-    background-color: white;
+    width: 100%;
     max-width: 750px;
+
     margin: 0 auto;
+
     padding: 35px;
+
+    background-color: white;
+
     border-radius: 18px;
+
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.10);
 }
 
 
+/* ========================================= */
 /* TÍTULO DO CARD */
+/* ========================================= */
+
 .card h2 {
     color: #4f46e5;
+
     margin-bottom: 25px;
+
     font-size: 24px;
 }
 
 
+/* ========================================= */
 /* CAMPOS */
+/* ========================================= */
+
 .campo {
     margin-bottom: 20px;
 }
 
 
+/* ========================================= */
 /* LABEL */
+/* ========================================= */
+
 .campo label {
     display: block;
+
     color: #333;
+
     font-weight: bold;
+
     margin-bottom: 8px;
 }
 
 
-/* INPUTS, SELECT E TEXTAREA */
+/* ========================================= */
+/* INPUT, SELECT E TEXTAREA */
+/* ========================================= */
+
 .campo input,
 .campo select,
 .campo textarea {
     width: 100%;
+
     padding: 13px 15px;
+
     border: 1px solid #d1d5db;
+
     border-radius: 9px;
+
     font-size: 15px;
+
     outline: none;
+
     background-color: #fafafa;
+
     transition: 0.3s;
 }
 
 
-/* FOCO */
+/* ========================================= */
+/* CAMPOS AO CLICAR */
+/* ========================================= */
+
 .campo input:focus,
 .campo select:focus,
 .campo textarea:focus {
     border-color: #6366f1;
+
     box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+
     background-color: white;
 }
 
 
+/* ========================================= */
 /* TEXTAREA */
+/* ========================================= */
+
 .campo textarea {
     resize: vertical;
+
     min-height: 120px;
 }
 
 
+/* ========================================= */
 /* BOTÕES */
+/* ========================================= */
+
 .botoes {
     display: flex;
+
     justify-content: flex-end;
+
     gap: 15px;
+
     margin-top: 30px;
 }
 
 
-/* BOTÃO LIMPAR */
+/* ========================================= */
+/* BOTÃO CANCELAR */
+/* ========================================= */
+
 .btn-cancelar {
     padding: 13px 25px;
+
     border: 2px solid #6d28d9;
+
     background-color: white;
+
     color: #6d28d9;
+
     border-radius: 9px;
+
     font-size: 15px;
+
     font-weight: bold;
+
     cursor: pointer;
+
     transition: 0.3s;
 }
 
 
-/* HOVER LIMPAR */
+/* HOVER CANCELAR */
+
 .btn-cancelar:hover {
     background-color: #f3e8ff;
 }
 
 
+/* ========================================= */
 /* BOTÃO ENVIAR */
+/* ========================================= */
+
 .btn-enviar {
     padding: 13px 25px;
+
     border: none;
+
     background: linear-gradient(90deg, #4f46e5, #7c3aed);
+
     color: white;
+
     border-radius: 9px;
+
     font-size: 15px;
+
     font-weight: bold;
+
     cursor: pointer;
+
     transition: 0.3s;
 }
 
 
 /* HOVER ENVIAR */
+
 .btn-enviar:hover {
     transform: translateY(-2px);
+
     box-shadow: 0 5px 15px rgba(79, 70, 229, 0.3);
 }
 
 
+/* ========================================= */
 /* RESPONSIVIDADE */
+/* ========================================= */
+
 @media (max-width: 768px) {
 
-    body {
-        flex-direction: column;
-    }
+    /* MENU */
 
     .menu-lateral {
+        position: relative;
+
         width: 100%;
+
+        height: auto;
+
         min-height: auto;
+
         padding: 20px;
     }
 
-    .logo {
+
+    /* LOGO */
+
+    .logo-area {
         margin-bottom: 20px;
     }
 
+
+    .logo-area img {
+        width: 80px;
+    }
+
+
+    .logo-area span {
+        font-size: 18px;
+    }
+
+
+    /* MENU */
+
     .menu-lateral nav {
         flex-direction: row;
+
         flex-wrap: wrap;
+
         justify-content: center;
+
+        gap: 8px;
     }
+
 
     .menu-lateral nav a {
         padding: 10px 14px;
     }
 
+
+    /* CONTEÚDO */
+
     .conteudo {
+        width: 100%;
+
+        margin-left: 0;
+
         padding: 25px 15px;
     }
+
+
+    /* TÍTULO */
 
     .cabecalho h1 {
         font-size: 26px;
     }
 
+
+    /* CARD */
+
     .card {
         padding: 25px 20px;
     }
+
+
+    /* BOTÕES */
 
     .botoes {
         flex-direction: column;
     }
 
+
     .btn-cancelar,
     .btn-enviar {
         width: 100%;
     }
+
 }
+
+

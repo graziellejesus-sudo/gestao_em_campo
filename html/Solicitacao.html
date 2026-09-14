@@ -1,67 +1,153 @@
+
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Solicitação de Escala - Gestão em Campo</title>
 
+    <!-- CSS -->
     <link rel="stylesheet" href="../css/Solicitacao.css">
+
 </head>
 
 <body>
 
+
+    <!-- ================================= -->
     <!-- MENU LATERAL -->
+    <!-- ================================= -->
+
     <aside class="menu-lateral">
 
-        <div class="logo">
-            Gestão em Campo
+
+        <!-- LOGO -->
+        <div class="logo-area">
+
+            <img
+                src="../img/img.png"
+                alt="Logo Gestão em Campo"
+            >
+
+            <span>
+                Gestão em Campo
+            </span>
+
         </div>
 
+
+        <!-- MENU DE NAVEGAÇÃO -->
         <nav>
-            <a href="#">Início</a>
-            <a href="#">Escalas</a>
-            <a href="#" class="ativo">Solicitações</a>
-            <a href="#">Meu Perfil</a>
-            <a href="#">Sair</a>
+
+            <a href="inicio.html">
+                Início
+            </a>
+
+            <a href="Painel escala.html">
+                Escalas
+            </a>
+
+            <a href="Solicitacao.html" class="ativo">
+                Solicitações
+            </a>
+
+            <a href="perfil.html">
+                Meu Perfil
+            </a>
+
+            <a href="login.html">
+                Sair
+            </a>
+
         </nav>
 
     </aside>
 
 
+    <!-- ================================= -->
     <!-- CONTEÚDO PRINCIPAL -->
+    <!-- ================================= -->
+
     <main class="conteudo">
 
+
+        <!-- CABEÇALHO -->
         <header class="cabecalho">
-            <h1>Solicitação de Escala</h1>
-            <p>Preencha os dados abaixo para enviar sua solicitação.</p>
+
+            <h1>
+                Solicitação de Escala
+            </h1>
+
+            <p>
+                Preencha os dados abaixo para enviar sua solicitação.
+            </p>
+
         </header>
 
 
-        <!-- FORMULÁRIO -->
+        <!-- ================================= -->
+        <!-- CARD DO FORMULÁRIO -->
+        <!-- ================================= -->
+
         <section class="card">
 
-            <h2>Nova Solicitação</h2>
+            <h2>
+                Nova Solicitação
+            </h2>
 
-            <form>
 
-                <!-- Tipo da solicitação -->
+            <!-- FORMULÁRIO -->
+
+            <form id="formSolicitacao">
+
+
+                <!-- TIPO DA SOLICITAÇÃO -->
+
                 <div class="campo">
-                    <label for="tipo">Tipo de solicitação</label>
 
-                    <select id="tipo" name="tipo" required>
-                        <option value="">Selecione uma opção</option>
-                        <option value="folga">Solicitação de Folga</option>
-                        <option value="troca">Troca de Escala</option>
-                        <option value="alteracao">Alteração de Escala</option>
+                    <label for="tipo">
+                        Tipo de solicitação
+                    </label>
+
+                    <select
+                        id="tipo"
+                        name="tipo"
+                        required
+                    >
+
+                        <option value="">
+                            Selecione uma opção
+                        </option>
+
+                        <option value="folga">
+                            Solicitação de Folga
+                        </option>
+
+                        <option value="troca">
+                            Troca de Escala
+                        </option>
+
+                        <option value="alteracao">
+                            Alteração de Escala
+                        </option>
+
                     </select>
+
                 </div>
 
 
-                <!-- Data inicial -->
+                <!-- DATA DE INÍCIO -->
+
                 <div class="campo">
-                    <label for="dataInicio">Data de início</label>
+
+                    <label for="dataInicio">
+                        Data de início
+                    </label>
 
                     <input
                         type="date"
@@ -69,12 +155,17 @@
                         name="dataInicio"
                         required
                     >
+
                 </div>
 
 
-                <!-- Data final -->
+                <!-- DATA DE FIM -->
+
                 <div class="campo">
-                    <label for="dataFim">Data de fim</label>
+
+                    <label for="dataFim">
+                        Data de fim
+                    </label>
 
                     <input
                         type="date"
@@ -82,12 +173,17 @@
                         name="dataFim"
                         required
                     >
+
                 </div>
 
 
-                <!-- Motivo -->
+                <!-- MOTIVO -->
+
                 <div class="campo">
-                    <label for="motivo">Motivo da solicitação</label>
+
+                    <label for="motivo">
+                        Motivo da solicitação
+                    </label>
 
                     <textarea
                         id="motivo"
@@ -96,29 +192,48 @@
                         placeholder="Digite o motivo da sua solicitação..."
                         required
                     ></textarea>
+
                 </div>
 
 
-                <!-- Botões -->
+                <!-- ================================= -->
+                <!-- BOTÕES -->
+                <!-- ================================= -->
+
                 <div class="botoes">
 
-                    <button type="reset" class="btn-cancelar">
+                    <button
+                        type="reset"
+                        class="btn-cancelar"
+                    >
                         Limpar
                     </button>
 
-                    <button type="submit" class="btn-enviar">
+
+                    <button
+                        type="submit"
+                        class="btn-enviar"
+                    >
                         Enviar solicitação
                     </button>
 
                 </div>
+
 
             </form>
 
         </section>
 
     </main>
-     <script src="solicitacao.js"></script>
+
+
+    <!-- ================================= -->
+    <!-- JAVASCRIPT -->
+    <!-- ================================= -->
+
+    <script src="../js/solicitacao.js"></script>
 
 </body>
 
 </html>
+

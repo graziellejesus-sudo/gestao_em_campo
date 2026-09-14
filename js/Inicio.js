@@ -1,29 +1,5 @@
 
-// ===============================
-// MENU MOBILE
-// ===============================
-
-function abrirMenu() {
-
-    const menu = document.getElementById("menuMobile");
-
-    if (menu.style.display === "block") {
-
-        menu.style.display = "none";
-
-    } else {
-
-        menu.style.display = "block";
-
-    }
-
-}
-
-
-// ===============================
-// BOTÃO ENTRAR
-// ===============================
-
+// Ir para a tela de Login
 function irParaLogin() {
 
     window.location.href = "login.html";
@@ -31,10 +7,7 @@ function irParaLogin() {
 }
 
 
-// ===============================
-// BOTÃO CRIAR CONTA
-// ===============================
-
+// Ir para a tela de Cadastro
 function irParaCadastro() {
 
     window.location.href = "cadastro.html";
