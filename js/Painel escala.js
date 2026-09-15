@@ -1,126 +1,225 @@
 
-// ===============================
-// PAINEL DE ESCALAS
-// ===============================
-
-// Pegando todos os cards
-const cards = document.querySelectorAll(".card");
-
-// Pegando todas as linhas da tabela
-const linhas = document.querySelectorAll("tbody tr");
-
-// Botão de nova solicitação
-const botaoNovaSolicitacao = document.querySelector(".botao");
+// Guarda a linha que está sendo editada
+let linhaEditada = null;
 
 
-// ===============================
-// ATUALIZAR OS CARDS
-// ===============================
+// =========================================
+// EDITAR ESCALA
+// =========================================
 
-function atualizarPainel() {
+function editarEscala(botao) {
 
-    let funcionarios = 0;
-    let escalasAtivas = 0;
-    let solicitacoes = 0;
+    // Pega a linha da tabela
+    linhaEditada = botao.closest("tr");
 
-    // Conta os funcionários
-    funcionarios = linhas.length;
+    // Pega os valores atuais
+    let funcionario =
+        linhaEditada.cells[0].innerText;
 
-    // Percorre as linhas da tabela
-    linhas.forEach(function(linha) {
+    let inicio =
+        linhaEditada.cells[1].innerText;
 
-        const status = linha.querySelector("td:last-child");
+    let fim =
+        linhaEditada.cells[2].innerText;
 
-        if (status) {
-
-            const texto = status.textContent.trim();
-
-            if (texto === "Ativa") {
-                escalasAtivas++;
-            }
-
-            if (texto === "Pendente") {
-                solicitacoes++;
-            }
-        }
-
-    });
+    let status =
+        linhaEditada.cells[3].innerText.trim();
 
 
-    // Atualiza os valores dos cards
+    // Coloca os valores no formulário
+    document.getElementById("editarFuncionario").value =
+        funcionario;
 
-    if (cards.length >= 3) {
+    document.getElementById("editarInicio").value =
+        converterData(inicio);
 
-        cards[0].querySelector("strong").textContent = funcionarios;
+    document.getElementById("editarFim").value =
+        converterData(fim);
 
-        cards[1].querySelector("strong").textContent = escalasAtivas;
+    document.getElementById("editarStatus").value =
+        status;
 
-        cards[2].querySelector("strong").textContent = solicitacoes;
 
-    }
-
+    // Abre a janela
+    document.getElementById("modalEdicao").style.display =
+        "flex";
 }
 
 
-// Executa ao abrir a página
-atualizarPainel();
+// =========================================
+// SALVAR ALTERAÇÃO
+// =========================================
+
+function salvarEdicao() {
+
+    if (!linhaEditada) {
+        return;
+    }
 
 
-// ===============================
-// NOVA SOLICITAÇÃO
-// ===============================
+    // Pega os novos valores
+    let funcionario =
+        document.getElementById("editarFuncionario").value;
 
-botaoNovaSolicitacao.addEventListener("click", function() {
+    let inicio =
+        document.getElementById("editarInicio").value;
 
-    window.location.href = "Solicitacao.html";
+    let fim =
+        document.getElementById("editarFim").value;
 
-});
+    let status =
+        document.getElementById("editarStatus").value;
 
 
-// ===============================
-// CLIQUE NAS LINHAS DA TABELA
-// ===============================
+    // Verifica se os campos estão preenchidos
+    if (
+        funcionario === "" ||
+        inicio === "" ||
+        fim === ""
+    ) {
 
-linhas.forEach(function(linha) {
+        alert("Preencha todos os campos.");
 
-    linha.addEventListener("click", function() {
+        return;
+    }
 
-        const funcionario =
-            linha.querySelector("td:nth-child(1)").textContent;
 
-        const data =
-            linha.querySelector("td:nth-child(2)").textContent;
-
-        const horario =
-            linha.querySelector("td:nth-child(3)").textContent;
-
-        const setor =
-            linha.querySelector("td:nth-child(4)").textContent;
-
-        const status =
-            linha.querySelector("td:nth-child(5)").textContent.trim();
-
+    // Verifica se a data final é menor que a inicial
+    if (fim < inicio) {
 
         alert(
-            "Funcionário: " + funcionario +
-            "\nData: " + data +
-            "\nHorário: " + horario +
-            "\nSetor: " + setor +
-            "\nStatus: " + status
+            "A data de fim não pode ser anterior à data de início."
         );
 
-    });
+        return;
+    }
 
-});
+
+    // Atualiza os dados da tabela
+    linhaEditada.cells[0].innerText =
+        funcionario;
+
+    linhaEditada.cells[1].innerText =
+        formatarData(inicio);
+
+    linhaEditada.cells[2].innerText =
+        formatarData(fim);
 
 
-// ===============================
-// EFEITO AO PASSAR O MOUSE
-// ===============================
+    // Atualiza o status
+    if (status === "Ativa") {
 
-linhas.forEach(function(linha) {
+        linhaEditada.cells[3].innerHTML =
+            '<span class="ativo">Ativa</span>';
 
-    linha.style.cursor = "pointer";
+    }
 
-});
+    else if (status === "Pendente") {
+
+        linhaEditada.cells[3].innerHTML =
+            '<span class="pendente">Pendente</span>';
+
+    }
+
+    else {
+
+        linhaEditada.cells[3].innerHTML =
+            '<span class="finalizada">Finalizada</span>';
+
+    }
+
+
+    // Fecha a janela
+    fecharEdicao();
+
+    alert("Escala alterada com sucesso!");
+}
+
+
+// =========================================
+// FECHAR JANELA
+// =========================================
+
+function fecharEdicao() {
+
+    document.getElementById("modalEdicao").style.display =
+        "none";
+
+    linhaEditada = null;
+}
+
+
+// =========================================
+// CONVERTER DATA PARA INPUT
+// =========================================
+
+function converterData(data) {
+
+    let partes = data.split("/");
+
+    if (partes.length !== 3) {
+        return "";
+    }
+
+    return (
+        partes[2] +
+        "-" +
+        partes[1] +
+        "-" +
+        partes[0]
+    );
+}
+
+
+// =========================================
+// FORMATAR DATA PARA TABELA
+// =========================================
+
+function formatarData(data) {
+
+    let partes = data.split("-");
+
+    if (partes.length !== 3) {
+        return data;
+    }
+
+    return (
+        partes[2] +
+        "/" +
+        partes[1] +
+        "/" +
+        partes[0]
+    );
+}
+
+
+// =========================================
+// NOVA ESCALA
+// =========================================
+
+function novaEscala() {
+
+    alert(
+        "Função para cadastrar uma nova escala."
+    );
+}
+
+
+// =========================================
+// FECHAR MODAL AO CLICAR FORA
+// =========================================
+
+window.onclick = function(event) {
+
+    let modal =
+        document.getElementById("modalEdicao");
+
+    if (event.target === modal) {
+
+        fecharEdicao();
+
+    }
+
+};
+
 

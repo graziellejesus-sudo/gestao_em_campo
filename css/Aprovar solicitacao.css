@@ -68,13 +68,16 @@ body {
 }
 
 .logo-area img {
-    width: 100px;
+    width: 180px;
 
     height: auto;
 
     display: block;
 
     margin-bottom: 12px;
+
+    /* Bordas levemente arredondadas */
+    border-radius: 8px;
 }
 
 .logo-area span {
@@ -337,7 +340,9 @@ body {
 }
 
 
-/* APROVAR */
+/* =========================
+   APROVAR
+========================= */
 
 .btn-aprovar {
     background-color: #198754;
@@ -352,7 +357,9 @@ body {
 }
 
 
-/* RECUSAR */
+/* =========================
+   RECUSAR
+========================= */
 
 .btn-recusar {
     background-color: #dc3545;
@@ -385,6 +392,13 @@ body {
 
     .logo-area {
         margin-bottom: 20px;
+    }
+
+    .logo-area img {
+        width: 80px;
+
+        /* Mantém as bordas arredondadas no celular */
+        border-radius: 8px;
     }
 
     .menu-lateral nav {

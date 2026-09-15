@@ -1,5 +1,4 @@
 
-
 /* ================================
    CONFIGURAÇÕES GERAIS
 ================================ */
@@ -53,12 +52,15 @@ body {
 }
 
 .logo-area img {
-    width: 100px;
+    width: 180px;
     height: auto;
 
     display: block;
 
     margin-bottom: 10px;
+
+    /* BORDAS LEVEMENTE ARREDONDADAS */
+    border-radius: 8px;
 }
 
 .logo-area span {
@@ -477,6 +479,9 @@ footer {
 
     .logo-area img {
         width: 80px;
+
+        /* MESMO ARREDONDAMENTO NO CELULAR */
+        border-radius: 8px;
     }
 
     .logo-area span {

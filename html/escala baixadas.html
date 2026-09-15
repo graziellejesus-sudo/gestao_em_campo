@@ -1,0 +1,482 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Escalas Baixadas - Gestão em Campo</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/Escala baixadas.css">
+
+</head>
+
+<body>
+
+    <!-- ========================================= -->
+    <!-- MENU LATERAL -->
+    <!-- ========================================= -->
+
+    <aside class="menu-lateral">
+
+        <!-- LOGO -->
+
+        <div class="logo-area">
+
+            <img
+                src="../img/img.png"
+                alt="Logo Gestão em Campo"
+            >
+
+            <span>
+                Gestão em Campo
+            </span>
+
+        </div>
+
+
+        <!-- MENU -->
+
+        <nav>
+
+            <a href="inicio.html">
+                Início
+            </a>
+
+            <a href="Painel escala.html">
+                Escalas
+            </a>
+
+            <a href="Escala baixadas.html" class="ativo">
+                Escalas Baixadas
+            </a>
+
+            <a href="Solicitacao.html">
+                Solicitações
+            </a>
+
+            <a href="perfil.html">
+                Meu Perfil
+            </a>
+
+            <a href="login.html">
+                Sair
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- ========================================= -->
+    <!-- CONTEÚDO PRINCIPAL -->
+    <!-- ========================================= -->
+
+    <main>
+
+        <!-- TÍTULO -->
+
+        <section class="titulo">
+
+            <h1>
+                Escalas Baixadas
+            </h1>
+
+            <p>
+                Consulte as escalas que foram baixadas.
+            </p>
+
+        </section>
+
+
+        <!-- ========================================= -->
+        <!-- CARDS -->
+        <!-- ========================================= -->
+
+        <section class="cards">
+
+            <div class="card">
+
+                <h3>
+                    Total de Escalas
+                </h3>
+
+                <strong id="totalEscalas">
+                    4
+                </strong>
+
+                <p>
+                    Escalas baixadas
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    Funcionários
+                </h3>
+
+                <strong id="totalFuncionarios">
+                    4
+                </strong>
+
+                <p>
+                    Funcionários envolvidos
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    Última Baixa
+                </h3>
+
+                <strong>
+                    14/09/2026
+                </strong>
+
+                <p>
+                    Data da última baixa
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================================= -->
+        <!-- TABELA -->
+        <!-- ========================================= -->
+
+        <section class="tabela">
+
+            <h2>
+                Histórico de Escalas Baixadas
+            </h2>
+
+
+            <div class="tabela-responsiva">
+
+                <table id="tabelaEscalas">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Funcionário
+                            </th>
+
+                            <th>
+                                Data de Início
+                            </th>
+
+                            <th>
+                                Data de Fim
+                            </th>
+
+                            <th>
+                                Motivo da Baixa
+                            </th>
+
+                            <th>
+                                Data da Baixa
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                            <th>
+                                Ação
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        <!-- ESCALA 1 -->
+
+                        <tr>
+
+                            <td>
+                                João Silva
+                            </td>
+
+                            <td>
+                                01/09/2026
+                            </td>
+
+                            <td>
+                                05/09/2026
+                            </td>
+
+                            <td>
+                                Escala encerrada
+                            </td>
+
+                            <td>
+                                06/09/2026
+                            </td>
+
+                            <td>
+
+                                <span class="baixada">
+                                    Baixada
+                                </span>
+
+                            </td>
+
+                            <td>
+
+                                <button
+                                    class="botao-visualizar"
+                                    onclick="visualizarEscala(this)"
+                                >
+                                    Visualizar
+                                </button>
+
+                            </td>
+
+                        </tr>
+
+
+                        <!-- ESCALA 2 -->
+
+                        <tr>
+
+                            <td>
+                                Maria Santos
+                            </td>
+
+                            <td>
+                                06/09/2026
+                            </td>
+
+                            <td>
+                                10/09/2026
+                            </td>
+
+                            <td>
+                                Período encerrado
+                            </td>
+
+                            <td>
+                                11/09/2026
+                            </td>
+
+                            <td>
+
+                                <span class="baixada">
+                                    Baixada
+                                </span>
+
+                            </td>
+
+                            <td>
+
+                                <button
+                                    class="botao-visualizar"
+                                    onclick="visualizarEscala(this)"
+                                >
+                                    Visualizar
+                                </button>
+
+                            </td>
+
+                        </tr>
+
+
+                        <!-- ESCALA 3 -->
+
+                        <tr>
+
+                            <td>
+                                Pedro Oliveira
+                            </td>
+
+                            <td>
+                                11/09/2026
+                            </td>
+
+                            <td>
+                                13/09/2026
+                            </td>
+
+                            <td>
+                                Alteração de escala
+                            </td>
+
+                            <td>
+                                13/09/2026
+                            </td>
+
+                            <td>
+
+                                <span class="baixada">
+                                    Baixada
+                                </span>
+
+                            </td>
+
+                            <td>
+
+                                <button
+                                    class="botao-visualizar"
+                                    onclick="visualizarEscala(this)"
+                                >
+                                    Visualizar
+                                </button>
+
+                            </td>
+
+                        </tr>
+
+
+                        <!-- ESCALA 4 -->
+
+                        <tr>
+
+                            <td>
+                                Ana Souza
+                            </td>
+
+                            <td>
+                                10/09/2026
+                            </td>
+
+                            <td>
+                                14/09/2026
+                            </td>
+
+                            <td>
+                                Escala substituída
+                            </td>
+
+                            <td>
+                                14/09/2026
+                            </td>
+
+                            <td>
+
+                                <span class="baixada">
+                                    Baixada
+                                </span>
+
+                            </td>
+
+                            <td>
+
+                                <button
+                                    class="botao-visualizar"
+                                    onclick="visualizarEscala(this)"
+                                >
+                                    Visualizar
+                                </button>
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ========================================= -->
+    <!-- MODAL DE VISUALIZAÇÃO -->
+    <!-- ========================================= -->
+
+    <div
+        id="modalVisualizacao"
+        class="modal"
+    >
+
+        <div class="modal-conteudo">
+
+            <span
+                class="fechar"
+                onclick="fecharModal()"
+            >
+                &times;
+            </span>
+
+
+            <h2>
+                Detalhes da Escala
+            </h2>
+
+
+            <div class="detalhes">
+
+                <p>
+                    <strong>Funcionário:</strong>
+                    <span id="modalFuncionario"></span>
+                </p>
+
+                <p>
+                    <strong>Data de início:</strong>
+                    <span id="modalInicio"></span>
+                </p>
+
+                <p>
+                    <strong>Data de fim:</strong>
+                    <span id="modalFim"></span>
+                </p>
+
+                <p>
+                    <strong>Motivo da baixa:</strong>
+                    <span id="modalMotivo"></span>
+                </p>
+
+                <p>
+                    <strong>Data da baixa:</strong>
+                    <span id="modalBaixa"></span>
+                </p>
+
+                <p>
+                    <strong>Status:</strong>
+                    <span class="baixada">
+                        Baixada
+                    </span>
+                </p>
+
+            </div>
+
+
+            <button
+                class="botao-fechar"
+                onclick="fecharModal()"
+            >
+                Fechar
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="../js/Escala baixadas.js"></script>
+
+</body>
+
+</html>
+

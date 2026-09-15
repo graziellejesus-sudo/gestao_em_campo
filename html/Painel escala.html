@@ -22,22 +22,17 @@
 
     <aside class="menu-lateral">
 
-        <!-- LOGO -->
         <div class="logo-area">
 
             <img
                 src="../img/img.png"
                 alt="Logo Gestão em Campo"
             >
-
             <span>
-                Gestão em Campo
             </span>
 
         </div>
 
-
-        <!-- MENU -->
         <nav>
 
             <a href="inicio.html">
@@ -64,14 +59,12 @@
 
     </aside>
 
-
     <!-- ============================= -->
     <!-- CONTEÚDO PRINCIPAL -->
     <!-- ============================= -->
 
     <main>
 
-        <!-- TÍTULO -->
         <section class="titulo">
 
             <h1>
@@ -84,14 +77,12 @@
 
         </section>
 
-
         <!-- ============================= -->
         <!-- CARDS -->
         <!-- ============================= -->
 
         <section class="cards">
 
-            <!-- CARD 1 -->
             <div class="card">
 
                 <h3>
@@ -108,8 +99,6 @@
 
             </div>
 
-
-            <!-- CARD 2 -->
             <div class="card">
 
                 <h3>
@@ -126,8 +115,6 @@
 
             </div>
 
-
-            <!-- CARD 3 -->
             <div class="card">
 
                 <h3>
@@ -146,7 +133,6 @@
 
         </section>
 
-
         <!-- ============================= -->
         <!-- TABELA DE ESCALAS -->
         <!-- ============================= -->
@@ -157,13 +143,10 @@
                 Escalas dos Funcionários
             </h2>
 
-
-            <!-- RESPONSIVIDADE DA TABELA -->
             <div class="tabela-responsiva">
 
-                <table>
+                <table id="tabelaEscalas">
 
-                    <!-- CABEÇALHO DA TABELA -->
                     <thead>
 
                         <tr>
@@ -184,12 +167,14 @@
                                 Status
                             </th>
 
+                            <th>
+                                Ações
+                            </th>
+
                         </tr>
 
                     </thead>
 
-
-                    <!-- DADOS DA TABELA -->
                     <tbody>
 
                         <!-- FUNCIONÁRIO 1 -->
@@ -215,8 +200,18 @@
 
                             </td>
 
-                        </tr>
+                            <td>
 
+                                <button
+                                    class="botao-editar"
+                                    onclick="editarEscala(this)"
+                                >
+                                    Editar
+                                </button>
+
+                            </td>
+
+                        </tr>
 
                         <!-- FUNCIONÁRIO 2 -->
                         <tr>
@@ -241,8 +236,18 @@
 
                             </td>
 
-                        </tr>
+                            <td>
 
+                                <button
+                                    class="botao-editar"
+                                    onclick="editarEscala(this)"
+                                >
+                                    Editar
+                                </button>
+
+                            </td>
+
+                        </tr>
 
                         <!-- FUNCIONÁRIO 3 -->
                         <tr>
@@ -267,8 +272,18 @@
 
                             </td>
 
-                        </tr>
+                            <td>
 
+                                <button
+                                    class="botao-editar"
+                                    onclick="editarEscala(this)"
+                                >
+                                    Editar
+                                </button>
+
+                            </td>
+
+                        </tr>
 
                         <!-- FUNCIONÁRIO 4 -->
                         <tr>
@@ -293,6 +308,17 @@
 
                             </td>
 
+                            <td>
+
+                                <button
+                                    class="botao-editar"
+                                    onclick="editarEscala(this)"
+                                >
+                                    Editar
+                                </button>
+
+                            </td>
+
                         </tr>
 
                     </tbody>
@@ -301,24 +327,102 @@
 
             </div>
 
-
-            <!-- ============================= -->
             <!-- BOTÃO NOVA ESCALA -->
-            <!-- ============================= -->
 
             <button
                 class="botao"
                 onclick="novaEscala()"
             >
-                + Nova Escala
+                + Nova Solicitacao
             </button>
 
         </section>
 
     </main>
 
+    <!-- ============================= -->
+    <!-- JANELA DE EDIÇÃO -->
+    <!-- ============================= -->
+
+    <div
+        id="modalEdicao"
+        class="modal"
+    >
+
+        <div class="modal-conteudo">
+
+            <span
+                class="fechar"
+                onclick="fecharEdicao()"
+            >
+                &times;
+            </span>
+
+            <h2>
+                Editar Escala
+            </h2>
+
+            <label>
+                Funcionário
+            </label>
+
+            <input
+                type="text"
+                id="editarFuncionario"
+            >
+
+
+            <label>
+                Data de Início
+            </label>
+
+            <input
+                type="date"
+                id="editarInicio"
+            >
+
+            <label>
+                Data de Fim
+            </label>
+
+            <input
+                type="date"
+                id="editarFim"
+            >
+
+            <label>
+                Status
+            </label>
+
+            <select id="editarStatus">
+
+                <option value="Ativa">
+                    Ativa
+                </option>
+
+                <option value="Pendente">
+                    Pendente
+                </option>
+
+                <option value="Finalizada">
+                    Finalizada
+                </option>
+
+            </select>
+
+            <button
+                class="botao-salvar"
+                onclick="salvarEdicao()"
+            >
+                Salvar alterações
+            </button>
+
+        </div>
+
+    </div>
 
     <!-- JAVASCRIPT -->
+
     <script src="../js/Painel.js"></script>
 
 </body>
