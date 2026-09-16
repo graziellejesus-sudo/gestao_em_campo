@@ -10,12 +10,14 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
+
     background: linear-gradient(135deg, #6c7fd8, #f5f3ff);
+
     color: #333;
+
     min-height: 100vh;
 }
-
 
 /* ================================
    MENU LATERAL
@@ -23,36 +25,49 @@ body {
 
 .menu-lateral {
     position: fixed;
+
     top: 0;
     left: 0;
 
     width: 240px;
     height: 100vh;
 
+    padding: 30px 20px;
+
     background: linear-gradient(180deg, #8e9cbb, #d0c6e0);
 
-    padding: 25px 20px;
-
-    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.20);
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.15);
 
     z-index: 1000;
+
+    overflow-y: auto;
 }
 
+/* ================================
+   ÁREA DA LOGO
+================================ */
+
+.logo-area {
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-bottom: 40px;
+}
 
 /* ================================
    LOGO
 ================================ */
 
-.logo-area {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    margin-bottom: 40px;
-}
-
 .logo-area img {
     width: 180px;
+
     height: auto;
 
     display: block;
@@ -63,55 +78,75 @@ body {
     border-radius: 8px;
 }
 
+/* ================================
+   NOME DO SISTEMA
+================================ */
+
 .logo-area span {
     color: white;
 
     font-size: 20px;
+
     font-weight: bold;
 
     text-align: center;
+
+    white-space: nowrap;
 }
 
-
 /* ================================
-   MENU
+   NAVEGAÇÃO
 ================================ */
 
 .menu-lateral nav {
     display: flex;
+
     flex-direction: column;
 
-    gap: 10px;
+    gap: 12px;
 }
+
+/* ================================
+   LINKS
+================================ */
 
 .menu-lateral nav a {
     display: block;
-
-    padding: 13px 15px;
 
     color: white;
 
     text-decoration: none;
 
-    border-radius: 8px;
+    padding: 14px 18px;
+
+    border-radius: 10px;
 
     font-size: 16px;
 
     transition: 0.3s;
 }
 
-.menu-lateral nav a:hover {
-    background-color: rgba(255, 255, 255, 0.20);
+/* ================================
+   EFEITO HOVER
+================================ */
 
-    transform: translateX(5px);
+.menu-lateral nav a:hover {
+    background-color: rgba(255, 255, 255, 0.18);
+
+    transform: translateX(4px);
 }
 
+/* ================================
+   LINK ATIVO
+================================ */
+
 .menu-lateral nav a.ativo {
-    background-color: rgba(255, 255, 255, 0.25);
+    background-color: white;
+
+    color: #4f46e5;
 
     font-weight: bold;
 }
-
 
 /* ================================
    CONTEÚDO PRINCIPAL
@@ -124,7 +159,6 @@ main {
 
     padding: 50px;
 }
-
 
 /* ================================
    ÁREA INICIAL
@@ -145,7 +179,6 @@ main {
 
     gap: 50px;
 }
-
 
 /* ================================
    TEXTO
@@ -197,7 +230,6 @@ main {
     margin-bottom: 30px;
 }
 
-
 /* ================================
    BOTÕES
 ================================ */
@@ -248,7 +280,6 @@ main {
     transform: translateY(-2px);
 }
 
-
 /* ================================
    ÁREA VISUAL
 ================================ */
@@ -266,7 +297,6 @@ main {
 
     justify-content: center;
 }
-
 
 /* ================================
    CARD PRINCIPAL
@@ -308,7 +338,6 @@ main {
     font-size: 16px;
 }
 
-
 /* ================================
    MINI CARDS
 ================================ */
@@ -342,7 +371,6 @@ main {
 
     left: 0;
 }
-
 
 /* ================================
    BENEFÍCIOS
@@ -400,7 +428,6 @@ main {
     font-size: 15px;
 }
 
-
 /* ================================
    RODAPÉ
 ================================ */
@@ -416,7 +443,6 @@ footer {
 
     font-size: 14px;
 }
-
 
 /* ================================
    RESPONSIVIDADE
@@ -438,6 +464,7 @@ footer {
 
     .texto-inicio p {
         margin-left: auto;
+
         margin-right: auto;
     }
 
@@ -456,7 +483,6 @@ footer {
     }
 }
 
-
 /* ================================
    CELULAR
 ================================ */
@@ -470,8 +496,12 @@ footer {
 
         height: auto;
 
+        min-height: auto;
+
         padding: 20px;
     }
+
+    /* LOGO */
 
     .logo-area {
         margin-bottom: 20px;
@@ -480,7 +510,6 @@ footer {
     .logo-area img {
         width: 80px;
 
-        /* MESMO ARREDONDAMENTO NO CELULAR */
         border-radius: 8px;
     }
 
@@ -488,15 +517,23 @@ footer {
         font-size: 18px;
     }
 
+    /* MENU */
+
     .menu-lateral nav {
-        align-items: center;
+        flex-direction: row;
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+
+        gap: 8px;
     }
 
     .menu-lateral nav a {
-        width: 100%;
-
-        text-align: center;
+        padding: 10px 14px;
     }
+
+    /* CONTEÚDO */
 
     main {
         margin-left: 0;
@@ -504,19 +541,23 @@ footer {
         padding: 30px 20px;
     }
 
+
     .inicio {
         min-height: auto;
 
         gap: 40px;
     }
 
+
     .texto-inicio h1 {
         font-size: 34px;
     }
 
+
     .texto-inicio p {
         font-size: 16px;
     }
+
 
     .botoes {
         flex-direction: column;
@@ -524,15 +565,18 @@ footer {
         align-items: center;
     }
 
+
     .botoes button {
         width: 100%;
 
         max-width: 250px;
     }
 
+
     .visual {
         min-height: 320px;
     }
+
 
     .card-visual {
         width: 280px;
@@ -540,22 +584,25 @@ footer {
         padding: 30px 20px;
     }
 
+
     .mini-card {
         font-size: 12px;
 
         padding: 10px 12px;
     }
 
+
     .card-1 {
         right: 0;
     }
+
 
     .card-2 {
         left: 0;
     }
 
+
     footer {
         margin-left: 0;
     }
 }
-

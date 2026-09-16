@@ -1,0 +1,204 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Troca de Escala - Gestão em Campo</title>
+
+    <link rel="stylesheet" href="../css/troca escala.css">
+
+</head>
+
+<body>
+
+    <!-- ================================
+         MENU LATERAL
+    ================================= -->
+
+    <aside class="menu-lateral">
+
+        <div class="logo-area">
+
+            <img src="../img/img.png" alt="Logo Gestão em Campo">
+
+            <span></span>
+
+        </div>
+
+        <nav>
+
+            <a href="inicio.html">Início</a>
+
+            <a href="Painel escala.html">Escalas</a>
+
+            <a href="Solicitacao.html">Solicitações</a>
+
+            <a href="TrocaEscala.html" class="ativo">Troca de Escala</a>
+
+            <a href="perfil.html">Meu Perfil</a>
+
+            <a href="#">Sair</a>
+
+        </nav>
+
+    </aside>
+
+    <!-- ================================
+         CONTEÚDO PRINCIPAL
+    ================================= -->
+
+    <main class="conteudo">
+
+        <!-- CABEÇALHO -->
+
+        <div class="cabecalho">
+
+            <h1>Troca de Escala</h1>
+
+            <p>
+                Solicite a troca da sua escala de trabalho.
+            </p>
+
+        </div>
+
+        <!-- ================================
+             CARD
+        ================================= -->
+
+        <section class="card">
+
+            <h2>Solicitar troca</h2>
+
+
+            <form id="formTroca">
+
+                <!-- ESCALA ATUAL -->
+
+                <div class="campo">
+
+                    <label for="escalaAtual">
+                        Escala atual
+                    </label>
+
+                    <select id="escalaAtual" required>
+
+                        <option value="">
+                            Selecione sua escala atual
+                        </option>
+
+                        <option value="Manhã">
+                            Manhã - 06:00 às 14:00
+                        </option>
+
+                        <option value="Tarde">
+                            Tarde - 14:00 às 22:00
+                        </option>
+
+                        <option value="Noite">
+                            Noite - 22:00 às 06:00
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <!-- NOVA ESCALA -->
+
+                <div class="campo">
+
+                    <label for="novaEscala">
+                        Nova escala
+                    </label>
+
+                    <select id="novaEscala" required>
+
+                        <option value="">
+                            Selecione a nova escala
+                        </option>
+
+                        <option value="Manhã">
+                            Manhã - 06:00 às 14:00
+                        </option>
+
+                        <option value="Tarde">
+                            Tarde - 14:00 às 22:00
+                        </option>
+
+                        <option value="Noite">
+                            Noite - 22:00 às 06:00
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <!-- DATA -->
+
+                <div class="campo">
+
+                    <label for="dataTroca">
+                        Data desejada para a troca
+                    </label>
+
+                    <input
+                        type="date"
+                        id="dataTroca"
+                        required
+                    >
+
+                </div>
+
+                <!-- MOTIVO -->
+
+                <div class="campo">
+
+                    <label for="motivo">
+                        Motivo da troca
+                    </label>
+
+                    <textarea
+                        id="motivo"
+                        placeholder="Informe o motivo da solicitação..."
+                        required
+                    ></textarea>
+
+                </div>
+
+                <!-- BOTÕES -->
+
+                <div class="botoes">
+
+                    <button
+                        type="button"
+                        class="btn-cancelar"
+                        id="btnCancelar"
+                    >
+                        Cancelar
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="btn-enviar"
+                    >
+                        Solicitar Troca
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+    </main>
+
+    <script src="../js/TrocaEscala.js"></script>
+
+</body>
+
+</html>
+

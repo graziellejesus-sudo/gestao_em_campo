@@ -1,3 +1,4 @@
+
 /* ========================================= */
 /* RESET */
 /* ========================================= */
@@ -9,7 +10,7 @@
 }
 
 /* ========================================= */
-/* CORPO DA PÁGINA */
+/* CORPO */
 /* ========================================= */
 
 body {
@@ -46,9 +47,8 @@ body {
     overflow-y: auto;
 }
 
-
 /* ========================================= */
-/* ÁREA DA LOGO */
+/* LOGO */
 /* ========================================= */
 
 .logo-area {
@@ -65,9 +65,6 @@ body {
     margin-bottom: 40px;
 }
 
-/* ========================================= */
-/* LOGO */
-/* ========================================= */
 
 .logo-area img {
     width: 180px;
@@ -81,9 +78,6 @@ body {
     border-radius: 8px;
 }
 
-/* ========================================= */
-/* NOME DO SISTEMA */
-/* ========================================= */
 
 .logo-area span {
     color: white;
@@ -109,9 +103,6 @@ body {
     gap: 12px;
 }
 
-/* ========================================= */
-/* LINKS DO MENU */
-/* ========================================= */
 
 .menu-lateral nav a {
     display: block;
@@ -129,9 +120,6 @@ body {
     transition: 0.3s;
 }
 
-/* ========================================= */
-/* HOVER DOS LINKS */
-/* ========================================= */
 
 .menu-lateral nav a:hover {
     background-color: rgba(255, 255, 255, 0.18);
@@ -152,7 +140,7 @@ body {
 }
 
 /* ========================================= */
-/* CONTEÚDO PRINCIPAL */
+/* CONTEÚDO */
 /* ========================================= */
 
 .conteudo {
@@ -190,7 +178,7 @@ body {
 }
 
 /* ========================================= */
-/* CARD DO FORMULÁRIO */
+/* CARD */
 /* ========================================= */
 
 .card {
@@ -209,9 +197,6 @@ body {
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.10);
 }
 
-/* ========================================= */
-/* TÍTULO DO CARD */
-/* ========================================= */
 
 .card h2 {
     color: #4f46e5;
@@ -229,9 +214,6 @@ body {
     margin-bottom: 20px;
 }
 
-/* ========================================= */
-/* LABEL */
-/* ========================================= */
 
 .campo label {
     display: block;
@@ -244,7 +226,7 @@ body {
 }
 
 /* ========================================= */
-/* INPUT, SELECT E TEXTAREA */
+/* INPUT E SELECT */
 /* ========================================= */
 
 .campo input,
@@ -267,9 +249,6 @@ body {
     transition: 0.3s;
 }
 
-/* ========================================= */
-/* CAMPOS AO CLICAR */
-/* ========================================= */
 
 .campo input:focus,
 .campo select:focus,
@@ -330,14 +309,12 @@ body {
 }
 
 
-/* HOVER CANCELAR */
-
 .btn-cancelar:hover {
     background-color: #f3e8ff;
 }
 
 /* ========================================= */
-/* BOTÃO ENVIAR */
+/* BOTÃO SOLICITAR */
 /* ========================================= */
 
 .btn-enviar {
@@ -360,7 +337,6 @@ body {
     transition: 0.3s;
 }
 
-/* HOVER ENVIAR */
 
 .btn-enviar:hover {
     transform: translateY(-2px);
@@ -374,8 +350,6 @@ body {
 
 @media (max-width: 768px) {
 
-    /* MENU */
-
     .menu-lateral {
         position: relative;
 
@@ -388,8 +362,6 @@ body {
         padding: 20px;
     }
 
-
-    /* LOGO */
 
     .logo-area {
         margin-bottom: 20px;
@@ -407,7 +379,6 @@ body {
         font-size: 18px;
     }
 
-    /* NAVEGAÇÃO */
 
     .menu-lateral nav {
         flex-direction: row;
@@ -424,7 +395,6 @@ body {
         padding: 10px 14px;
     }
 
-    /* CONTEÚDO */
 
     .conteudo {
         width: 100%;
@@ -435,19 +405,15 @@ body {
     }
 
 
-    /* TÍTULO */
-
     .cabecalho h1 {
         font-size: 26px;
     }
 
-    /* CARD */
 
     .card {
         padding: 25px 20px;
     }
 
-    /* BOTÕES */
 
     .botoes {
         flex-direction: column;
@@ -460,3 +426,4 @@ body {
     }
 
 }
+

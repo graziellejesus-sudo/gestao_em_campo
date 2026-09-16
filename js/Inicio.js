@@ -6,7 +6,6 @@ function irParaLogin() {
 
 }
 
-
 // Ir para a tela de Cadastro
 function irParaCadastro() {
 

@@ -12,7 +12,6 @@ formulario.addEventListener("submit", function(event) {
     const email = document.getElementById("email").value.trim();
     const senha = document.getElementById("senha").value;
 
-
     // Verifica se os campos estão preenchidos
     if (email === "" || senha === "") {
 
@@ -20,7 +19,6 @@ formulario.addEventListener("submit", function(event) {
 
         return;
     }
-
 
     // Verifica se o e-mail possui um formato básico válido
     if (!email.includes("@") || !email.includes(".")) {
@@ -30,7 +28,6 @@ formulario.addEventListener("submit", function(event) {
         return;
     }
 
-
     // Verifica o tamanho da senha
     if (senha.length < 6) {
 
@@ -38,7 +35,6 @@ formulario.addEventListener("submit", function(event) {
 
         return;
     }
-
 
     // Login realizado
     alert("Login realizado com sucesso!");

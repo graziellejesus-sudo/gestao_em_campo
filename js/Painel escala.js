@@ -1,63 +1,33 @@
 
-// Guarda a linha que está sendo editada
-let linhaEditada = null;
+let linhaSelecionada = null;
 
-
-// =========================================
-// EDITAR ESCALA
-// =========================================
+/* EDITAR */
 
 function editarEscala(botao) {
 
-    // Pega a linha da tabela
-    linhaEditada = botao.closest("tr");
+    linhaSelecionada = botao.closest("tr");
 
-    // Pega os valores atuais
-    let funcionario =
-        linhaEditada.cells[0].innerText;
+    let colunas = linhaSelecionada.cells;
 
-    let inicio =
-        linhaEditada.cells[1].innerText;
-
-    let fim =
-        linhaEditada.cells[2].innerText;
-
-    let status =
-        linhaEditada.cells[3].innerText.trim();
-
-
-    // Coloca os valores no formulário
     document.getElementById("editarFuncionario").value =
-        funcionario;
+        colunas[0].innerText;
 
     document.getElementById("editarInicio").value =
-        converterData(inicio);
+        converterData(colunas[1].innerText);
 
     document.getElementById("editarFim").value =
-        converterData(fim);
+        converterData(colunas[2].innerText);
 
     document.getElementById("editarStatus").value =
-        status;
+        colunas[3].innerText.trim();
 
-
-    // Abre a janela
-    document.getElementById("modalEdicao").style.display =
-        "flex";
+    document.getElementById("modalEdicao").style.display = "flex";
 }
 
-
-// =========================================
-// SALVAR ALTERAÇÃO
-// =========================================
+/* SALVAR */
 
 function salvarEdicao() {
 
-    if (!linhaEditada) {
-        return;
-    }
-
-
-    // Pega os novos valores
     let funcionario =
         document.getElementById("editarFuncionario").value;
 
@@ -70,156 +40,93 @@ function salvarEdicao() {
     let status =
         document.getElementById("editarStatus").value;
 
-
-    // Verifica se os campos estão preenchidos
-    if (
-        funcionario === "" ||
-        inicio === "" ||
-        fim === ""
-    ) {
-
+    if (!funcionario || !inicio || !fim) {
         alert("Preencha todos os campos.");
-
         return;
     }
 
-
-    // Verifica se a data final é menor que a inicial
-    if (fim < inicio) {
-
-        alert(
-            "A data de fim não pode ser anterior à data de início."
-        );
-
+    if (inicio > fim) {
+        alert("A data inicial não pode ser maior que a final.");
         return;
     }
 
+    let colunas = linhaSelecionada.cells;
 
-    // Atualiza os dados da tabela
-    linhaEditada.cells[0].innerText =
-        funcionario;
+    colunas[0].innerText = funcionario;
+    colunas[1].innerText = formatarData(inicio);
+    colunas[2].innerText = formatarData(fim);
 
-    linhaEditada.cells[1].innerText =
-        formatarData(inicio);
+    colunas[3].innerHTML =
+        `<span class="status ${status.toLowerCase()}">
+            ${status}
+        </span>`;
 
-    linhaEditada.cells[2].innerText =
-        formatarData(fim);
-
-
-    // Atualiza o status
-    if (status === "Ativa") {
-
-        linhaEditada.cells[3].innerHTML =
-            '<span class="ativo">Ativa</span>';
-
-    }
-
-    else if (status === "Pendente") {
-
-        linhaEditada.cells[3].innerHTML =
-            '<span class="pendente">Pendente</span>';
-
-    }
-
-    else {
-
-        linhaEditada.cells[3].innerHTML =
-            '<span class="finalizada">Finalizada</span>';
-
-    }
-
-
-    // Fecha a janela
     fecharEdicao();
 
-    alert("Escala alterada com sucesso!");
+    alert("Escala atualizada com sucesso!");
 }
 
-
-// =========================================
-// FECHAR JANELA
-// =========================================
+/* FECHAR */
 
 function fecharEdicao() {
 
-    document.getElementById("modalEdicao").style.display =
-        "none";
+    document.getElementById("modalEdicao").style.display = "none";
 
-    linhaEditada = null;
+    linhaSelecionada = null;
 }
 
+/* NOVA ESCALA */
 
-// =========================================
-// CONVERTER DATA PARA INPUT
-// =========================================
+function novaEscala() {
+
+    let nome = prompt("Nome do funcionário:");
+
+    if (!nome) return;
+
+    let inicio = prompt("Data de início (dd/mm/aaaa):");
+
+    if (!inicio) return;
+
+    let fim = prompt("Data de fim (dd/mm/aaaa):");
+
+    if (!fim) return;
+
+    let tabela = document.getElementById("tabelaEscalas");
+
+    let linha = tabela.insertRow();
+
+    linha.innerHTML = `
+        <td>${nome}</td>
+        <td>${inicio}</td>
+        <td>${fim}</td>
+        <td>
+            <span class="status ativa">Ativa</span>
+        </td>
+        <td>
+            <button class="botao-editar"
+                onclick="editarEscala(this)">
+                Editar
+            </button>
+        </td>
+    `;
+
+    alert("Nova escala cadastrada!");
+}
+
+/* DATAS */
 
 function converterData(data) {
 
     let partes = data.split("/");
 
-    if (partes.length !== 3) {
-        return "";
-    }
+    if (partes.length !== 3) return "";
 
-    return (
-        partes[2] +
-        "-" +
-        partes[1] +
-        "-" +
-        partes[0]
-    );
+    return `${partes[2]}-${partes[1]}-${partes[0]}`;
 }
-
-
-// =========================================
-// FORMATAR DATA PARA TABELA
-// =========================================
 
 function formatarData(data) {
 
     let partes = data.split("-");
 
-    if (partes.length !== 3) {
-        return data;
-    }
-
-    return (
-        partes[2] +
-        "/" +
-        partes[1] +
-        "/" +
-        partes[0]
-    );
+    return `${partes[2]}/${partes[1]}/${partes[0]}`;
 }
-
-
-// =========================================
-// NOVA ESCALA
-// =========================================
-
-function novaEscala() {
-
-    alert(
-        "Função para cadastrar uma nova escala."
-    );
-}
-
-
-// =========================================
-// FECHAR MODAL AO CLICAR FORA
-// =========================================
-
-window.onclick = function(event) {
-
-    let modal =
-        document.getElementById("modalEdicao");
-
-    if (event.target === modal) {
-
-        fecharEdicao();
-
-    }
-
-};
-
-

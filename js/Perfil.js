@@ -1,7 +1,6 @@
 
 const formulario = document.getElementById("formPerfil");
 
-
 // SALVAR PERFIL
 
 formulario.addEventListener("submit", function(event) {
@@ -11,7 +10,6 @@ formulario.addEventListener("submit", function(event) {
     const nome = document.getElementById("nome").value;
     const email = document.getElementById("email").value;
     const cargo = document.getElementById("cargo").value;
-
 
 
     if (nome === "" || email === "" || cargo === "" || "") {
@@ -25,7 +23,6 @@ formulario.addEventListener("submit", function(event) {
     alert("Perfil salvo com sucesso!");
 
 });
-
 
 // CANCELAR
 

@@ -30,7 +30,6 @@ function aprovarSolicitacao(id) {
     desativarBotoes(card);
 }
 
-
 // ========================================
 // RECUSAR SOLICITAÇÃO
 // ========================================
@@ -61,7 +60,6 @@ function recusarSolicitacao(id) {
 
     desativarBotoes(card);
 }
-
 
 // ========================================
 // DESATIVAR BOTÕES APÓS DECISÃO

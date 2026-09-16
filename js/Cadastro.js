@@ -14,7 +14,6 @@ formulario.addEventListener("submit", function(event) {
     const senha = document.getElementById("senha").value;
     const cargo = document.getElementById("cargo").value;
 
-
     // Verifica se todos os campos foram preenchidos
     if (nome === "" || email === "" || senha === "" || cargo === "") {
 
@@ -22,7 +21,6 @@ formulario.addEventListener("submit", function(event) {
 
         return;
     }
-
 
     // Verifica o tamanho da senha
     if (senha.length < 6) {
@@ -32,7 +30,6 @@ formulario.addEventListener("submit", function(event) {
         return;
     }
 
-
     // Verifica se o e-mail possui um formato válido
     if (!email.includes("@") || !email.includes(".")) {
 
@@ -40,7 +37,6 @@ formulario.addEventListener("submit", function(event) {
 
         return;
     }
-
 
     // Se tudo estiver correto
     alert("Cadastro realizado com sucesso!");

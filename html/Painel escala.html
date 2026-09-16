@@ -1,324 +1,141 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Painel de Escalas - Gestão em Campo</title>
 
-    <!-- CSS -->
     <link rel="stylesheet" href="../css/Painel escala.css">
-
 </head>
 
 <body>
 
-    <!-- ============================= -->
     <!-- MENU LATERAL -->
-    <!-- ============================= -->
-
     <aside class="menu-lateral">
 
         <div class="logo-area">
-
-            <img
-                src="../img/img.png"
-                alt="Logo Gestão em Campo"
-            >
-            <span>
-            </span>
-
+            <img src="../img/img.png" alt="Logo Gestão em Campo">
+            <span>Gestão em Campo</span>
         </div>
 
         <nav>
-
-            <a href="inicio.html">
-                Início
-            </a>
-
-            <a href="Painel escala.html" class="ativo">
-                Escalas
-            </a>
-
-            <a href="Solicitacao.html">
-                Solicitações
-            </a>
-
-            <a href="perfil.html">
-                Meu Perfil
-            </a>
-
-            <a href="login.html">
-                Sair
-            </a>
-
+            <a href="inicio.html">Início</a>
+            <a href="Painel escala.html" class="ativo">Escalas</a>
+            <a href="Solicitacao.html">Solicitações</a>
+            <a href="perfil.html">Meu Perfil</a>
+            <a href="login.html">Sair</a>
         </nav>
 
     </aside>
 
-    <!-- ============================= -->
-    <!-- CONTEÚDO PRINCIPAL -->
-    <!-- ============================= -->
+    <!-- CONTEÚDO -->
+    <main class="conteudo">
 
-    <main>
+        <div class="cabecalho">
+            <h1>Painel de Escalas</h1>
+            <p>Confira e gerencie as escalas dos funcionários.</p>
+        </div>
 
-        <section class="titulo">
-
-            <h1>
-                Painel de Escalas
-            </h1>
-
-            <p>
-                Confira as escalas dos funcionários.
-            </p>
-
-        </section>
-
-        <!-- ============================= -->
         <!-- CARDS -->
-        <!-- ============================= -->
-
         <section class="cards">
 
             <div class="card">
-
-                <h3>
-                    Funcionários
-                </h3>
-
-                <strong>
-                    25
-                </strong>
-
-                <p>
-                    Funcionários cadastrados
-                </p>
-
+                <h3>Funcionários</h3>
+                <strong>25</strong>
+                <p>Cadastrados</p>
             </div>
 
             <div class="card">
-
-                <h3>
-                    Escalas Ativas
-                </h3>
-
-                <strong>
-                    12
-                </strong>
-
-                <p>
-                    Escalas em andamento
-                </p>
-
+                <h3>Escalas Ativas</h3>
+                <strong>12</strong>
+                <p>Em andamento</p>
             </div>
 
             <div class="card">
-
-                <h3>
-                    Solicitações
-                </h3>
-
-                <strong>
-                    5
-                </strong>
-
-                <p>
-                    Solicitações pendentes
-                </p>
-
+                <h3>Solicitações</h3>
+                <strong>5</strong>
+                <p>Pendentes</p>
             </div>
 
         </section>
 
-        <!-- ============================= -->
-        <!-- TABELA DE ESCALAS -->
-        <!-- ============================= -->
+        <!-- TABELA -->
+        <section class="tabela-container">
 
-        <section class="tabela">
+            <div class="titulo-tabela">
 
-            <h2>
-                Escalas dos Funcionários
-            </h2>
+                <div>
+                    <h2>Escalas cadastradas</h2>
+                    <p>Gerencie as escalas dos funcionários.</p>
+                </div>
 
-            <div class="tabela-responsiva">
+                <button class="botao-nova" onclick="novaEscala()">
+                    + Nova Escala
+                </button>
 
-                <table id="tabelaEscalas">
+            </div>
+
+            <div class="tabela-scroll">
+
+                <table>
 
                     <thead>
-
                         <tr>
-
-                            <th>
-                                Funcionário
-                            </th>
-
-                            <th>
-                                Data de Início
-                            </th>
-
-                            <th>
-                                Data de Fim
-                            </th>
-
-                            <th>
-                                Status
-                            </th>
-
-                            <th>
-                                Ações
-                            </th>
-
+                            <th>Funcionário</th>
+                            <th>Data início</th>
+                            <th>Data fim</th>
+                            <th>Status</th>
+                            <th>Ação</th>
                         </tr>
-
                     </thead>
 
-                    <tbody>
+                    <tbody id="tabelaEscalas">
 
-                        <!-- FUNCIONÁRIO 1 -->
                         <tr>
-
+                            <td>João Silva</td>
+                            <td>15/09/2026</td>
+                            <td>20/09/2026</td>
                             <td>
-                                João Silva
+                                <span class="status ativa">Ativa</span>
                             </td>
-
                             <td>
-                                15/09/2026
-                            </td>
-
-                            <td>
-                                20/09/2026
-                            </td>
-
-                            <td>
-
-                                <span class="ativo">
-                                    Ativa
-                                </span>
-
-                            </td>
-
-                            <td>
-
-                                <button
-                                    class="botao-editar"
-                                    onclick="editarEscala(this)"
-                                >
+                                <button class="botao-editar"
+                                    onclick="editarEscala(this)">
                                     Editar
                                 </button>
-
                             </td>
-
                         </tr>
 
-                        <!-- FUNCIONÁRIO 2 -->
                         <tr>
-
+                            <td>Maria Santos</td>
+                            <td>21/09/2026</td>
+                            <td>26/09/2026</td>
                             <td>
-                                Maria Santos
+                                <span class="status ativa">Ativa</span>
                             </td>
-
                             <td>
-                                21/09/2026
-                            </td>
-
-                            <td>
-                                26/09/2026
-                            </td>
-
-                            <td>
-
-                                <span class="ativo">
-                                    Ativa
-                                </span>
-
-                            </td>
-
-                            <td>
-
-                                <button
-                                    class="botao-editar"
-                                    onclick="editarEscala(this)"
-                                >
+                                <button class="botao-editar"
+                                    onclick="editarEscala(this)">
                                     Editar
                                 </button>
-
                             </td>
-
                         </tr>
 
-                        <!-- FUNCIONÁRIO 3 -->
                         <tr>
-
+                            <td>Pedro Oliveira</td>
+                            <td>27/09/2026</td>
+                            <td>02/10/2026</td>
                             <td>
-                                Pedro Oliveira
+                                <span class="status pendente">Pendente</span>
                             </td>
-
                             <td>
-                                27/09/2026
-                            </td>
-
-                            <td>
-                                02/10/2026
-                            </td>
-
-                            <td>
-
-                                <span class="pendente">
-                                    Pendente
-                                </span>
-
-                            </td>
-
-                            <td>
-
-                                <button
-                                    class="botao-editar"
-                                    onclick="editarEscala(this)"
-                                >
+                                <button class="botao-editar"
+                                    onclick="editarEscala(this)">
                                     Editar
                                 </button>
-
                             </td>
-
-                        </tr>
-
-                        <!-- FUNCIONÁRIO 4 -->
-                        <tr>
-
-                            <td>
-                                Ana Souza
-                            </td>
-
-                            <td>
-                                03/10/2026
-                            </td>
-
-                            <td>
-                                08/10/2026
-                            </td>
-
-                            <td>
-
-                                <span class="ativo">
-                                    Ativa
-                                </span>
-
-                            </td>
-
-                            <td>
-
-                                <button
-                                    class="botao-editar"
-                                    onclick="editarEscala(this)"
-                                >
-                                    Editar
-                                </button>
-
-                            </td>
-
                         </tr>
 
                     </tbody>
@@ -327,93 +144,40 @@
 
             </div>
 
-            <!-- BOTÃO NOVA ESCALA -->
-
-            <button
-                class="botao"
-                onclick="novaEscala()"
-            >
-                + Nova Solicitacao
-            </button>
-
         </section>
 
     </main>
 
-    <!-- ============================= -->
-    <!-- JANELA DE EDIÇÃO -->
-    <!-- ============================= -->
-
-    <div
-        id="modalEdicao"
-        class="modal"
-    >
+    <!-- MODAL EDITAR -->
+    <div id="modalEdicao" class="modal">
 
         <div class="modal-conteudo">
 
-            <span
-                class="fechar"
-                onclick="fecharEdicao()"
-            >
+            <span class="fechar" onclick="fecharEdicao()">
                 &times;
             </span>
 
-            <h2>
-                Editar Escala
-            </h2>
+            <h2>Editar Escala</h2>
+            <p>Altere as informações da escala.</p>
 
-            <label>
-                Funcionário
-            </label>
+            <label>Funcionário</label>
+            <input type="text" id="editarFuncionario">
 
-            <input
-                type="text"
-                id="editarFuncionario"
-            >
+            <label>Data de início</label>
+            <input type="date" id="editarInicio">
 
+            <label>Data de fim</label>
+            <input type="date" id="editarFim">
 
-            <label>
-                Data de Início
-            </label>
-
-            <input
-                type="date"
-                id="editarInicio"
-            >
-
-            <label>
-                Data de Fim
-            </label>
-
-            <input
-                type="date"
-                id="editarFim"
-            >
-
-            <label>
-                Status
-            </label>
+            <label>Status</label>
 
             <select id="editarStatus">
-
-                <option value="Ativa">
-                    Ativa
-                </option>
-
-                <option value="Pendente">
-                    Pendente
-                </option>
-
-                <option value="Finalizada">
-                    Finalizada
-                </option>
-
+                <option value="Ativa">Ativa</option>
+                <option value="Pendente">Pendente</option>
+                <option value="Finalizada">Finalizada</option>
             </select>
 
-            <button
-                class="botao-salvar"
-                onclick="salvarEdicao()"
-            >
+            <button class="botao-salvar" onclick="salvarEdicao()">
                 Salvar alterações
             </button>
 
@@ -421,12 +185,8 @@
 
     </div>
 
-    <!-- JAVASCRIPT -->
-
-    <script src="../js/Painel.js"></script>
+    <script src="../js/Painel escala.js.js"></script>
 
 </body>
 
 </html>
-
-
