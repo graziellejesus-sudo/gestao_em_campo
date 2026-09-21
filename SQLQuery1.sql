@@ -4,10 +4,10 @@ GO
 
 USE GestaoEmCampo;
 GO
-/* Lógico_2 */
+/* Lï¿½gico_2 */
 
-/* Tabela de Usuários */
-CREATE TABLE Usuario_Escala (
+/* Tabela de Usuï¿½rios */
+CREATE TABLE Usuarios_Escala (
     id_usuario INTEGER IDENTITY PRIMARY KEY,
     nome VARCHAR(100),
     email VARCHAR(100),
@@ -17,7 +17,7 @@ CREATE TABLE Usuario_Escala (
 
 
 /* Tabela de Escalas */
-CREATE TABLE Escala (
+CREATE TABLE Escalas (
     id_escala INTEGER IDENTITY PRIMARY KEY,
     data_inicio DATE,
     data_fim DATE,
@@ -26,8 +26,8 @@ CREATE TABLE Escala (
 );
 
 
-/* Tabela de Solicitações */
-CREATE TABLE Solicitacao (
+/* Tabela de Solicitaï¿½ï¿½es */
+CREATE TABLE Solicitacoes (
     id_solicitacao INTEGER IDENTITY PRIMARY KEY,
     tipo VARCHAR(100),
     data_solicitada_inicio DATE,
@@ -39,45 +39,45 @@ CREATE TABLE Solicitacao (
 );
 
 
-/* Relacionamento entre Solicitação e Usuário */
-ALTER TABLE Solicitacao
+/* Relacionamento entre Solicitaï¿½ï¿½o e Usuï¿½rio */
+ALTER TABLE Solicitacoes
 ADD CONSTRAINT FK_Solicitacao_Usuario
 FOREIGN KEY (fk_id_usuario)
-REFERENCES Usuario_Escala(id_usuario)
+REFERENCES Usuarios_Escala(id_usuario)
 ON DELETE NO ACTION;
 
 
-/* Relacionamento entre Solicitação e Escala */
-ALTER TABLE Solicitacao
+/* Relacionamento entre Solicitaï¿½ï¿½o e Escala */
+ALTER TABLE Solicitacoes
 ADD CONSTRAINT FK_Solicitacao_Escala
 FOREIGN KEY (fk_id_escala)
-REFERENCES Escala(id_escala)
+REFERENCES Escalas(id_escala)
 ON DELETE NO ACTION;
 
-/* Usuários */
-INSERT INTO Usuario_Escala
+/* Usuï¿½rios */
+INSERT INTO Usuarios_Escala
 (nome, email, senha, tipo_usuario)
 VALUES
-('Ana Souza', 'ana.souza@email.com', '12345678', 'Funcionário'),
-('Carlos Oliveira', 'carlos.oliveira@email.com', '87654321', 'Funcionário'),
+('Ana Souza', 'ana.souza@email.com', '12345678', 'Funcionï¿½rio'),
+('Carlos Oliveira', 'carlos.oliveira@email.com', '87654321', 'Funcionï¿½rio'),
 ('Mariana Santos', 'mariana.santos@email.com', '11223344', 'Gestor'),
-('João Pereira', 'joao.pereira@email.com', '55667788', 'Funcionário'),
+('Joï¿½o Pereira', 'joao.pereira@email.com', '55667788', 'Funcionï¿½rio'),
 ('Beatriz Lima', 'beatriz.lima@email.com', '99887766', 'Gestor');
 
 
 /* Escalas */
-INSERT INTO Escala
+INSERT INTO Escalas
 (data_inicio, data_fim, baixada, statuss)
 VALUES
 ('2026-09-01', '2026-09-07', 'Sim', 1),
-('2026-09-08', '2026-09-14', 'Não', 1),
-('2026-09-15', '2026-09-21', 'Não', 1),
-('2026-09-22', '2026-09-28', 'Não', 1),
-('2026-09-29', '2026-10-05', 'Não', 0);
+('2026-09-08', '2026-09-14', 'Nï¿½o', 1),
+('2026-09-15', '2026-09-21', 'Nï¿½o', 1),
+('2026-09-22', '2026-09-28', 'Nï¿½o', 1),
+('2026-09-29', '2026-10-05', 'Nï¿½o', 0);
 
 
-/* Solicitações */
-INSERT INTO Solicitacao
+/* Solicitaï¿½ï¿½es */
+INSERT INTO Solicitacoes
 (tipo, data_solicitada_inicio,
  data_solicitada_fim, motivo, statuss,
  fk_id_usuario, fk_id_escala)
@@ -92,7 +92,7 @@ VALUES
  'Consulta e compromisso pessoal', 0, 4, 3),
 
 ('Troca de Escala', '2026-09-23', '2026-09-24',
- 'Conflito de horário', 1, 1, 4),
+ 'Conflito de horï¿½rio', 1, 1, 4),
 
 ('Folga', '2026-09-30', '2026-10-01',
  'Motivo familiar', 0, 2, 5);

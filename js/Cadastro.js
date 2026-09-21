@@ -1,48 +1,76 @@
+const myForm = document.getElementById('cadastroUsuario');
 
-// Pegando o formulário
-const formulario = document.querySelector("form");
+if (myForm != null) {
 
-// Evento enviado quando clicar em Cadastrar
-formulario.addEventListener("submit", function(event) {
+    myForm.addEventListener('submit', function (event) {
 
-    // Impede a página de recarregar
-    event.preventDefault();
+        event.preventDefault();
 
-    // Pegando os valores dos campos
-    const nome = document.getElementById("nome").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const senha = document.getElementById("senha").value;
-    const cargo = document.getElementById("cargo").value;
+        const senha = document.getElementById("senha").value;
 
-    // Verifica se todos os campos foram preenchidos
-    if (nome === "" || email === "" || senha === "" || cargo === "") {
+        if (senha.length < 8) {
 
-        alert("Por favor, preencha todos os campos.");
+            Swal.fire({
+                icon: "warning",
+                title: "Senha inválida",
+                text: "A senha deve ter no mínimo 8 caracteres.",
+                confirmButtonText: "OK",
+                confirmButtonColor: "#ff8c00"
+            });
 
-        return;
-    }
+            return;
+        }
 
-    // Verifica o tamanho da senha
-    if (senha.length < 6) {
+        fetch('https://localhost:7134/usuario/', {
 
-        alert("A senha deve ter pelo menos 6 caracteres.");
+            method: 'POST',
 
-        return;
-    }
+            credentials: 'include',
 
-    // Verifica se o e-mail possui um formato válido
-    if (!email.includes("@") || !email.includes(".")) {
+            headers: {
+                'Content-Type': 'application/json'
+            },
 
-        alert("Digite um e-mail válido.");
+            body: JSON.stringify({
 
-        return;
-    }
+                nome: document.getElementById("nome").value,
 
-    // Se tudo estiver correto
-    alert("Cadastro realizado com sucesso!");
+                email: document.getElementById("email").value,
 
-    // Limpa os campos do formulário
-    formulario.reset();
+                senha: senha,
 
-});
+                cargo: document.getElementById("cargo").value
 
+            })
+
+        })
+
+        .then(response => {
+
+            if (!response.ok) {
+                throw new Error("Erro ao cadastrar usuário");
+            }
+
+            return response.json();
+
+        })
+
+        .then(data => {
+
+            alert("Conta cadastrada com sucesso!");
+
+            window.location.href = "../html/log.html";
+
+        })
+
+        .catch(error => {
+
+            console.log(error);
+
+            alert("Erro ao cadastrar usuário.");
+
+        });
+
+    });
+
+}

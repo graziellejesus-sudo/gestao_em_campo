@@ -1,67 +1,73 @@
+const formulario = document.getElementById("formSolicitacao");
 
-// Pegando o formulário
-const formulario = document.querySelector("form");
+formulario.addEventListener("submit", function (event) {
 
-// Pegando os campos
-const tipo = document.getElementById("tipo");
-const dataInicio = document.getElementById("dataInicio");
-const dataFim = document.getElementById("dataFim");
-const motivo = document.getElementById("motivo");
-
-// Enviar solicitação
-formulario.addEventListener("submit", function(event) {
-
-    // Impede o recarregamento da página
     event.preventDefault();
 
-    // Verifica se todos os campos foram preenchidos
-    if (
-        tipo.value === "" ||
-        dataInicio.value === "" ||
-        dataFim.value === "" ||
-        motivo.value.trim() === ""
-    ) {
+    const tipo = document.getElementById("tipo").value;
+    const dataInicio = document.getElementById("dataInicio").value;
+    const dataFim = document.getElementById("dataFim").value;
+    const motivo = document.getElementById("motivo").value;
+
+    if (tipo === "" || dataInicio === "" || dataFim === "" || motivo === "") {
 
         alert("Preencha todos os campos.");
 
         return;
     }
 
-    // Transformando as datas em objetos Date
-    const inicio = new Date(dataInicio.value);
-    const fim = new Date(dataFim.value);
+    fetch("https://localhost:7134/Solicitacao", {
 
+        method: "POST",
 
-    // Verifica se a data final é anterior à inicial
-    if (fim < inicio) {
+        headers: {
+            "Content-Type": "application/json"
+        },
 
-        alert("A data final não pode ser anterior à data inicial.");
+        body: JSON.stringify({
 
-        return;
-    }
+            Tipo: tipo,
 
-    // Verifica se o motivo possui pelo menos 5 caracteres
-    if (motivo.value.trim().length < 5) {
+            Data_Solicitada_Inicio: dataInicio,
 
-        alert("Digite um motivo mais detalhado.");
+            Data_Solicitada_Fim: dataFim,
 
-        return;
-    }
+            Motivo: motivo,
 
-    // Solicitação realizada
-    alert("Solicitação enviada com sucesso!");
+            Statuss: false,
 
+            Fk_Id_Usuario: 1,
 
-    // Limpa o formulário
-    formulario.reset();
- 
-function abrirMenu() {
+            Fk_Id_Escala: 1
 
-    const menu = document.getElementById("menuMobile");
+        })
 
-    menu.classList.toggle("ativo");
+    })
 
-}
+    .then(response => {
+
+        if (!response.ok) {
+            throw new Error("Erro ao realizar solicitação.");
+        }
+
+        return response.json();
+
+    })
+
+    .then(data => {
+
+        alert("Solicitação realizada com sucesso!");
+
+        formulario.reset();
+
+    })
+
+    .catch(error => {
+
+        console.error(error);
+
+        alert("Erro ao realizar solicitação.");
+
+    });
 
 });
-

@@ -1,0 +1,190 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\Grazielle\\Gest\u00E3o.em campo\\gestao_em_campo\\GestaoEmCampo\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{EAEF14D3-69A0-47B8-B6C1-C8B2937CF258}|GestaoEmCampo\\GestaoEmCampo.csproj|e:\\grazielle\\gest\u00E3o.em campo\\gestao_em_campo\\gestaoemcampo\\gestaoemcampo\\controllers\\escalacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAEF14D3-69A0-47B8-B6C1-C8B2937CF258}|GestaoEmCampo\\GestaoEmCampo.csproj|solutionrelative:gestaoemcampo\\controllers\\escalacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAEF14D3-69A0-47B8-B6C1-C8B2937CF258}|GestaoEmCampo\\GestaoEmCampo.csproj|e:\\grazielle\\gest\u00E3o.em campo\\gestao_em_campo\\gestaoemcampo\\gestaoemcampo\\data\\gestaoemcampocontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAEF14D3-69A0-47B8-B6C1-C8B2937CF258}|GestaoEmCampo\\GestaoEmCampo.csproj|solutionrelative:gestaoemcampo\\data\\gestaoemcampocontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAEF14D3-69A0-47B8-B6C1-C8B2937CF258}|GestaoEmCampo\\GestaoEmCampo.csproj|e:\\grazielle\\gest\u00E3o.em campo\\gestao_em_campo\\gestaoemcampo\\gestaoemcampo\\models\\usuario_escala.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAEF14D3-69A0-47B8-B6C1-C8B2937CF258}|GestaoEmCampo\\GestaoEmCampo.csproj|solutionrelative:gestaoemcampo\\models\\usuario_escala.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAEF14D3-69A0-47B8-B6C1-C8B2937CF258}|GestaoEmCampo\\GestaoEmCampo.csproj|e:\\grazielle\\gest\u00E3o.em campo\\gestao_em_campo\\gestaoemcampo\\gestaoemcampo\\models\\solicitacao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAEF14D3-69A0-47B8-B6C1-C8B2937CF258}|GestaoEmCampo\\GestaoEmCampo.csproj|solutionrelative:gestaoemcampo\\models\\solicitacao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAEF14D3-69A0-47B8-B6C1-C8B2937CF258}|GestaoEmCampo\\GestaoEmCampo.csproj|e:\\grazielle\\gest\u00E3o.em campo\\gestao_em_campo\\gestaoemcampo\\gestaoemcampo\\models\\escala.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAEF14D3-69A0-47B8-B6C1-C8B2937CF258}|GestaoEmCampo\\GestaoEmCampo.csproj|solutionrelative:gestaoemcampo\\models\\escala.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAEF14D3-69A0-47B8-B6C1-C8B2937CF258}|GestaoEmCampo\\GestaoEmCampo.csproj|e:\\grazielle\\gest\u00E3o.em campo\\gestao_em_campo\\gestaoemcampo\\gestaoemcampo\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAEF14D3-69A0-47B8-B6C1-C8B2937CF258}|GestaoEmCampo\\GestaoEmCampo.csproj|solutionrelative:gestaoemcampo\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAEF14D3-69A0-47B8-B6C1-C8B2937CF258}|GestaoEmCampo\\GestaoEmCampo.csproj|e:\\grazielle\\gest\u00E3o.em campo\\gestao_em_campo\\gestaoemcampo\\gestaoemcampo\\controllers\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAEF14D3-69A0-47B8-B6C1-C8B2937CF258}|GestaoEmCampo\\GestaoEmCampo.csproj|solutionrelative:gestaoemcampo\\controllers\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAEF14D3-69A0-47B8-B6C1-C8B2937CF258}|GestaoEmCampo\\GestaoEmCampo.csproj|e:\\grazielle\\gest\u00E3o.em campo\\gestao_em_campo\\gestaoemcampo\\gestaoemcampo\\controllers\\solicitacaocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAEF14D3-69A0-47B8-B6C1-C8B2937CF258}|GestaoEmCampo\\GestaoEmCampo.csproj|solutionrelative:gestaoemcampo\\controllers\\solicitacaocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAEF14D3-69A0-47B8-B6C1-C8B2937CF258}|GestaoEmCampo\\GestaoEmCampo.csproj|e:\\grazielle\\gest\u00E3o.em campo\\gestao_em_campo\\gestaoemcampo\\gestaoemcampo\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAEF14D3-69A0-47B8-B6C1-C8B2937CF258}|GestaoEmCampo\\GestaoEmCampo.csproj|solutionrelative:gestaoemcampo\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAEF14D3-69A0-47B8-B6C1-C8B2937CF258}|GestaoEmCampo\\GestaoEmCampo.csproj|e:\\grazielle\\gest\u00E3o.em campo\\gestao_em_campo\\gestaoemcampo\\gestaoemcampo\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{EAEF14D3-69A0-47B8-B6C1-C8B2937CF258}|GestaoEmCampo\\GestaoEmCampo.csproj|solutionrelative:gestaoemcampo\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Solicitacao.cs",
+              "DocumentMoniker": "E:\\Grazielle\\Gest\u00E3o.em campo\\gestao_em_campo\\GestaoEmCampo\\GestaoEmCampo\\Models\\Solicitacao.cs",
+              "RelativeDocumentMoniker": "GestaoEmCampo\\Models\\Solicitacao.cs",
+              "ToolTip": "E:\\Grazielle\\Gest\u00E3o.em campo\\gestao_em_campo\\GestaoEmCampo\\GestaoEmCampo\\Models\\Solicitacao.cs",
+              "RelativeToolTip": "GestaoEmCampo\\Models\\Solicitacao.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-21T10:51:58.192Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Usuario_Escala.cs",
+              "DocumentMoniker": "E:\\Grazielle\\Gest\u00E3o.em campo\\gestao_em_campo\\GestaoEmCampo\\GestaoEmCampo\\Models\\Usuario_Escala.cs",
+              "RelativeDocumentMoniker": "GestaoEmCampo\\Models\\Usuario_Escala.cs",
+              "ToolTip": "E:\\Grazielle\\Gest\u00E3o.em campo\\gestao_em_campo\\GestaoEmCampo\\GestaoEmCampo\\Models\\Usuario_Escala.cs",
+              "RelativeToolTip": "GestaoEmCampo\\Models\\Usuario_Escala.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-21T10:51:24.365Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "GestaoEmCampoContext.cs",
+              "DocumentMoniker": "E:\\Grazielle\\Gest\u00E3o.em campo\\gestao_em_campo\\GestaoEmCampo\\GestaoEmCampo\\Data\\GestaoEmCampoContext.cs",
+              "RelativeDocumentMoniker": "GestaoEmCampo\\Data\\GestaoEmCampoContext.cs",
+              "ToolTip": "E:\\Grazielle\\Gest\u00E3o.em campo\\gestao_em_campo\\GestaoEmCampo\\GestaoEmCampo\\Data\\GestaoEmCampoContext.cs",
+              "RelativeToolTip": "GestaoEmCampo\\Data\\GestaoEmCampoContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-21T10:45:13.788Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "EscalaController.cs",
+              "DocumentMoniker": "E:\\Grazielle\\Gest\u00E3o.em campo\\gestao_em_campo\\GestaoEmCampo\\GestaoEmCampo\\Controllers\\EscalaController.cs",
+              "RelativeDocumentMoniker": "GestaoEmCampo\\Controllers\\EscalaController.cs",
+              "ToolTip": "E:\\Grazielle\\Gest\u00E3o.em campo\\gestao_em_campo\\GestaoEmCampo\\GestaoEmCampo\\Controllers\\EscalaController.cs",
+              "RelativeToolTip": "GestaoEmCampo\\Controllers\\EscalaController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-21T11:08:20.356Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Escala.cs",
+              "DocumentMoniker": "E:\\Grazielle\\Gest\u00E3o.em campo\\gestao_em_campo\\GestaoEmCampo\\GestaoEmCampo\\Models\\Escala.cs",
+              "RelativeDocumentMoniker": "GestaoEmCampo\\Models\\Escala.cs",
+              "ToolTip": "E:\\Grazielle\\Gest\u00E3o.em campo\\gestao_em_campo\\GestaoEmCampo\\GestaoEmCampo\\Models\\Escala.cs",
+              "RelativeToolTip": "GestaoEmCampo\\Models\\Escala.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-21T10:51:44.125Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "UsuarioController.cs",
+              "DocumentMoniker": "E:\\Grazielle\\Gest\u00E3o.em campo\\gestao_em_campo\\GestaoEmCampo\\GestaoEmCampo\\Controllers\\UsuarioController.cs",
+              "RelativeDocumentMoniker": "GestaoEmCampo\\Controllers\\UsuarioController.cs",
+              "ToolTip": "E:\\Grazielle\\Gest\u00E3o.em campo\\gestao_em_campo\\GestaoEmCampo\\GestaoEmCampo\\Controllers\\UsuarioController.cs",
+              "RelativeToolTip": "GestaoEmCampo\\Controllers\\UsuarioController.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAA5wHgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-21T11:07:21.095Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Usuario.cs",
+              "DocumentMoniker": "E:\\Grazielle\\Gest\u00E3o.em campo\\gestao_em_campo\\GestaoEmCampo\\GestaoEmCampo\\Controllers\\Usuario.cs",
+              "RelativeDocumentMoniker": "GestaoEmCampo\\Controllers\\Usuario.cs",
+              "ToolTip": "E:\\Grazielle\\Gest\u00E3o.em campo\\gestao_em_campo\\GestaoEmCampo\\GestaoEmCampo\\Controllers\\Usuario.cs",
+              "RelativeToolTip": "GestaoEmCampo\\Controllers\\Usuario.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-21T11:40:54.743Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "SolicitacaoController.cs",
+              "DocumentMoniker": "E:\\Grazielle\\Gest\u00E3o.em campo\\gestao_em_campo\\GestaoEmCampo\\GestaoEmCampo\\Controllers\\SolicitacaoController.cs",
+              "RelativeDocumentMoniker": "GestaoEmCampo\\Controllers\\SolicitacaoController.cs",
+              "ToolTip": "E:\\Grazielle\\Gest\u00E3o.em campo\\gestao_em_campo\\GestaoEmCampo\\GestaoEmCampo\\Controllers\\SolicitacaoController.cs",
+              "RelativeToolTip": "GestaoEmCampo\\Controllers\\SolicitacaoController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-21T11:08:47.711Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Program.cs",
+              "DocumentMoniker": "E:\\Grazielle\\Gest\u00E3o.em campo\\gestao_em_campo\\GestaoEmCampo\\GestaoEmCampo\\Program.cs",
+              "RelativeDocumentMoniker": "GestaoEmCampo\\Program.cs",
+              "ToolTip": "E:\\Grazielle\\Gest\u00E3o.em campo\\gestao_em_campo\\GestaoEmCampo\\GestaoEmCampo\\Program.cs",
+              "RelativeToolTip": "GestaoEmCampo\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-21T10:42:14.2Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "E:\\Grazielle\\Gest\u00E3o.em campo\\gestao_em_campo\\GestaoEmCampo\\GestaoEmCampo\\appsettings.json",
+              "RelativeDocumentMoniker": "GestaoEmCampo\\appsettings.json",
+              "ToolTip": "E:\\Grazielle\\Gest\u00E3o.em campo\\gestao_em_campo\\GestaoEmCampo\\GestaoEmCampo\\appsettings.json",
+              "RelativeToolTip": "GestaoEmCampo\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-09-21T11:25:38.177Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
