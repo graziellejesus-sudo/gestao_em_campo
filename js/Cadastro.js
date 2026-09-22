@@ -8,6 +8,7 @@ if (myForm != null) {
 
         const senha = document.getElementById("senha").value;
 
+        // Validação da senha
         if (senha.length < 8) {
 
             Swal.fire({
@@ -21,7 +22,16 @@ if (myForm != null) {
             return;
         }
 
-        fetch('https://localhost:7134/usuario/', {
+        // Dados do usuário
+        const usuario = {
+            nome: document.getElementById("nome").value,
+            email: document.getElementById("email").value,
+            senha: senha,
+            cargo: document.getElementById("cargo").value
+        };
+
+        // Envia para o backend
+        fetch('https://localhost:7134/Usuario', {
 
             method: 'POST',
 
@@ -31,46 +41,51 @@ if (myForm != null) {
                 'Content-Type': 'application/json'
             },
 
-            body: JSON.stringify({
-
-                nome: document.getElementById("nome").value,
-
-                email: document.getElementById("email").value,
-
-                senha: senha,
-
-                cargo: document.getElementById("cargo").value
-
-            })
+            body: JSON.stringify(usuario)
 
         })
 
-        .then(response => {
+        .then(async response => {
 
             if (!response.ok) {
-                throw new Error("Erro ao cadastrar usuário");
+
+                const mensagem = await response.text();
+
+                throw new Error(mensagem || "Erro ao cadastrar usuário.");
             }
 
             return response.json();
-
         })
 
         .then(data => {
 
-            alert("Conta cadastrada com sucesso!");
+            Swal.fire({
+                icon: "success",
+                title: "Cadastro realizado!",
+                text: "Usuário cadastrado com sucesso.",
+                confirmButtonText: "OK",
+                confirmButtonColor: "#ff8c00"
+            }).then(() => {
 
-            window.location.href = "../html/log.html";
+                window.location.href = "../html/log.html";
+
+            });
 
         })
 
         .catch(error => {
 
-            console.log(error);
+            console.error("Erro:", error);
 
-            alert("Erro ao cadastrar usuário.");
+            Swal.fire({
+                icon: "error",
+                title: "Erro",
+                text: error.message || "Erro ao cadastrar usuário.",
+                confirmButtonText: "OK",
+                confirmButtonColor: "#ff8c00"
+            });
 
         });
 
     });
-
 }

@@ -1,132 +1,107 @@
+const formulario = document.getElementById("formEscala");
 
-let linhaSelecionada = null;
+formulario.addEventListener("submit", function (event) {
 
-/* EDITAR */
+    event.preventDefault();
 
-function editarEscala(botao) {
+    const dataInicio =
+        document.getElementById("dataInicio").value;
 
-    linhaSelecionada = botao.closest("tr");
+    const dataFim =
+        document.getElementById("dataFim").value;
 
-    let colunas = linhaSelecionada.cells;
+    const baixada =
+        document.getElementById("baixada").value;
 
-    document.getElementById("editarFuncionario").value =
-        colunas[0].innerText;
+    const statuss =
+        document.getElementById("statuss").checked;
 
-    document.getElementById("editarInicio").value =
-        converterData(colunas[1].innerText);
 
-    document.getElementById("editarFim").value =
-        converterData(colunas[2].innerText);
+    // Validação
 
-    document.getElementById("editarStatus").value =
-        colunas[3].innerText.trim();
+    if (
+        dataInicio === "" ||
+        dataFim === "" ||
+        baixada === ""
+    ) {
 
-    document.getElementById("modalEdicao").style.display = "flex";
-}
-
-/* SALVAR */
-
-function salvarEdicao() {
-
-    let funcionario =
-        document.getElementById("editarFuncionario").value;
-
-    let inicio =
-        document.getElementById("editarInicio").value;
-
-    let fim =
-        document.getElementById("editarFim").value;
-
-    let status =
-        document.getElementById("editarStatus").value;
-
-    if (!funcionario || !inicio || !fim) {
         alert("Preencha todos os campos.");
+
         return;
     }
 
-    if (inicio > fim) {
-        alert("A data inicial não pode ser maior que a final.");
+
+    // Verifica se a data final é maior
+    // ou igual à data inicial
+
+    if (dataFim < dataInicio) {
+
+        alert(
+            "A data de fim não pode ser anterior à data de início."
+        );
+
         return;
     }
 
-    let colunas = linhaSelecionada.cells;
 
-    colunas[0].innerText = funcionario;
-    colunas[1].innerText = formatarData(inicio);
-    colunas[2].innerText = formatarData(fim);
+    // Envia para o Back-end
 
-    colunas[3].innerHTML =
-        `<span class="status ${status.toLowerCase()}">
-            ${status}
-        </span>`;
+    fetch("https://localhost:7134/Escala", {
 
-    fecharEdicao();
+        method: "POST",
 
-    alert("Escala atualizada com sucesso!");
-}
+        headers: {
+            "Content-Type": "application/json"
+        },
 
-/* FECHAR */
+        body: JSON.stringify({
 
-function fecharEdicao() {
+            Data_Inicio: dataInicio,
 
-    document.getElementById("modalEdicao").style.display = "none";
+            Data_Fim: dataFim,
 
-    linhaSelecionada = null;
-}
+            Baixada: baixada,
 
-/* NOVA ESCALA */
+            Statuss: statuss
 
-function novaEscala() {
+        })
 
-    let nome = prompt("Nome do funcionário:");
+    })
 
-    if (!nome) return;
+    .then(response => {
 
-    let inicio = prompt("Data de início (dd/mm/aaaa):");
+        if (!response.ok) {
 
-    if (!inicio) return;
+            throw new Error(
+                "Erro ao cadastrar escala."
+            );
 
-    let fim = prompt("Data de fim (dd/mm/aaaa):");
+        }
 
-    if (!fim) return;
+        return response.json();
 
-    let tabela = document.getElementById("tabelaEscalas");
+    })
 
-    let linha = tabela.insertRow();
+    .then(data => {
 
-    linha.innerHTML = `
-        <td>${nome}</td>
-        <td>${inicio}</td>
-        <td>${fim}</td>
-        <td>
-            <span class="status ativa">Ativa</span>
-        </td>
-        <td>
-            <button class="botao-editar"
-                onclick="editarEscala(this)">
-                Editar
-            </button>
-        </td>
-    `;
+        console.log(data);
 
-    alert("Nova escala cadastrada!");
-}
+        alert(
+            "Escala cadastrada com sucesso!"
+        );
 
-/* DATAS */
+        formulario.reset();
 
-function converterData(data) {
+    })
 
-    let partes = data.split("/");
+    .catch(error => {
 
-    if (partes.length !== 3) return "";
+        console.error(error);
 
-    return `${partes[2]}-${partes[1]}-${partes[0]}`;
-}
+        alert(
+            "Erro ao cadastrar escala."
+        );
 
-function formatarData(data) {
+    });
 
-    let partes = data.split("-");
-
-    return `${partes[2]}/${partes[1]}/${partes[0]}`;
-}
+});
