@@ -36,6 +36,7 @@ formulario.addEventListener("submit", function(event) {
         return;
     }
 
+
     // Login realizado
     alert("Login realizado com sucesso!");
 
