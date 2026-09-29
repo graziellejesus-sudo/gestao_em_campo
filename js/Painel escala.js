@@ -1,40 +1,206 @@
-const formulario = document.getElementById("formEscala");
+/* ========================================= */
+/* VARIÁVEL DA LINHA SENDO EDITADA */
+/* ========================================= */
 
-formulario.addEventListener("submit", function (event) {
+let linhaEditando = null;
 
-    event.preventDefault();
+
+/* ========================================= */
+/* NOVA ESCALA */
+/* ========================================= */
+
+function novaEscala() {
+
+    window.location.href = "Cadastro escala.html";
+}
+
+
+/* ========================================= */
+/* EDITAR ESCALA */
+/* ========================================= */
+
+function editarEscala(botao) {
+
+    linhaEditando = botao.closest("tr");
+
+    const colunas =
+        linhaEditando.querySelectorAll("td");
+
+
+    /* Funcionário */
+
+    const funcionario =
+        colunas[0].textContent.trim();
+
+
+    /* Data inicial */
 
     const dataInicio =
-        document.getElementById("dataInicio").value;
+        colunas[1].textContent.trim();
+
+
+    /* Data final */
 
     const dataFim =
-        document.getElementById("dataFim").value;
-
-    const baixada =
-        document.getElementById("baixada").value;
-
-    const statuss =
-        document.getElementById("statuss").checked;
+        colunas[2].textContent.trim();
 
 
-    // Validação
+    /* Status */
 
-    if (
-        dataInicio === "" ||
-        dataFim === "" ||
-        baixada === ""
-    ) {
+    const status =
+        colunas[3]
+            .querySelector(".status")
+            .textContent
+            .trim();
 
-        alert("Preencha todos os campos.");
+
+    /* ========================================= */
+    /* PREENCHER MODAL */
+    /* ========================================= */
+
+    document.getElementById(
+        "editarFuncionario"
+    ).value = funcionario;
+
+
+    document.getElementById(
+        "editarInicio"
+    ).value = converterData(dataInicio);
+
+
+    document.getElementById(
+        "editarFim"
+    ).value = converterData(dataFim);
+
+
+    document.getElementById(
+        "editarStatus"
+    ).value = status;
+
+
+    /* ========================================= */
+    /* ABRIR MODAL */
+    /* ========================================= */
+
+    document.getElementById(
+        "modalEdicao"
+    ).style.display = "flex";
+}
+
+
+/* ========================================= */
+/* CONVERTER DATA */
+/* ========================================= */
+
+function converterData(data) {
+
+    const partes =
+        data.split("/");
+
+
+    if (partes.length !== 3) {
+
+        return "";
+    }
+
+
+    const dia = partes[0];
+
+    const mes = partes[1];
+
+    const ano = partes[2];
+
+
+    return `${ano}-${mes}-${dia}`;
+}
+
+
+/* ========================================= */
+/* FORMATAR DATA */
+/* ========================================= */
+
+function formatarData(data) {
+
+    const partes =
+        data.split("-");
+
+
+    if (partes.length !== 3) {
+
+        return "";
+    }
+
+
+    const ano = partes[0];
+
+    const mes = partes[1];
+
+    const dia = partes[2];
+
+
+    return `${dia}/${mes}/${ano}`;
+}
+
+
+/* ========================================= */
+/* SALVAR EDIÇÃO */
+/* ========================================= */
+
+function salvarEdicao() {
+
+    if (!linhaEditando) {
 
         return;
     }
 
 
-    // Verifica se a data final é maior
-    // ou igual à data inicial
+    const funcionario =
+        document.getElementById(
+            "editarFuncionario"
+        ).value;
 
-    if (dataFim < dataInicio) {
+
+    const inicio =
+        document.getElementById(
+            "editarInicio"
+        ).value;
+
+
+    const fim =
+        document.getElementById(
+            "editarFim"
+        ).value;
+
+
+    const status =
+        document.getElementById(
+            "editarStatus"
+        ).value;
+
+
+    /* ========================================= */
+    /* VALIDAÇÃO */
+    /* ========================================= */
+
+    if (
+        funcionario === "" ||
+        inicio === "" ||
+        fim === ""
+    ) {
+
+        alert(
+            "Preencha todos os campos."
+        );
+
+        return;
+    }
+
+
+    /* ========================================= */
+    /* VALIDAR DATAS */
+    /* ========================================= */
+
+    if (fim < inicio) {
 
         alert(
             "A data de fim não pode ser anterior à data de início."
@@ -44,64 +210,102 @@ formulario.addEventListener("submit", function (event) {
     }
 
 
-    // Envia para o Back-end
+    /* ========================================= */
+    /* ATUALIZAR TABELA */
+    /* ========================================= */
 
-    fetch("https://localhost:7134/Escala", {
+    const colunas =
+        linhaEditando.querySelectorAll("td");
 
-        method: "POST",
 
-        headers: {
-            "Content-Type": "application/json"
-        },
+    colunas[0].textContent =
+        funcionario;
 
-        body: JSON.stringify({
 
-            Data_Inicio: dataInicio,
+    colunas[1].textContent =
+        formatarData(inicio);
 
-            Data_Fim: dataFim,
 
-            Baixada: baixada,
+    colunas[2].textContent =
+        formatarData(fim);
 
-            Statuss: statuss
 
-        })
+    /* ========================================= */
+    /* ATUALIZAR STATUS */
+    /* ========================================= */
 
-    })
+    const elementoStatus =
+        colunas[3].querySelector(".status");
 
-    .then(response => {
 
-        if (!response.ok) {
+    elementoStatus.textContent =
+        status;
 
-            throw new Error(
-                "Erro ao cadastrar escala."
+
+    elementoStatus.className =
+        "status";
+
+
+    if (status === "Ativa") {
+
+        elementoStatus.classList.add(
+            "ativa"
+        );
+
+    } else if (status === "Pendente") {
+
+        elementoStatus.classList.add(
+            "pendente"
+        );
+    }
+
+
+    /* ========================================= */
+    /* FECHAR MODAL */
+    /* ========================================= */
+
+    fecharEdicao();
+
+
+    alert(
+        "Escala atualizada com sucesso!"
+    );
+}
+
+
+/* ========================================= */
+/* FECHAR MODAL */
+/* ========================================= */
+
+function fecharEdicao() {
+
+    document.getElementById(
+        "modalEdicao"
+    ).style.display = "none";
+
+
+    linhaEditando = null;
+}
+
+
+/* ========================================= */
+/* FECHAR AO CLICAR FORA */
+/* ========================================= */
+
+window.addEventListener(
+    "click",
+    function (event) {
+
+        const modal =
+            document.getElementById(
+                "modalEdicao"
             );
 
+
+        if (event.target === modal) {
+
+            fecharEdicao();
         }
 
-        return response.json();
-
-    })
-
-    .then(data => {
-
-        console.log(data);
-
-        alert(
-            "Escala cadastrada com sucesso!"
-        );
-
-        formulario.reset();
-
-    })
-
-    .catch(error => {
-
-        console.error(error);
-
-        alert(
-            "Erro ao cadastrar escala."
-        );
-
-    });
-
-});
+    }
+);

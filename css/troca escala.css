@@ -65,7 +65,6 @@ body {
     margin-bottom: 40px;
 }
 
-
 .logo-area img {
     width: 180px;
 
@@ -77,7 +76,6 @@ body {
 
     border-radius: 8px;
 }
-
 
 .logo-area span {
     color: white;
@@ -103,7 +101,6 @@ body {
     gap: 12px;
 }
 
-
 .menu-lateral nav a {
     display: block;
 
@@ -119,7 +116,6 @@ body {
 
     transition: 0.3s;
 }
-
 
 .menu-lateral nav a:hover {
     background-color: rgba(255, 255, 255, 0.18);
@@ -161,7 +157,6 @@ body {
     margin-bottom: 30px;
 }
 
-
 .cabecalho h1 {
     color: #312e81;
 
@@ -169,7 +164,6 @@ body {
 
     margin-bottom: 8px;
 }
-
 
 .cabecalho p {
     color: #666;
@@ -197,7 +191,6 @@ body {
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.10);
 }
 
-
 .card h2 {
     color: #4f46e5;
 
@@ -213,7 +206,6 @@ body {
 .campo {
     margin-bottom: 20px;
 }
-
 
 .campo label {
     display: block;
@@ -248,7 +240,6 @@ body {
 
     transition: 0.3s;
 }
-
 
 .campo input:focus,
 .campo select:focus,
@@ -308,7 +299,6 @@ body {
     transition: 0.3s;
 }
 
-
 .btn-cancelar:hover {
     background-color: #f3e8ff;
 }
@@ -337,7 +327,6 @@ body {
     transition: 0.3s;
 }
 
-
 .btn-enviar:hover {
     transform: translateY(-2px);
 
@@ -362,7 +351,6 @@ body {
         padding: 20px;
     }
 
-
     .logo-area {
         margin-bottom: 20px;
     }
@@ -374,11 +362,9 @@ body {
         border-radius: 8px;
     }
 
-
     .logo-area span {
         font-size: 18px;
     }
-
 
     .menu-lateral nav {
         flex-direction: row;
@@ -395,7 +381,6 @@ body {
         padding: 10px 14px;
     }
 
-
     .conteudo {
         width: 100%;
 
@@ -403,7 +388,6 @@ body {
 
         padding: 25px 15px;
     }
-
 
     .cabecalho h1 {
         font-size: 26px;
@@ -414,11 +398,9 @@ body {
         padding: 25px 20px;
     }
 
-
     .botoes {
         flex-direction: column;
     }
-
 
     .btn-cancelar,
     .btn-enviar {

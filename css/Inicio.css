@@ -1,7 +1,6 @@
-
-/* ================================
-   CONFIGURAÇÕES GERAIS
-================================ */
+/* ========================================= */
+/* RESET */
+/* ========================================= */
 
 * {
     margin: 0;
@@ -9,19 +8,23 @@
     box-sizing: border-box;
 }
 
+/* ========================================= */
+/* CORPO DA PÁGINA */
+/* ========================================= */
+
 body {
     font-family: Arial, Helvetica, sans-serif;
 
-    background: linear-gradient(135deg, #6c7fd8, #f5f3ff);
-
-    color: #333;
+    background: linear-gradient(135deg, #eef2ff, #f5f3ff);
 
     min-height: 100vh;
+
+    color: #333;
 }
 
-/* ================================
-   MENU LATERAL
-================================ */
+/* ========================================= */
+/* MENU LATERAL */
+/* ========================================= */
 
 .menu-lateral {
     position: fixed;
@@ -43,9 +46,10 @@ body {
     overflow-y: auto;
 }
 
-/* ================================
-   ÁREA DA LOGO
-================================ */
+
+/* ========================================= */
+/* ÁREA DA LOGO */
+/* ========================================= */
 
 .logo-area {
     width: 100%;
@@ -61,9 +65,10 @@ body {
     margin-bottom: 40px;
 }
 
-/* ================================
-   LOGO
-================================ */
+
+/* ========================================= */
+/* LOGO */
+/* ========================================= */
 
 .logo-area img {
     width: 180px;
@@ -74,13 +79,13 @@ body {
 
     margin-bottom: 10px;
 
-    /* BORDAS LEVEMENTE ARREDONDADAS */
     border-radius: 8px;
 }
 
-/* ================================
-   NOME DO SISTEMA
-================================ */
+
+/* ========================================= */
+/* NOME DO SISTEMA */
+/* ========================================= */
 
 .logo-area span {
     color: white;
@@ -94,9 +99,10 @@ body {
     white-space: nowrap;
 }
 
-/* ================================
-   NAVEGAÇÃO
-================================ */
+
+/* ========================================= */
+/* NAVEGAÇÃO */
+/* ========================================= */
 
 .menu-lateral nav {
     display: flex;
@@ -106,14 +112,15 @@ body {
     gap: 12px;
 }
 
-/* ================================
-   LINKS
-================================ */
+
+/* ========================================= */
+/* LINKS DO MENU */
+/* ========================================= */
 
 .menu-lateral nav a {
     display: block;
 
-    color: white;
+    color: rgb(255, 255, 255);
 
     text-decoration: none;
 
@@ -126,9 +133,10 @@ body {
     transition: 0.3s;
 }
 
-/* ================================
-   EFEITO HOVER
-================================ */
+
+/* ========================================= */
+/* HOVER DOS LINKS */
+/* ========================================= */
 
 .menu-lateral nav a:hover {
     background-color: rgba(255, 255, 255, 0.18);
@@ -136,9 +144,10 @@ body {
     transform: translateX(4px);
 }
 
-/* ================================
-   LINK ATIVO
-================================ */
+
+/* ========================================= */
+/* LINK ATIVO */
+/* ========================================= */
 
 .menu-lateral nav a.ativo {
     background-color: white;
@@ -148,28 +157,34 @@ body {
     font-weight: bold;
 }
 
-/* ================================
-   CONTEÚDO PRINCIPAL
-================================ */
+
+/* ========================================= */
+/* CONTEÚDO PRINCIPAL */
+/* ========================================= */
 
 main {
+    width: calc(100% - 240px);
+
+    min-height: 100vh;
+
     margin-left: 240px;
 
-    min-height: calc(100vh - 60px);
-
-    padding: 50px;
+    padding: 45px;
 }
 
-/* ================================
-   ÁREA INICIAL
-================================ */
+
+/* ========================================= */
+/* ÁREA INICIAL */
+/* ========================================= */
 
 .inicio {
+    width: 100%;
+
     max-width: 1200px;
 
-    margin: 0 auto;
-
     min-height: 500px;
+
+    margin: 0 auto;
 
     display: flex;
 
@@ -180,9 +195,9 @@ main {
     gap: 50px;
 }
 
-/* ================================
-   TEXTO
-================================ */
+/* ========================================= */
+/* TEXTO DA PÁGINA INICIAL */
+/* ========================================= */
 
 .texto-inicio {
     flex: 1;
@@ -190,10 +205,14 @@ main {
     max-width: 600px;
 }
 
+/* ========================================= */
+/* TAG */
+/* ========================================= */
+
 .tag {
     display: inline-block;
 
-    color: #4b1fa8;
+    color: #4670e5;
 
     font-size: 14px;
 
@@ -204,21 +223,36 @@ main {
     margin-bottom: 15px;
 }
 
+
+/* ========================================= */
+/* TÍTULO PRINCIPAL */
+/* ========================================= */
+
 .texto-inicio h1 {
     font-size: 45px;
 
     line-height: 1.2;
 
-    color: #333;
+    color: #312e81;
 
     margin-bottom: 20px;
 }
 
+
+/* ========================================= */
+/* DESTAQUE DO TÍTULO */
+/* ========================================= */
+
 .texto-inicio h1 span {
     display: block;
 
-    color: #4b1fa8;
+    color: #4f46e5;
 }
+
+
+/* ========================================= */
+/* TEXTO */
+/* ========================================= */
 
 .texto-inicio p {
     font-size: 18px;
@@ -230,24 +264,32 @@ main {
     margin-bottom: 30px;
 }
 
-/* ================================
-   BOTÕES
-================================ */
+
+/* ========================================= */
+/* BOTÕES */
+/* ========================================= */
 
 .botoes {
     display: flex;
 
     gap: 15px;
+
+    margin-top: 10px;
 }
 
-.botoes button {
-    border: none;
 
+/* ========================================= */
+/* BOTÕES GERAIS */
+/* ========================================= */
+
+.botoes button {
     padding: 13px 25px;
 
-    border-radius: 8px;
+    border: none;
 
-    font-size: 16px;
+    border-radius: 9px;
+
+    font-size: 15px;
 
     font-weight: bold;
 
@@ -256,33 +298,52 @@ main {
     transition: 0.3s;
 }
 
+
+/* ========================================= */
+/* BOTÃO ENTRAR */
+/* ========================================= */
+
 .btn-entrar {
-    background: #4b1fa8;
+    background: linear-gradient(90deg, #4f46e5, #3d3aed);
 
     color: white;
 }
+
+
+/* HOVER ENTRAR */
 
 .btn-entrar:hover {
-    background: #381580;
-
     transform: translateY(-2px);
+
+    box-shadow: 0 5px 15px rgba(79, 70, 229, 0.3);
 }
+
+
+/* ========================================= */
+/* BOTÃO CADASTRO */
+/* ========================================= */
 
 .btn-cadastro {
-    background: #2563eb;
+    border: 2px solid #6d28d9 !important;
 
-    color: white;
+    background-color: white;
+
+    color: #6d28d9;
 }
 
+
+/* HOVER CADASTRO */
+
 .btn-cadastro:hover {
-    background: #1d4ed8;
+    background-color: #f3e8ff;
 
     transform: translateY(-2px);
 }
 
-/* ================================
-   ÁREA VISUAL
-================================ */
+
+/* ========================================= */
+/* ÁREA VISUAL */
+/* ========================================= */
 
 .visual {
     position: relative;
@@ -298,23 +359,29 @@ main {
     justify-content: center;
 }
 
-/* ================================
-   CARD PRINCIPAL
-================================ */
+
+/* ========================================= */
+/* CARD VISUAL */
+/* ========================================= */
 
 .card-visual {
     width: 320px;
 
-    background: white;
-
     padding: 35px 30px;
+
+    background-color: white;
 
     border-radius: 18px;
 
     text-align: center;
 
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.10);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.10);
 }
+
+
+/* ========================================= */
+/* ÍCONE DO CARD */
+/* ========================================= */
 
 .card-visual .icone {
     font-size: 55px;
@@ -322,13 +389,23 @@ main {
     margin-bottom: 15px;
 }
 
+
+/* ========================================= */
+/* TÍTULO DO CARD */
+/* ========================================= */
+
 .card-visual h2 {
-    color: #4b1fa8;
+    color: #4f46e5;
 
     font-size: 24px;
 
     margin-bottom: 15px;
 }
+
+
+/* ========================================= */
+/* TEXTO DO CARD */
+/* ========================================= */
 
 .card-visual p {
     color: #666;
@@ -338,14 +415,15 @@ main {
     font-size: 16px;
 }
 
-/* ================================
-   MINI CARDS
-================================ */
+
+/* ========================================= */
+/* MINI CARDS */
+/* ========================================= */
 
 .mini-card {
     position: absolute;
 
-    background: white;
+    background-color: white;
 
     padding: 14px 18px;
 
@@ -353,12 +431,17 @@ main {
 
     font-size: 14px;
 
-    color: #4b1fa8;
+    color: #4f46e5;
 
     font-weight: bold;
 
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.10);
 }
+
+
+/* ========================================= */
+/* MINI CARD 1 */
+/* ========================================= */
 
 .card-1 {
     top: 20px;
@@ -366,17 +449,25 @@ main {
     right: 0;
 }
 
+
+/* ========================================= */
+/* MINI CARD 2 */
+/* ========================================= */
+
 .card-2 {
     bottom: 20px;
 
     left: 0;
 }
 
-/* ================================
-   BENEFÍCIOS
-================================ */
+
+/* ========================================= */
+/* BENEFÍCIOS */
+/* ========================================= */
 
 .beneficios {
+    width: 100%;
+
     max-width: 1200px;
 
     margin: 40px auto 0;
@@ -388,10 +479,15 @@ main {
     gap: 20px;
 }
 
-.beneficio {
-    background: white;
 
+/* ========================================= */
+/* CARD DE BENEFÍCIO */
+/* ========================================= */
+
+.beneficio {
     padding: 25px;
+
+    background-color: white;
 
     border-radius: 12px;
 
@@ -400,11 +496,21 @@ main {
     transition: 0.3s;
 }
 
+
+/* ========================================= */
+/* HOVER BENEFÍCIO */
+/* ========================================= */
+
 .beneficio:hover {
     transform: translateY(-5px);
 
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
 }
+
+
+/* ========================================= */
+/* ÍCONE BENEFÍCIO */
+/* ========================================= */
 
 .icone-beneficio {
     font-size: 35px;
@@ -412,13 +518,23 @@ main {
     margin-bottom: 15px;
 }
 
+
+/* ========================================= */
+/* TÍTULO BENEFÍCIO */
+/* ========================================= */
+
 .beneficio h3 {
-    color: #4b1fa8;
+    color: #4f46e5;
 
     font-size: 20px;
 
     margin-bottom: 10px;
 }
+
+
+/* ========================================= */
+/* TEXTO BENEFÍCIO */
+/* ========================================= */
 
 .beneficio p {
     color: #666;
@@ -428,11 +544,14 @@ main {
     font-size: 15px;
 }
 
-/* ================================
-   RODAPÉ
-================================ */
+
+/* ========================================= */
+/* RODAPÉ */
+/* ========================================= */
 
 footer {
+    width: calc(100% - 240px);
+
     margin-left: 240px;
 
     padding: 20px;
@@ -444,9 +563,10 @@ footer {
     font-size: 14px;
 }
 
-/* ================================
-   RESPONSIVIDADE
-================================ */
+
+/* ========================================= */
+/* RESPONSIVIDADE */
+/* ========================================= */
 
 @media (max-width: 900px) {
 
@@ -458,9 +578,11 @@ footer {
         padding-top: 20px;
     }
 
+
     .texto-inicio {
         max-width: 700px;
     }
+
 
     .texto-inicio p {
         margin-left: auto;
@@ -468,9 +590,11 @@ footer {
         margin-right: auto;
     }
 
+
     .botoes {
         justify-content: center;
     }
+
 
     .visual {
         width: 100%;
@@ -478,16 +602,20 @@ footer {
         max-width: 400px;
     }
 
+
     .beneficios {
         grid-template-columns: 1fr;
     }
 }
 
-/* ================================
-   CELULAR
-================================ */
+
+/* ========================================= */
+/* CELULAR */
+/* ========================================= */
 
 @media (max-width: 768px) {
+
+    /* MENU */
 
     .menu-lateral {
         position: relative;
@@ -501,11 +629,13 @@ footer {
         padding: 20px;
     }
 
+
     /* LOGO */
 
     .logo-area {
         margin-bottom: 20px;
     }
+
 
     .logo-area img {
         width: 80px;
@@ -513,11 +643,13 @@ footer {
         border-radius: 8px;
     }
 
+
     .logo-area span {
         font-size: 18px;
     }
 
-    /* MENU */
+
+    /* NAVEGAÇÃO */
 
     .menu-lateral nav {
         flex-direction: row;
@@ -529,18 +661,24 @@ footer {
         gap: 8px;
     }
 
+
     .menu-lateral nav a {
         padding: 10px 14px;
     }
 
+
     /* CONTEÚDO */
 
     main {
+        width: 100%;
+
         margin-left: 0;
 
-        padding: 30px 20px;
+        padding: 25px 15px;
     }
 
+
+    /* INÍCIO */
 
     .inicio {
         min-height: auto;
@@ -549,15 +687,21 @@ footer {
     }
 
 
+    /* TÍTULO */
+
     .texto-inicio h1 {
         font-size: 34px;
     }
 
 
+    /* TEXTO */
+
     .texto-inicio p {
         font-size: 16px;
     }
 
+
+    /* BOTÕES */
 
     .botoes {
         flex-direction: column;
@@ -573,6 +717,8 @@ footer {
     }
 
 
+    /* VISUAL */
+
     .visual {
         min-height: 320px;
     }
@@ -584,6 +730,8 @@ footer {
         padding: 30px 20px;
     }
 
+
+    /* MINI CARDS */
 
     .mini-card {
         font-size: 12px;
@@ -602,7 +750,11 @@ footer {
     }
 
 
+    /* RODAPÉ */
+
     footer {
+        width: 100%;
+
         margin-left: 0;
     }
 }
