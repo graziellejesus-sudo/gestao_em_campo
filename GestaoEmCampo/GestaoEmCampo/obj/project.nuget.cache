@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Sy+8msV20NM=",
+  "dgSpecHash": "JQ2JgwRotN4=",
   "success": true,
-  "projectFilePath": "E:\\Grazielle\\Gestão.em campo\\gestao_em_campo\\GestaoEmCampo\\GestaoEmCampo\\GestaoEmCampo.csproj",
+  "projectFilePath": "E:\\Gestao\\gestao_em_campo\\GestaoEmCampo\\GestaoEmCampo\\GestaoEmCampo.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\manha.ceticc\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\manha.ceticc\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

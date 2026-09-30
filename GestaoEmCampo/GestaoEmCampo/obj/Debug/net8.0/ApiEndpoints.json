@@ -1,15 +1,157 @@
 [
   {
-    "ContainingType": "GestaoEmCampo.Controllers.SolicitacaoController",
+    "ContainingType": "GestaoEmCampo.Controllers.EscalaController",
+    "Method": "Listar",
+    "RelativePath": "api/Escala",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GestaoEmCampo.Controllers.EscalaController",
     "Method": "Cadastrar",
-    "RelativePath": "Solicitacao",
+    "RelativePath": "api/Escala",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "solicitacao",
-        "Type": "GestaoEmCampo.Models.Solicitacao",
+        "Name": "escala",
+        "Type": "GestaoEmCampo.Models.Escala",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GestaoEmCampo.Controllers.EscalaController",
+    "Method": "Buscar",
+    "RelativePath": "api/Escala/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GestaoEmCampo.Controllers.EscalaController",
+    "Method": "Editar",
+    "RelativePath": "api/Escala/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dados",
+        "Type": "GestaoEmCampo.Models.Escala",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GestaoEmCampo.Controllers.EscalaController",
+    "Method": "Excluir",
+    "RelativePath": "api/Escala/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GestaoEmCampo.Controllers.Troca_escalaController",
+    "Method": "Listar",
+    "RelativePath": "api/Troca_escala",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GestaoEmCampo.Controllers.Troca_escalaController",
+    "Method": "Criar",
+    "RelativePath": "api/Troca_escala",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "troca",
+        "Type": "GestaoEmCampo.Models.Troca_escala",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GestaoEmCampo.Controllers.Troca_escalaController",
+    "Method": "Buscar",
+    "RelativePath": "api/Troca_escala/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GestaoEmCampo.Controllers.Troca_escalaController",
+    "Method": "Editar",
+    "RelativePath": "api/Troca_escala/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dados",
+        "Type": "GestaoEmCampo.Models.Troca_escala",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GestaoEmCampo.Controllers.Troca_escalaController",
+    "Method": "Excluir",
+    "RelativePath": "api/Troca_escala/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],
@@ -18,7 +160,7 @@
   {
     "ContainingType": "GestaoEmCampo.Controllers.UsuarioController",
     "Method": "ListarUsuarios",
-    "RelativePath": "Usuario",
+    "RelativePath": "api/Usuario",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -27,8 +169,8 @@
   },
   {
     "ContainingType": "GestaoEmCampo.Controllers.UsuarioController",
-    "Method": "CadastraUsuario",
-    "RelativePath": "Usuario",
+    "Method": "CadastrarUsuario",
+    "RelativePath": "api/Usuario",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -43,8 +185,8 @@
   },
   {
     "ContainingType": "GestaoEmCampo.Controllers.UsuarioController",
-    "Method": "DeletaUsuario",
-    "RelativePath": "Usuario/{id}",
+    "Method": "DeletarUsuario",
+    "RelativePath": "api/Usuario/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -60,7 +202,7 @@
   {
     "ContainingType": "GestaoEmCampo.Controllers.UsuarioController",
     "Method": "Login",
-    "RelativePath": "Usuario/login",
+    "RelativePath": "api/Usuario/login",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -76,7 +218,7 @@
   {
     "ContainingType": "GestaoEmCampo.Controllers.UsuarioController",
     "Method": "Logout",
-    "RelativePath": "Usuario/logout",
+    "RelativePath": "api/Usuario/logout",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -86,11 +228,27 @@
   {
     "ContainingType": "GestaoEmCampo.Controllers.UsuarioController",
     "Method": "Perfil",
-    "RelativePath": "Usuario/perfil",
+    "RelativePath": "api/Usuario/perfil",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GestaoEmCampo.Controllers.SolicitacaoController",
+    "Method": "Cadastrar",
+    "RelativePath": "Solicitacao",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "solicitacao",
+        "Type": "GestaoEmCampo.Models.Solicitacao",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   }
 ]

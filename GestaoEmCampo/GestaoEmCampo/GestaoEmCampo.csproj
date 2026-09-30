@@ -7,6 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Controllers\Troca escala.cs" />
+    <Compile Remove="Controllers\Usuario.cs" />
+    <Compile Remove="Models\Troca-.cs" />
+    <Compile Remove="Models\Troca.cs" />
+    <Compile Remove="Models\Usuario.cs" />
+    <Compile Remove="Models\Usuario_Escala.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.24" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.24" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.24">

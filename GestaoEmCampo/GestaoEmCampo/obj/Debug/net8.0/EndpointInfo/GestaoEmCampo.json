@@ -5,6 +5,131 @@
     "version": "1.0"
   },
   "paths": {
+    "/api/Escala": {
+      "get": {
+        "tags": [
+          "Escala"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Escala"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Escala"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Escala"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Escala"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Escala/{id}": {
+      "get": {
+        "tags": [
+          "Escala"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Escala"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Escala"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Escala"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Escala"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Escala"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/Solicitacao": {
       "post": {
         "tags": [
@@ -36,7 +161,132 @@
         }
       }
     },
-    "/Usuario": {
+    "/api/Troca_escala": {
+      "get": {
+        "tags": [
+          "Troca_escala"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Troca_escala"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Troca_escala"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Troca_escala"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Troca_escala"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Troca_escala/{id}": {
+      "get": {
+        "tags": [
+          "Troca_escala"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Troca_escala"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Troca_escala"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Troca_escala"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Troca_escala"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Troca_escala"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Usuario": {
       "get": {
         "tags": [
           "Usuario"
@@ -77,7 +327,7 @@
         }
       }
     },
-    "/Usuario/login": {
+    "/api/Usuario/login": {
       "post": {
         "tags": [
           "Usuario"
@@ -108,7 +358,7 @@
         }
       }
     },
-    "/Usuario/logout": {
+    "/api/Usuario/logout": {
       "get": {
         "tags": [
           "Usuario"
@@ -120,7 +370,7 @@
         }
       }
     },
-    "/Usuario/{id}": {
+    "/api/Usuario/{id}": {
       "delete": {
         "tags": [
           "Usuario"
@@ -143,7 +393,7 @@
         }
       }
     },
-    "/Usuario/perfil": {
+    "/api/Usuario/perfil": {
       "get": {
         "tags": [
           "Usuario"
@@ -158,6 +408,31 @@
   },
   "components": {
     "schemas": {
+      "Escala": {
+        "type": "object",
+        "properties": {
+          "id_Escala": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "data_Inicio": {
+            "type": "string",
+            "format": "date"
+          },
+          "data_Fim": {
+            "type": "string",
+            "format": "date"
+          },
+          "baixada": {
+            "type": "string",
+            "nullable": true
+          },
+          "statuss": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
       "Solicitacao": {
         "type": "object",
         "properties": {
@@ -191,6 +466,32 @@
           "fk_Id_Escala": {
             "type": "integer",
             "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Troca_escala": {
+        "type": "object",
+        "properties": {
+          "id_Troca": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "id_Usuario": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "escalaAtual": {
+            "type": "string",
+            "nullable": true
+          },
+          "novaEscala": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false

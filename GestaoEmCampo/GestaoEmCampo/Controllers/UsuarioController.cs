@@ -1,13 +1,11 @@
 ﻿using GestaoEmCampo.Data;
 using GestaoEmCampo.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Linq;
 
 namespace GestaoEmCampo.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class UsuarioController : ControllerBase
     {
         private readonly GestaoEmCampoContext _context;
@@ -17,7 +15,11 @@ namespace GestaoEmCampo.Controllers
             _context = context;
         }
 
+        // ============================================================
         // LISTAR USUÁRIOS
+        // GET: api/Usuario
+        // ============================================================
+
         [HttpGet]
         public IActionResult ListarUsuarios()
         {
@@ -25,17 +27,40 @@ namespace GestaoEmCampo.Controllers
                 .Select(u => new
                 {
                     Id = u.Id_Usuario,
-                    Nome = u.Nome
+                    Nome = u.Nome,
+                    Email = u.Email,
+                    Cargo = u.Cargo
                 })
                 .ToList();
 
             return Ok(usuarios);
         }
 
+        // ============================================================
         // LOGIN
+        // POST: api/Usuario/login
+        // ============================================================
+
         [HttpPost("login")]
-        public IActionResult Login(Usuario usuario)
+        public IActionResult Login([FromBody] Usuario usuario)
         {
+            if (usuario == null)
+            {
+                return BadRequest(new
+                {
+                    mensagem = "Informe o email e a senha."
+                });
+            }
+
+            if (string.IsNullOrWhiteSpace(usuario.Email) ||
+                string.IsNullOrWhiteSpace(usuario.Senha))
+            {
+                return BadRequest(new
+                {
+                    mensagem = "Email e senha são obrigatórios."
+                });
+            }
+
             var usuarioBanco = _context.Usuarios
                 .FirstOrDefault(u =>
                     u.Email == usuario.Email &&
@@ -43,7 +68,10 @@ namespace GestaoEmCampo.Controllers
 
             if (usuarioBanco == null)
             {
-                return Unauthorized("Email ou senha incorretos!");
+                return Unauthorized(new
+                {
+                    mensagem = "Email ou senha incorretos."
+                });
             }
 
             HttpContext.Session.SetString(
@@ -51,96 +79,222 @@ namespace GestaoEmCampo.Controllers
                 usuarioBanco.Id_Usuario.ToString()
             );
 
-            return Ok(usuarioBanco.Cargo.Trim());
+            return Ok(new
+            {
+                mensagem = "Login realizado com sucesso.",
+                id = usuarioBanco.Id_Usuario,
+                nome = usuarioBanco.Nome,
+                email = usuarioBanco.Email,
+                cargo = usuarioBanco.Cargo
+            });
         }
 
+        // ============================================================
         // LOGOUT
+        // GET: api/Usuario/logout
+        // ============================================================
+
         [HttpGet("logout")]
         public IActionResult Logout()
         {
             HttpContext.Session.Clear();
 
-            return Ok("Logout realizado!");
+            return Ok(new
+            {
+                mensagem = "Logout realizado com sucesso."
+            });
         }
 
+        // ============================================================
         // CADASTRAR USUÁRIO
+        // POST: api/Usuario
+        // ============================================================
+
         [HttpPost]
-        public IActionResult CadastraUsuario(Usuario usuario)
+        public IActionResult CadastrarUsuario(
+            [FromBody] Usuario usuario)
         {
+            if (usuario == null)
+            {
+                return BadRequest(new
+                {
+                    mensagem = "Informe os dados do usuário."
+                });
+            }
+
+            if (string.IsNullOrWhiteSpace(usuario.Nome))
+            {
+                return BadRequest(new
+                {
+                    mensagem = "O nome é obrigatório."
+                });
+            }
+
+            if (string.IsNullOrWhiteSpace(usuario.Email))
+            {
+                return BadRequest(new
+                {
+                    mensagem = "O email é obrigatório."
+                });
+            }
+
+            if (string.IsNullOrWhiteSpace(usuario.Senha))
+            {
+                return BadRequest(new
+                {
+                    mensagem = "A senha é obrigatória."
+                });
+            }
+
+            if (string.IsNullOrWhiteSpace(usuario.Cargo))
+            {
+                return BadRequest(new
+                {
+                    mensagem = "O cargo é obrigatório."
+                });
+            }
+
+            var emailExiste = _context.Usuarios
+                .Any(u => u.Email == usuario.Email);
+
+            if (emailExiste)
+            {
+                return Conflict(new
+                {
+                    mensagem = "Este email já está cadastrado."
+                });
+            }
+
             _context.Usuarios.Add(usuario);
+
             _context.SaveChanges();
 
-            return Created("", usuario);
+            return Created(
+                $"api/Usuario/{usuario.Id_Usuario}",
+                usuario
+            );
         }
 
+        // ============================================================
         // DELETAR USUÁRIO
+        // DELETE: api/Usuario/{id}
+        // ============================================================
+
         [HttpDelete("{id}")]
-        public IActionResult DeletaUsuario(int id)
+        public IActionResult DeletarUsuario(int id)
         {
-            var idLogado = HttpContext.Session.GetString("IdLogado");
+            var idLogado =
+                HttpContext.Session.GetString("IdLogado");
 
             if (idLogado == null)
             {
-                return Unauthorized("Faça o login antes.");
+                return Unauthorized(new
+                {
+                    mensagem = "Faça login antes."
+                });
             }
 
-            if (!int.TryParse(idLogado, out int idUsuarioLogado))
+            if (!int.TryParse(
+                idLogado,
+                out int idUsuarioLogado))
             {
-                return Unauthorized("ID do usuário inválido.");
+                return Unauthorized(new
+                {
+                    mensagem = "ID do usuário inválido."
+                });
             }
 
             var usuarioLogado = _context.Usuarios
-                .FirstOrDefault(u => u.Id_Usuario == idUsuarioLogado);
+                .FirstOrDefault(
+                    u => u.Id_Usuario == idUsuarioLogado
+                );
 
             if (usuarioLogado == null)
             {
-                return Unauthorized("Usuário não encontrado.");
+                return Unauthorized(new
+                {
+                    mensagem = "Usuário logado não encontrado."
+                });
             }
 
             if (string.IsNullOrWhiteSpace(usuarioLogado.Cargo) ||
-                !usuarioLogado.Cargo.Trim().Equals("Gestão"))
+                !usuarioLogado.Cargo
+                    .Trim()
+                    .Equals(
+                        "Gestão",
+                        StringComparison.OrdinalIgnoreCase
+                    ))
             {
-                return Unauthorized(
-                    "Apenas gestores podem deletar usuários."
-                );
+                return Unauthorized(new
+                {
+                    mensagem =
+                        "Apenas gestores podem deletar usuários."
+                });
             }
 
             var usuarioBanco = _context.Usuarios
-                .FirstOrDefault(u => u.Id_Usuario == id);
+                .FirstOrDefault(
+                    u => u.Id_Usuario == id
+                );
 
             if (usuarioBanco == null)
             {
-                return NotFound("Usuário não encontrado.");
+                return NotFound(new
+                {
+                    mensagem = "Usuário não encontrado."
+                });
             }
 
             _context.Usuarios.Remove(usuarioBanco);
+
             _context.SaveChanges();
 
-            return Ok("Usuário deletado com sucesso.");
+            return Ok(new
+            {
+                mensagem = "Usuário deletado com sucesso."
+            });
         }
 
-        // PERFIL
+        // ============================================================
+        // PERFIL DO USUÁRIO LOGADO
+        // GET: api/Usuario/perfil
+        // ============================================================
+
         [HttpGet("perfil")]
         public IActionResult Perfil()
         {
-            var idLogado = HttpContext.Session.GetString("IdLogado");
+            var idLogado =
+                HttpContext.Session.GetString("IdLogado");
 
             if (idLogado == null)
             {
-                return Unauthorized("Faça login.");
+                return Unauthorized(new
+                {
+                    mensagem = "Faça login."
+                });
             }
 
-            if (!int.TryParse(idLogado, out int idUsuario))
+            if (!int.TryParse(
+                idLogado,
+                out int idUsuario))
             {
-                return Unauthorized("ID do usuário inválido.");
+                return Unauthorized(new
+                {
+                    mensagem = "ID do usuário inválido."
+                });
             }
 
             var usuario = _context.Usuarios
-                .FirstOrDefault(u => u.Id_Usuario == idUsuario);
+                .FirstOrDefault(
+                    u => u.Id_Usuario == idUsuario
+                );
 
             if (usuario == null)
             {
-                return NotFound("Usuário não encontrado.");
+                return NotFound(new
+                {
+                    mensagem = "Usuário não encontrado."
+                });
             }
 
             return Ok(new

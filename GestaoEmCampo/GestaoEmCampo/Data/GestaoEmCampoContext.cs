@@ -1,5 +1,4 @@
-﻿using GestaoEmCampo.Controllers;
-using GestaoEmCampo.Models;
+﻿using GestaoEmCampo.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace GestaoEmCampo.Data
@@ -14,10 +13,10 @@ namespace GestaoEmCampo.Data
 
         public DbSet<Usuario> Usuarios { get; set; }
 
-        public DbSet<Usuario_Escala> Usuarios_Escala { get; set; }
-
         public DbSet<Escala> Escalas { get; set; }
 
         public DbSet<Solicitacao> Solicitacoes { get; set; }
+
+        public DbSet<Troca_escala> Trocas_Escala { get; set; }
     }
 }

@@ -1,8 +1,30 @@
 /* ========================================= */
-/* VARIÁVEL DA LINHA SENDO EDITADA */
+/* CONFIGURAÇÃO DA API */
 /* ========================================= */
 
-let linhaEditando = null;
+const API_URL =
+    "https://localhost:7134/api/Escala";
+
+
+/* ========================================= */
+/* VARIÁVEL DA ESCALA SENDO EDITADA */
+/* ========================================= */
+
+let escalaEditando = null;
+
+
+/* ========================================= */
+/* INICIAR PÁGINA */
+/* ========================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        carregarEscalas();
+
+    }
+);
 
 
 /* ========================================= */
@@ -11,7 +33,163 @@ let linhaEditando = null;
 
 function novaEscala() {
 
-    window.location.href = "Cadastro escala.html";
+    window.location.href =
+        "Cadastro escala.html";
+}
+
+
+/* ========================================= */
+/* CARREGAR ESCALAS DA API */
+/* ========================================= */
+
+async function carregarEscalas() {
+
+    try {
+
+        const resposta =
+            await fetch(API_URL);
+
+
+        if (!resposta.ok) {
+
+            throw new Error(
+                "Erro ao buscar escalas."
+            );
+        }
+
+
+        const escalas =
+            await resposta.json();
+
+
+        preencherTabela(escalas);
+
+
+    } catch (erro) {
+
+        console.error(
+            "Erro:",
+            erro
+        );
+
+
+        alert(
+            "Não foi possível carregar as escalas."
+        );
+    }
+}
+
+
+/* ========================================= */
+/* PREENCHER TABELA */
+/* ========================================= */
+
+function preencherTabela(escalas) {
+
+    const tabela =
+        document.getElementById(
+            "tabelaEscalas"
+        );
+
+
+    tabela.innerHTML = "";
+
+
+    escalas.forEach(
+        function (escala) {
+
+            const linha =
+                document.createElement("tr");
+
+
+            /* ID da escala */
+
+            linha.dataset.id =
+                escala.id_Escala;
+
+
+            /* Nome */
+
+            const funcionario =
+                escala.baixada ||
+                "Não informado";
+
+
+            /* Data inicial */
+
+            const dataInicio =
+                formatarData(
+                    escala.data_Inicio
+                );
+
+
+            /* Data final */
+
+            const dataFim =
+                formatarData(
+                    escala.data_Fim
+                );
+
+
+            /* Status */
+
+            const status =
+                escala.statuss
+                    ? "Ativa"
+                    : "Pendente";
+
+
+            const classeStatus =
+                escala.statuss
+                    ? "ativa"
+                    : "pendente";
+
+
+            /* ========================================= */
+            /* MONTAR LINHA */
+            /* ========================================= */
+
+            linha.innerHTML = `
+
+                <td>
+                    ${funcionario}
+                </td>
+
+                <td>
+                    ${dataInicio}
+                </td>
+
+                <td>
+                    ${dataFim}
+                </td>
+
+                <td>
+
+                    <span class="status ${classeStatus}">
+                        ${status}
+                    </span>
+
+                </td>
+
+                <td>
+
+                    <button
+                        class="botao-editar"
+                        onclick="editarEscala(${escala.id_Escala})">
+
+                        Editar
+
+                    </button>
+
+                </td>
+
+            `;
+
+
+            tabela.appendChild(linha);
+
+        }
+    );
 }
 
 
@@ -19,107 +197,101 @@ function novaEscala() {
 /* EDITAR ESCALA */
 /* ========================================= */
 
-function editarEscala(botao) {
+async function editarEscala(id) {
 
-    linhaEditando = botao.closest("tr");
+    try {
 
-    const colunas =
-        linhaEditando.querySelectorAll("td");
+        /* Buscar escala no banco */
 
-
-    /* Funcionário */
-
-    const funcionario =
-        colunas[0].textContent.trim();
+        const resposta =
+            await fetch(
+                `${API_URL}/${id}`
+            );
 
 
-    /* Data inicial */
+        if (!resposta.ok) {
 
-    const dataInicio =
-        colunas[1].textContent.trim();
-
-
-    /* Data final */
-
-    const dataFim =
-        colunas[2].textContent.trim();
+            throw new Error(
+                "Escala não encontrada."
+            );
+        }
 
 
-    /* Status */
-
-    const status =
-        colunas[3]
-            .querySelector(".status")
-            .textContent
-            .trim();
+        const escala =
+            await resposta.json();
 
 
-    /* ========================================= */
-    /* PREENCHER MODAL */
-    /* ========================================= */
+        /* Guardar ID */
 
-    document.getElementById(
-        "editarFuncionario"
-    ).value = funcionario;
+        escalaEditando =
+            escala.id_Escala;
 
 
-    document.getElementById(
-        "editarInicio"
-    ).value = converterData(dataInicio);
+        /* ========================================= */
+        /* PREENCHER MODAL */
+        /* ========================================= */
+
+        document.getElementById(
+            "editarFuncionario"
+        ).value =
+            escala.baixada || "";
 
 
-    document.getElementById(
-        "editarFim"
-    ).value = converterData(dataFim);
+        document.getElementById(
+            "editarInicio"
+        ).value =
+            escala.data_Inicio;
 
 
-    document.getElementById(
-        "editarStatus"
-    ).value = status;
+        document.getElementById(
+            "editarFim"
+        ).value =
+            escala.data_Fim;
 
 
-    /* ========================================= */
-    /* ABRIR MODAL */
-    /* ========================================= */
+        document.getElementById(
+            "editarStatus"
+        ).value =
+            escala.statuss
+                ? "Ativa"
+                : "Pendente";
 
-    document.getElementById(
-        "modalEdicao"
-    ).style.display = "flex";
+
+        /* ========================================= */
+        /* ABRIR MODAL */
+        /* ========================================= */
+
+        document.getElementById(
+            "modalEdicao"
+        ).style.display = "flex";
+
+
+    } catch (erro) {
+
+        console.error(
+            "Erro:",
+            erro
+        );
+
+
+        alert(
+            "Não foi possível carregar a escala."
+        );
+    }
 }
 
 
 /* ========================================= */
-/* CONVERTER DATA */
+/* FORMATAR DATA PARA A TABELA */
 /* ========================================= */
 
-function converterData(data) {
+function formatarData(data) {
 
-    const partes =
-        data.split("/");
-
-
-    if (partes.length !== 3) {
+    if (!data) {
 
         return "";
     }
 
-
-    const dia = partes[0];
-
-    const mes = partes[1];
-
-    const ano = partes[2];
-
-
-    return `${ano}-${mes}-${dia}`;
-}
-
-
-/* ========================================= */
-/* FORMATAR DATA */
-/* ========================================= */
-
-function formatarData(data) {
 
     const partes =
         data.split("-");
@@ -127,15 +299,20 @@ function formatarData(data) {
 
     if (partes.length !== 3) {
 
-        return "";
+        return data;
     }
 
 
-    const ano = partes[0];
+    const ano =
+        partes[0];
 
-    const mes = partes[1];
 
-    const dia = partes[2];
+    const mes =
+        partes[1];
+
+
+    const dia =
+        partes[2];
 
 
     return `${dia}/${mes}/${ano}`;
@@ -146,18 +323,30 @@ function formatarData(data) {
 /* SALVAR EDIÇÃO */
 /* ========================================= */
 
-function salvarEdicao() {
+async function salvarEdicao() {
 
-    if (!linhaEditando) {
+    /* ========================================= */
+    /* VERIFICAR ESCALA */
+    /* ========================================= */
+
+    if (escalaEditando === null) {
+
+        alert(
+            "Nenhuma escala selecionada."
+        );
 
         return;
     }
 
 
+    /* ========================================= */
+    /* PEGAR VALORES DO FORMULÁRIO */
+    /* ========================================= */
+
     const funcionario =
         document.getElementById(
             "editarFuncionario"
-        ).value;
+        ).value.trim();
 
 
     const inicio =
@@ -211,65 +400,96 @@ function salvarEdicao() {
 
 
     /* ========================================= */
-    /* ATUALIZAR TABELA */
+    /* MONTAR OBJETO PARA API */
     /* ========================================= */
 
-    const colunas =
-        linhaEditando.querySelectorAll("td");
+    const dados = {
+
+        data_Inicio:
+            inicio,
+
+        data_Fim:
+            fim,
+
+        baixada:
+            funcionario,
+
+        statuss:
+            status === "Ativa"
+
+    };
 
 
-    colunas[0].textContent =
-        funcionario;
+    try {
+
+        /* ========================================= */
+        /* ENVIAR PARA API */
+        /* ========================================= */
+
+        const resposta =
+            await fetch(
+                `${API_URL}/${escalaEditando}`,
+                {
+
+                    method: "PUT",
+
+                    headers: {
+
+                        "Content-Type":
+                            "application/json"
+
+                    },
+
+                    body:
+                        JSON.stringify(dados)
+
+                }
+            );
 
 
-    colunas[1].textContent =
-        formatarData(inicio);
+        /* ========================================= */
+        /* VERIFICAR RESPOSTA */
+        /* ========================================= */
+
+        if (!resposta.ok) {
+
+            throw new Error(
+                "Erro ao atualizar escala."
+            );
+        }
 
 
-    colunas[2].textContent =
-        formatarData(fim);
+        /* ========================================= */
+        /* FECHAR MODAL */
+        /* ========================================= */
+
+        fecharEdicao();
 
 
-    /* ========================================= */
-    /* ATUALIZAR STATUS */
-    /* ========================================= */
+        /* ========================================= */
+        /* RECARREGAR DADOS DO BANCO */
+        /* ========================================= */
 
-    const elementoStatus =
-        colunas[3].querySelector(".status");
-
-
-    elementoStatus.textContent =
-        status;
+        await carregarEscalas();
 
 
-    elementoStatus.className =
-        "status";
-
-
-    if (status === "Ativa") {
-
-        elementoStatus.classList.add(
-            "ativa"
+        alert(
+            "Escala atualizada com sucesso!"
         );
 
-    } else if (status === "Pendente") {
 
-        elementoStatus.classList.add(
-            "pendente"
+    } catch (erro) {
+
+        console.error(
+            "Erro:",
+            erro
+        );
+
+
+        alert(
+            "Não foi possível atualizar a escala."
         );
     }
-
-
-    /* ========================================= */
-    /* FECHAR MODAL */
-    /* ========================================= */
-
-    fecharEdicao();
-
-
-    alert(
-        "Escala atualizada com sucesso!"
-    );
 }
 
 
@@ -284,7 +504,7 @@ function fecharEdicao() {
     ).style.display = "none";
 
 
-    linhaEditando = null;
+    escalaEditando = null;
 }
 
 
