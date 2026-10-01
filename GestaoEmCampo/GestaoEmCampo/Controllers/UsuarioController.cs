@@ -26,10 +26,10 @@ namespace GestaoEmCampo.Controllers
             var usuarios = _context.Usuarios
                 .Select(u => new
                 {
-                    Id = u.Id_Usuario,
-                    Nome = u.Nome,
-                    Email = u.Email,
-                    Cargo = u.Cargo
+                    id = u.Id_Usuario,
+                    nome = u.Nome,
+                    email = u.Email,
+                    cargo = u.Cargo
                 })
                 .ToList();
 
@@ -52,19 +52,27 @@ namespace GestaoEmCampo.Controllers
                 });
             }
 
-            if (string.IsNullOrWhiteSpace(usuario.Email) ||
-                string.IsNullOrWhiteSpace(usuario.Senha))
+            if (string.IsNullOrWhiteSpace(usuario.Email))
             {
                 return BadRequest(new
                 {
-                    mensagem = "Email e senha são obrigatórios."
+                    mensagem = "O email é obrigatório."
+                });
+            }
+
+            if (string.IsNullOrWhiteSpace(usuario.Senha))
+            {
+                return BadRequest(new
+                {
+                    mensagem = "A senha é obrigatória."
                 });
             }
 
             var usuarioBanco = _context.Usuarios
                 .FirstOrDefault(u =>
                     u.Email == usuario.Email &&
-                    u.Senha == usuario.Senha);
+                    u.Senha == usuario.Senha
+                );
 
             if (usuarioBanco == null)
             {
@@ -74,6 +82,7 @@ namespace GestaoEmCampo.Controllers
                 });
             }
 
+            // Salva o ID do usuário na sessão
             HttpContext.Session.SetString(
                 "IdLogado",
                 usuarioBanco.Id_Usuario.ToString()
@@ -111,8 +120,7 @@ namespace GestaoEmCampo.Controllers
         // ============================================================
 
         [HttpPost]
-        public IActionResult CadastrarUsuario(
-            [FromBody] Usuario usuario)
+        public IActionResult CadastrarUsuario([FromBody] Usuario usuario)
         {
             if (usuario == null)
             {
@@ -154,6 +162,7 @@ namespace GestaoEmCampo.Controllers
                 });
             }
 
+            // Verifica se o email já existe
             var emailExiste = _context.Usuarios
                 .Any(u => u.Email == usuario.Email);
 
@@ -171,7 +180,14 @@ namespace GestaoEmCampo.Controllers
 
             return Created(
                 $"api/Usuario/{usuario.Id_Usuario}",
-                usuario
+                new
+                {
+                    mensagem = "Usuário cadastrado com sucesso.",
+                    id = usuario.Id_Usuario,
+                    nome = usuario.Nome,
+                    email = usuario.Email,
+                    cargo = usuario.Cargo
+                }
             );
         }
 
@@ -183,8 +199,7 @@ namespace GestaoEmCampo.Controllers
         [HttpDelete("{id}")]
         public IActionResult DeletarUsuario(int id)
         {
-            var idLogado =
-                HttpContext.Session.GetString("IdLogado");
+            var idLogado = HttpContext.Session.GetString("IdLogado");
 
             if (idLogado == null)
             {
@@ -194,9 +209,7 @@ namespace GestaoEmCampo.Controllers
                 });
             }
 
-            if (!int.TryParse(
-                idLogado,
-                out int idUsuarioLogado))
+            if (!int.TryParse(idLogado, out int idUsuarioLogado))
             {
                 return Unauthorized(new
                 {
@@ -205,8 +218,8 @@ namespace GestaoEmCampo.Controllers
             }
 
             var usuarioLogado = _context.Usuarios
-                .FirstOrDefault(
-                    u => u.Id_Usuario == idUsuarioLogado
+                .FirstOrDefault(u =>
+                    u.Id_Usuario == idUsuarioLogado
                 );
 
             if (usuarioLogado == null)
@@ -217,24 +230,20 @@ namespace GestaoEmCampo.Controllers
                 });
             }
 
+            // Apenas Gestão pode excluir usuários
             if (string.IsNullOrWhiteSpace(usuarioLogado.Cargo) ||
-                !usuarioLogado.Cargo
-                    .Trim()
-                    .Equals(
-                        "Gestão",
-                        StringComparison.OrdinalIgnoreCase
-                    ))
+                !usuarioLogado.Cargo.Trim()
+                    .Equals("Gestão", StringComparison.OrdinalIgnoreCase))
             {
                 return Unauthorized(new
                 {
-                    mensagem =
-                        "Apenas gestores podem deletar usuários."
+                    mensagem = "Apenas gestores podem deletar usuários."
                 });
             }
 
             var usuarioBanco = _context.Usuarios
-                .FirstOrDefault(
-                    u => u.Id_Usuario == id
+                .FirstOrDefault(u =>
+                    u.Id_Usuario == id
                 );
 
             if (usuarioBanco == null)
@@ -263,8 +272,7 @@ namespace GestaoEmCampo.Controllers
         [HttpGet("perfil")]
         public IActionResult Perfil()
         {
-            var idLogado =
-                HttpContext.Session.GetString("IdLogado");
+            var idLogado = HttpContext.Session.GetString("IdLogado");
 
             if (idLogado == null)
             {
@@ -274,9 +282,7 @@ namespace GestaoEmCampo.Controllers
                 });
             }
 
-            if (!int.TryParse(
-                idLogado,
-                out int idUsuario))
+            if (!int.TryParse(idLogado, out int idUsuario))
             {
                 return Unauthorized(new
                 {
@@ -285,8 +291,8 @@ namespace GestaoEmCampo.Controllers
             }
 
             var usuario = _context.Usuarios
-                .FirstOrDefault(
-                    u => u.Id_Usuario == idUsuario
+                .FirstOrDefault(u =>
+                    u.Id_Usuario == idUsuario
                 );
 
             if (usuario == null)
@@ -299,10 +305,10 @@ namespace GestaoEmCampo.Controllers
 
             return Ok(new
             {
-                usuario.Id_Usuario,
-                usuario.Nome,
-                usuario.Email,
-                usuario.Cargo
+                id = usuario.Id_Usuario,
+                nome = usuario.Nome,
+                email = usuario.Email,
+                cargo = usuario.Cargo
             });
         }
     }

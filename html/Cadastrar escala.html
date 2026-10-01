@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cadastrar Escala - Gestão em Campo</title>
+
+    <link rel="stylesheet" href="../css/Cadastrar escala.css">
+</head>
+
+<body>
+
+    <!-- MENU LATERAL -->
+    <aside class="menu-lateral">
+
+        <div class="logo-area">
+            <img src="../img/img.png" alt="Logo Gestão em Campo">
+        </div>
+
+        <nav>
+
+            <a href="inicio.html">
+                Início
+            </a>
+
+            <a href="Painel escala.html">
+                Escalas
+            </a>
+
+            <a href="Solicitacao.html">
+                Solicitações
+            </a>
+
+            <a href="perfil.html">
+                Meu Perfil
+            </a>
+
+            <a href="login.html">
+                Sair
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- CONTEÚDO PRINCIPAL -->
+
+    <main class="conteudo">
+
+        <div class="cabecalho">
+
+            <h1>
+                Cadastrar Escala
+            </h1>
+
+            <p>
+                Preencha os dados abaixo para cadastrar uma nova escala.
+            </p>
+
+        </div>
+
+
+        <!-- CARD DO FORMULÁRIO -->
+
+        <section class="card">
+
+            <h2>
+                Nova Escala
+            </h2>
+
+            <form id="formCadastrarEscala">
+
+                <!-- DATA INICIAL -->
+
+                <div class="campo">
+
+                    <label for="dataInicio">
+                        Data de início
+                    </label>
+
+                    <input
+                        type="date"
+                        id="dataInicio"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- DATA FINAL -->
+
+                <div class="campo">
+
+                    <label for="dataFim">
+                        Data de fim
+                    </label>
+
+                    <input
+                        type="date"
+                        id="dataFim"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- BAIXADA -->
+
+                <div class="campo">
+
+                    <label for="baixada">
+                        Escala baixada?
+                    </label>
+
+                    <select id="baixada" required>
+
+                        <option value="">
+                            Selecione uma opção
+                        </option>
+
+                        <option value="Sim">
+                            Sim
+                        </option>
+
+                        <option value="Não">
+                            Não
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- STATUS -->
+
+                <div class="campo">
+
+                    <label for="status">
+                        Status da escala
+                    </label>
+
+                    <select id="status" required>
+
+                        <option value="">
+                            Selecione uma opção
+                        </option>
+
+                        <option value="true">
+                            Ativa
+                        </option>
+
+                        <option value="false">
+                            Inativa
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- BOTÕES -->
+
+                <div class="botoes">
+
+                    <button
+                        type="button"
+                        class="btn-cancelar"
+                        onclick="voltarPainel()"
+                    >
+                        Cancelar
+                    </button>
+
+
+                    <button
+                        type="submit"
+                        class="btn-cadastrar"
+                    >
+                        Cadastrar Escala
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+    </main>
+
+
+    <script src="../js/Cadastrar escala.js"></script>
+
+</body>
+
+</html>

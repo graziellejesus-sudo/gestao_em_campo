@@ -417,11 +417,11 @@
           },
           "data_Inicio": {
             "type": "string",
-            "format": "date"
+            "format": "date-time"
           },
           "data_Fim": {
             "type": "string",
-            "format": "date"
+            "format": "date-time"
           },
           "baixada": {
             "type": "string",
@@ -446,11 +446,11 @@
           },
           "data_Solicitada_Inicio": {
             "type": "string",
-            "format": "date"
+            "format": "date-time"
           },
           "data_Solicitada_Fim": {
             "type": "string",
-            "format": "date"
+            "format": "date-time"
           },
           "motivo": {
             "type": "string",

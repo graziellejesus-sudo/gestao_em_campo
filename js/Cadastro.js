@@ -1,91 +1,169 @@
-const myForm = document.getElementById('cadastroUsuario');
+const myForm = document.getElementById("cadastroUsuario");
 
-if (myForm != null) {
+console.log("Cadastro.js carregado");
 
-    myForm.addEventListener('submit', function (event) {
+if (myForm !== null) {
+
+    myForm.addEventListener("submit", async function (event) {
 
         event.preventDefault();
 
+        console.log("Formulário enviado");
+
+        const nome = document.getElementById("nome").value.trim();
+        const email = document.getElementById("email").value.trim();
         const senha = document.getElementById("senha").value;
+        const cargo = document.getElementById("cargo").value;
 
-        // Validação da senha
-        if (senha.length < 8) {
 
-            Swal.fire({
-                icon: "warning",
-                title: "Senha inválida",
-                text: "A senha deve ter no mínimo 8 caracteres.",
-                confirmButtonText: "OK",
-                confirmButtonColor: "#ff8c00"
-            });
+        // ==============================
+        // VALIDAÇÕES
+        // ==============================
+
+        if (nome === "") {
+
+            alert("Informe o nome.");
 
             return;
         }
 
-        // Dados do usuário
+
+        if (email === "") {
+
+            alert("Informe o email.");
+
+            return;
+        }
+
+
+        if (senha.length < 8) {
+
+            alert("A senha deve ter no mínimo 8 caracteres.");
+
+            return;
+        }
+
+
+        if (cargo === "") {
+
+            alert("Selecione o cargo.");
+
+            return;
+        }
+
+
+        // ==============================
+        // OBJETO DO USUÁRIO
+        // ==============================
+
         const usuario = {
-            nome: document.getElementById("nome").value,
-            email: document.getElementById("email").value,
+
+            nome: nome,
+
+            email: email,
+
             senha: senha,
-            cargo: document.getElementById("cargo").value
+
+            cargo: cargo
+
         };
 
-        // Envia para o backend
-        fetch('https://localhost:7134/Usuario', {
 
-            method: 'POST',
+        console.log("Usuário enviado:", usuario);
 
-            credentials: 'include',
 
-            headers: {
-                'Content-Type': 'application/json'
-            },
+        try {
 
-            body: JSON.stringify(usuario)
+            // ==============================
+            // ENVIA PARA O BACKEND
+            // ==============================
 
-        })
+            const response = await fetch(
+                "https://localhost:7134/api/Usuario",
+                {
+                    method: "POST",
 
-        .then(async response => {
+                    credentials: "include",
+
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+
+                    body: JSON.stringify(usuario)
+                }
+            );
+
+
+            console.log("Status da resposta:", response.status);
+
+
+            // ==============================
+            // LÊ RESPOSTA
+            // ==============================
+
+            const texto = await response.text();
+
+            let data = {};
+
+            try {
+
+                data = JSON.parse(texto);
+
+            } catch {
+
+                data = {
+                    mensagem: texto
+                };
+
+            }
+
+
+            console.log("Resposta do servidor:", data);
+
+
+            // ==============================
+            // ERRO
+            // ==============================
 
             if (!response.ok) {
 
-                const mensagem = await response.text();
-
-                throw new Error(mensagem || "Erro ao cadastrar usuário.");
+                throw new Error(
+                    data.mensagem ||
+                    data.message ||
+                    "Erro ao cadastrar usuário."
+                );
             }
 
-            return response.json();
-        })
 
-        .then(data => {
+            // ==============================
+            // SUCESSO
+            // ==============================
 
-            Swal.fire({
-                icon: "success",
-                title: "Cadastro realizado!",
-                text: "Usuário cadastrado com sucesso.",
-                confirmButtonText: "OK",
-                confirmButtonColor: "#ff8c00"
-            }).then(() => {
+            alert("Usuário cadastrado com sucesso!");
 
-                window.location.href = "../html/log.html";
+            window.location.href = "../html/login.html";
 
-            });
 
-        })
+        } catch (error) {
 
-        .catch(error => {
+            console.error(
+                "Erro ao cadastrar usuário:",
+                error
+            );
 
-            console.error("Erro:", error);
+            alert(
+                error.message ||
+                "Erro ao cadastrar usuário."
+            );
 
-            Swal.fire({
-                icon: "error",
-                title: "Erro",
-                text: error.message || "Erro ao cadastrar usuário.",
-                confirmButtonText: "OK",
-                confirmButtonColor: "#ff8c00"
-            });
-
-        });
+        }
 
     });
+
+} else {
+
+    console.error(
+        "ERRO: formulário #cadastroUsuario não encontrado."
+    );
+
 }
