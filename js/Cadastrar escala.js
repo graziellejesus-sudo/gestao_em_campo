@@ -151,7 +151,7 @@ formulario.addEventListener("submit", async function (event) {
         // Volta para o painel
 
         window.location.href =
-            "../html/Painel escala.html";
+            "../html/Cadastrar escala.html";
 
 
     } catch (error) {

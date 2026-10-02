@@ -81,7 +81,6 @@ namespace GestaoEmCampo.Controllers
                     mensagem = "Email ou senha incorretos."
                 });
             }
-
             // Salva o ID do usuário na sessão
             HttpContext.Session.SetString(
                 "IdLogado",

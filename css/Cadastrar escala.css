@@ -1,4 +1,6 @@
-/* RESET */
+/* ========================================
+   RESET
+======================================== */
 
 * {
     margin: 0;
@@ -6,7 +8,10 @@
     box-sizing: border-box;
 }
 
-/* CORPO */
+
+/* ========================================
+   CORPO
+======================================== */
 
 body {
     font-family: Arial, Helvetica, sans-serif;
@@ -15,7 +20,10 @@ body {
     color: #333;
 }
 
-/* MENU LATERAL */
+
+/* ========================================
+   MENU LATERAL
+======================================== */
 
 .menu-lateral {
     position: fixed;
@@ -33,10 +41,15 @@ body {
         #d0c6e0
     );
 
-    box-shadow: 4px 0 15px rgba(0,0,0,0.15);
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.15);
+
+    z-index: 1000;
 }
 
-/* LOGO */
+
+/* ========================================
+   LOGO
+======================================== */
 
 .logo-area {
     text-align: center;
@@ -45,19 +58,16 @@ body {
 
 .logo-area img {
     width: 180px;
+    max-width: 100%;
+    height: auto;
+
     border-radius: 8px;
 }
 
-.logo-area span {
-    display: block;
-    margin-top: 10px;
 
-    color: white;
-    font-size: 20px;
-    font-weight: bold;
-}
-
-/* MENU */
+/* ========================================
+   MENU
+======================================== */
 
 .menu-lateral nav {
     display: flex;
@@ -66,6 +76,8 @@ body {
 }
 
 .menu-lateral nav a {
+    display: block;
+
     text-decoration: none;
     color: white;
 
@@ -79,7 +91,7 @@ body {
 }
 
 .menu-lateral nav a:hover {
-    background: rgba(255,255,255,0.18);
+    background: rgba(255, 255, 255, 0.18);
     transform: translateX(4px);
 }
 
@@ -88,310 +100,270 @@ body {
     color: #4f46e5;
 }
 
-/* CONTEÚDO */
+
+/* ========================================
+   CONTEÚDO PRINCIPAL
+======================================== */
 
 .conteudo {
     margin-left: 240px;
+
+    min-height: 100vh;
+
     padding: 40px;
 }
 
-/* CABEÇALHO */
+
+/* ========================================
+   CABEÇALHO
+======================================== */
 
 .cabecalho {
-    margin-bottom: 30px;
+    max-width: 800px;
+
+    margin: 0 auto 30px;
 }
 
 .cabecalho h1 {
     color: #4f46e5;
+
     font-size: 32px;
+
     margin-bottom: 8px;
 }
 
 .cabecalho p {
     color: #666;
+
+    font-size: 16px;
 }
 
-/* CARDS */
 
-.cards {
-    display: flex;
-    gap: 20px;
-    margin-bottom: 35px;
-}
+/* ========================================
+   CARD DO FORMULÁRIO
+======================================== */
 
 .card {
-    flex: 1;
-
-    background: white;
-
-    padding: 25px;
-
-    border-radius: 14px;
-
-    box-shadow: 0 5px 18px rgba(0,0,0,0.08);
-}
-
-.card h3 {
-    color: #555;
-    margin-bottom: 10px;
-}
-
-.card strong {
-    display: block;
-
-    color: #4f46e5;
-
-    font-size: 32px;
-
-    margin-bottom: 5px;
-}
-
-.card p {
-    color: #888;
-}
-
-/* TABELA */
-
-.tabela-container {
-    background: white;
-
-    padding: 25px;
-
-    border-radius: 14px;
-
-    box-shadow: 0 5px 18px rgba(0,0,0,0.08);
-}
-
-.titulo-tabela {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    margin-bottom: 25px;
-}
-
-.titulo-tabela h2 {
-    margin-bottom: 5px;
-}
-
-.titulo-tabela p {
-    color: #777;
-    font-size: 14px;
-}
-
-/* BOTÃO NOVA ESCALA */
-
-.botao-nova {
-    border: none;
-
-    background: #4f46e5;
-    color: white;
-
-    padding: 12px 20px;
-
-    border-radius: 8px;
-
-    font-weight: bold;
-
-    cursor: pointer;
-}
-
-.botao-nova:hover {
-    background: #3730a3;
-}
-
-/* TABELA */
-
-.tabela-scroll {
-    overflow-x: auto;
-}
-
-table {
     width: 100%;
-    border-collapse: collapse;
-}
+    max-width: 800px;
 
-th {
-    background: #f1f0ff;
-
-    color: #4f46e5;
-
-    padding: 15px;
-
-    text-align: left;
-}
-
-td {
-    padding: 15px;
-
-    border-bottom: 1px solid #eee;
-}
-
-/* STATUS */
-
-.status {
-    padding: 6px 12px;
-
-    border-radius: 20px;
-
-    font-size: 13px;
-
-    font-weight: bold;
-}
-
-.ativa {
-    background: #dcfce7;
-    color: #15803d;
-}
-
-.pendente {
-    background: #fef3c7;
-    color: #b45309;
-}
-
-/* BOTÃO EDITAR */
-
-.botao-editar {
-    border: none;
-
-    background: #dc2626;
-    color: white;
-
-    padding: 8px 15px;
-
-    border-radius: 7px;
-
-    cursor: pointer;
-}
-
-.botao-editar:hover {
-    background: #b91c1c;
-}
-
-/* MODAL */
-
-.modal {
-    display: none;
-
-    position: fixed;
-
-    inset: 0;
-
-    background: rgba(0,0,0,0.45);
-
-    justify-content: center;
-    align-items: center;
-}
-
-.modal-conteudo {
-    width: 420px;
-    max-width: 90%;
+    margin: 0 auto;
 
     background: white;
 
     padding: 30px;
 
-    border-radius: 15px;
+    border-radius: 14px;
 
-    position: relative;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
 }
 
-.modal-conteudo h2 {
+.card h2 {
     color: #4f46e5;
-    margin-bottom: 8px;
+
+    font-size: 24px;
+
+    margin-bottom: 25px;
 }
 
-.modal-conteudo p {
-    color: #777;
+
+/* ========================================
+   CAMPOS DO FORMULÁRIO
+======================================== */
+
+.campo {
+    width: 100%;
+
     margin-bottom: 20px;
 }
 
-.fechar {
-    position: absolute;
-
-    right: 20px;
-    top: 15px;
-
-    font-size: 28px;
-
-    cursor: pointer;
-}
-
-.modal-conteudo label {
+.campo label {
     display: block;
 
-    margin: 12px 0 6px;
+    margin-bottom: 8px;
+
+    color: #444;
 
     font-weight: bold;
 }
 
-.modal-conteudo input,
-.modal-conteudo select {
+.campo input,
+.campo select {
+    display: block;
+
     width: 100%;
 
-    padding: 12px;
+    height: 45px;
 
-    border: 1px solid #ddd;
+    padding: 10px 12px;
+
+    border: 1px solid #d1d5db;
 
     border-radius: 8px;
+
+    background: white;
+
+    color: #333;
+
+    font-size: 15px;
+
+    outline: none;
+
+    transition: 0.2s;
 }
 
-/* SALVAR */
+.campo input:focus,
+.campo select:focus {
+    border-color: #4f46e5;
 
-.botao-salvar {
-    width: 100%;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12);
+}
 
-    margin-top: 22px;
 
-    padding: 13px;
+/* ========================================
+   BOTÕES
+======================================== */
+
+.botoes {
+    display: flex;
+
+    justify-content: flex-end;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-top: 30px;
+
+    flex-wrap: wrap;
+}
+
+.botoes button {
+    min-width: 150px;
+
+    padding: 12px 20px;
 
     border: none;
 
     border-radius: 8px;
 
-    background: #4f46e5;
-
-    color: white;
+    font-size: 15px;
 
     font-weight: bold;
 
     cursor: pointer;
+
+    transition: 0.3s;
 }
 
-.botao-salvar:hover {
+
+/* ========================================
+   BOTÃO CANCELAR
+======================================== */
+
+.btn-cancelar {
+    background: #e5e7eb;
+
+    color: #374151;
+}
+
+.btn-cancelar:hover {
+    background: #d1d5db;
+}
+
+
+/* ========================================
+   BOTÃO CADASTRAR
+======================================== */
+
+.btn-cadastrar {
+    background: #4f46e5;
+
+    color: white;
+}
+
+.btn-cadastrar:hover {
     background: #3730a3;
 }
 
-/* RESPONSIVO */
+
+/* ========================================
+   RESPONSIVIDADE
+======================================== */
 
 @media (max-width: 800px) {
 
-    .cards {
-        flex-direction: column;
-    }
-
-    .conteudo {
-        padding: 25px;
-    }
-
-}
-
-@media (max-width: 600px) {
-
     .menu-lateral {
         position: relative;
+
         width: 100%;
         height: auto;
+
+        padding: 20px;
+    }
+
+    .logo-area {
+        margin-bottom: 20px;
+    }
+
+    .logo-area img {
+        width: 150px;
+    }
+
+    .menu-lateral nav {
+        flex-direction: row;
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+    }
+
+    .menu-lateral nav a {
+        padding: 10px 14px;
     }
 
     .conteudo {
         margin-left: 0;
+
+        padding: 25px 20px;
     }
 
-    .titulo-tabela {
+    .cabecalho,
+    .card {
+        max-width: 100%;
+    }
+}
+
+
+/* ========================================
+   CELULAR
+======================================== */
+
+@media (max-width: 600px) {
+
+    .conteudo {
+        padding: 20px 15px;
+    }
+
+    .cabecalho h1 {
+        font-size: 26px;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+    .card h2 {
+        font-size: 21px;
+    }
+
+    .botoes {
         flex-direction: column;
-        align-items: flex-start;
-        gap: 15px;
+
+        align-items: stretch;
     }
 
+    .botoes button {
+        width: 100%;
+    }
 }

@@ -1,119 +1,114 @@
+const API_URL = "https://localhost:7134/api/Troca_escala";
 
-// =========================================
-// FORMULÁRIO DE TROCA DE ESCALA
-// =========================================
+const form = document.getElementById("formTroca");
+const escalaAtual = document.getElementById("escalaAtual");
+const novaEscala = document.getElementById("novaEscala");
+const btnCancelar = document.getElementById("btnCancelar");
 
-const formTroca = document.getElementById("formTroca");
+const ID_USUARIO = 1;
 
 
-// =========================================
-// ENVIO DA SOLICITAÇÃO
-// =========================================
+// ========================================
+// ENVIAR SOLICITAÇÃO
+// ========================================
 
-formTroca.addEventListener("submit", function (event) {
+form.addEventListener("submit", async function (event) {
 
     event.preventDefault();
 
-
-    // PEGAR OS VALORES
-
-    const escalaAtual =
-        document.getElementById("escalaAtual").value;
-
-    const novaEscala =
-        document.getElementById("novaEscala").value;
-
-    const dataTroca =
-        document.getElementById("dataTroca").value;
-
-    const motivo =
-        document.getElementById("motivo").value.trim();
-
-
-    // =========================================
-    // VERIFICAR ESCALAS
-    // =========================================
-
-    if (escalaAtual === novaEscala) {
-
-        alert(
-            "A nova escala deve ser diferente da escala atual."
-        );
-
+    if (escalaAtual.value === "") {
+        alert("Selecione sua escala atual.");
         return;
     }
 
-
-    // =========================================
-    // VERIFICAR DATA
-    // =========================================
-
-    if (!dataTroca) {
-
-        alert(
-            "Selecione a data desejada para a troca."
-        );
-
+    if (novaEscala.value === "") {
+        alert("Selecione a nova escala.");
         return;
     }
 
-
-    // =========================================
-    // VERIFICAR MOTIVO
-    // =========================================
-
-    if (motivo.length < 5) {
-
-        alert(
-            "Informe um motivo válido para solicitar a troca."
-        );
-
+    if (escalaAtual.value === novaEscala.value) {
+        alert("A nova escala deve ser diferente da escala atual.");
         return;
     }
 
-    // =========================================
-    // CONFIRMAÇÃO
-    // =========================================
+    const dados = {
+        id_Usuario: ID_USUARIO,
+        escalaAtual: converterEscala(escalaAtual.value),
+        novaEscala: converterEscala(novaEscala.value)
+    };
 
-    const confirmar = confirm(
-        "Deseja enviar a solicitação de troca de escala?"
-    );
+    console.log("Enviando para o Back-end:");
+    console.log(dados);
 
+    try {
 
-    if (confirmar) {
+        const resposta = await fetch(API_URL, {
+            method: "POST",
 
-        alert(
-            "Solicitação de troca enviada com sucesso!"
-        );
+            headers: {
+                "Content-Type": "application/json"
+            },
 
+            body: JSON.stringify(dados)
+        });
 
-        // Limpar formulário
+        const resultado = await resposta.json();
 
-        formTroca.reset();
+        console.log("Resposta do Back-end:");
+        console.log(resultado);
 
+        if (!resposta.ok) {
+
+            alert(
+                resultado.mensagem ||
+                "Erro ao enviar solicitação."
+            );
+
+            return;
+        }
+
+        alert("Solicitação de troca enviada com sucesso!");
+
+        form.reset();
+
+    } catch (erro) {
+
+        console.error("Erro ao conectar com o Back-end:", erro);
+
+        alert("Não foi possível conectar ao Back-end.");
     }
-
 });
 
-// =========================================
-// BOTÃO CANCELAR
-// =========================================
 
-const btnCancelar =
-    document.getElementById("btnCancelar");
+// ========================================
+// CONVERTER ESCALA
+// ========================================
+
+function converterEscala(escala) {
+
+    switch (escala) {
+
+        case "Manhã":
+            return "Manhã - 06:00 às 14:00";
+
+        case "Tarde":
+            return "Tarde - 14:00 às 22:00";
+
+        case "Noite":
+            return "Noite - 22:00 às 06:00";
+
+        default:
+            return escala;
+    }
+}
+
+
+// ========================================
+// CANCELAR
+// ========================================
 
 btnCancelar.addEventListener("click", function () {
 
-    const confirmar = confirm(
-        "Deseja cancelar esta solicitação?"
-    );
-
-
-    if (confirmar) {
-
-        formTroca.reset();
-
-    }
+    form.reset();
 
 });
-
