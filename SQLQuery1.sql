@@ -95,6 +95,28 @@ ADD CONSTRAINT FK_TrocaEscala_Usuario
 FOREIGN KEY (Id_Usuario)
 REFERENCES Usuarios(id_usuario)
 ON DELETE NO ACTION;
+/* ========================================================= */
+/* TABELA DE APROVAÇÃO DE SOLICITAÇÕES */
+/* ========================================================= */
+
+CREATE TABLE Aprovar_Solicitacao (
+    Id_Aprovacao INTEGER IDENTITY(1,1) PRIMARY KEY,
+    Fk_Id_Solicitacao INTEGER NOT NULL,
+    Fk_Id_Gestor INTEGER NOT NULL,
+    Statuss VARCHAR(20) NOT NULL,
+    Data_Aprovacao DATETIME NOT NULL DEFAULT GETDATE(),
+    Observacao VARCHAR(200),
+
+    /* RELACIONAMENTO COM SOLICITAÇÕES */
+    CONSTRAINT FK_AprovarSolicitacao_Solicitacao
+    FOREIGN KEY (Fk_Id_Solicitacao)
+    REFERENCES Solicitacoes(id_solicitacao),
+
+    /* RELACIONAMENTO COM USUÁRIOS/GESTORES */
+    CONSTRAINT FK_AprovarSolicitacao_Gestor
+    FOREIGN KEY (Fk_Id_Gestor)
+    REFERENCES Usuarios(id_usuario)
+);
 
 
 /* ========================================================= */

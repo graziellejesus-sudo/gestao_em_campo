@@ -1,9 +1,9 @@
-const API_URL = "https://localhost:7134/api/Troca_escala";
+const API_URL = "https://localhost:7134/api/Troca_Escala";
 
 const form = document.getElementById("formTroca");
 const escalaAtual = document.getElementById("escalaAtual");
 const novaEscala = document.getElementById("novaEscala");
-const btnCancelar = document.getElementById("btnCancelar");
+const btnCancelar = document.getElementById("btnCancelar");  
 
 const ID_USUARIO = 1;
 

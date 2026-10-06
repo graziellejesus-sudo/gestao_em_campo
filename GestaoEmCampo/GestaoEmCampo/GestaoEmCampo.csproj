@@ -7,8 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Controllers\Aprovar solicitaçãoController.cs" />
     <Compile Remove="Controllers\Troca escala.cs" />
     <Compile Remove="Controllers\Usuario.cs" />
+    <Compile Remove="Data\Aprovar_Solicitaca.cs" />
+    <Compile Remove="Models\Aprovar_Solicitacao.cs" />
     <Compile Remove="Models\Troca-.cs" />
     <Compile Remove="Models\Troca.cs" />
     <Compile Remove="Models\Usuario.cs" />

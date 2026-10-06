@@ -1,5 +1,63 @@
 [
   {
+    "ContainingType": "GestaoEmCampo.Controllers.AprovarSolicitacaoController",
+    "Method": "ListarSolicitacoes",
+    "RelativePath": "api/AprovarSolicitacao",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GestaoEmCampo.Controllers.AprovarSolicitacaoController",
+    "Method": "BuscarSolicitacao",
+    "RelativePath": "api/AprovarSolicitacao/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GestaoEmCampo.Controllers.AprovarSolicitacaoController",
+    "Method": "AprovarSolicitacao",
+    "RelativePath": "api/AprovarSolicitacao/Aprovar/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GestaoEmCampo.Controllers.AprovarSolicitacaoController",
+    "Method": "RecusarSolicitacao",
+    "RelativePath": "api/AprovarSolicitacao/Recusar/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "GestaoEmCampo.Controllers.EscalaController",
     "Method": "Listar",
     "RelativePath": "api/Escala",
