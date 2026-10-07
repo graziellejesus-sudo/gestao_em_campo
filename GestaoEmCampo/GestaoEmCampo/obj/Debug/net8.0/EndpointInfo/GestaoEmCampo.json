@@ -12,7 +12,79 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AprovarSolicitacao"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AprovarSolicitacao"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AprovarSolicitacao"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "AprovarSolicitacao"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AprovarSolicitacao"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AprovarSolicitacao"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AprovarSolicitacao"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AprovarSolicitacao"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AprovarSolicitacao"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AprovarSolicitacao"
+                }
+              }
+            }
           }
         }
       }
@@ -35,12 +107,27 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AprovarSolicitacao"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AprovarSolicitacao"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AprovarSolicitacao"
+                }
+              }
+            }
           }
         }
-      }
-    },
-    "/api/AprovarSolicitacao/Aprovar/{id}": {
+      },
       "put": {
         "tags": [
           "AprovarSolicitacao"
@@ -56,15 +143,32 @@
             }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AprovarSolicitacao"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AprovarSolicitacao"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AprovarSolicitacao"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "OK"
           }
         }
-      }
-    },
-    "/api/AprovarSolicitacao/Recusar/{id}": {
-      "put": {
+      },
+      "delete": {
         "tags": [
           "AprovarSolicitacao"
         ],
@@ -211,7 +315,43 @@
         }
       }
     },
-    "/Solicitacao": {
+    "/api/Solicitacao": {
+      "get": {
+        "tags": [
+          "Solicitacao"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Solicitacao"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Solicitacao"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Solicitacao"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
       "post": {
         "tags": [
           "Solicitacao"
@@ -235,6 +375,52 @@
             }
           }
         },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Solicitacao/{id}/aprovar": {
+      "put": {
+        "tags": [
+          "Solicitacao"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Solicitacao/{id}/recusar": {
+      "put": {
+        "tags": [
+          "Solicitacao"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -489,6 +675,47 @@
   },
   "components": {
     "schemas": {
+      "AprovarSolicitacao": {
+        "required": [
+          "statuss"
+        ],
+        "type": "object",
+        "properties": {
+          "idAprovacao": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "fkIdSolicitacao": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "fkIdGestor": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "statuss": {
+            "maxLength": 20,
+            "minLength": 1,
+            "type": "string"
+          },
+          "dataAprovacao": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "observacao": {
+            "maxLength": 200,
+            "type": "string",
+            "nullable": true
+          },
+          "solicitacao": {
+            "$ref": "#/components/schemas/Solicitacao"
+          },
+          "gestor": {
+            "$ref": "#/components/schemas/Usuario"
+          }
+        },
+        "additionalProperties": false
+      },
       "Escala": {
         "type": "object",
         "properties": {

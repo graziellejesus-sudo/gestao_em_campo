@@ -21,33 +21,22 @@ if (myForm !== null) {
         // ==============================
 
         if (nome === "") {
-
             alert("Informe o nome.");
-
             return;
         }
-
 
         if (email === "") {
-
             alert("Informe o email.");
-
             return;
         }
-
 
         if (senha.length < 8) {
-
             alert("A senha deve ter no mínimo 8 caracteres.");
-
             return;
         }
 
-
         if (cargo === "") {
-
             alert("Selecione o cargo.");
-
             return;
         }
 
@@ -57,19 +46,19 @@ if (myForm !== null) {
         // ==============================
 
         const usuario = {
-
             nome: nome,
-
             email: email,
-
             senha: senha,
-
             cargo: cargo
-
         };
 
 
-        console.log("Usuário enviado:", usuario);
+        // ==============================
+        // MOSTRA OS DADOS NO CONSOLE
+        // ==============================
+
+        console.log("Dados enviados:", usuario);
+        console.log("JSON enviado:", JSON.stringify(usuario));
 
 
         try {
@@ -94,11 +83,15 @@ if (myForm !== null) {
             );
 
 
+            // ==============================
+            // STATUS DA RESPOSTA
+            // ==============================
+
             console.log("Status da resposta:", response.status);
 
 
             // ==============================
-            // LÊ RESPOSTA
+            // LÊ A RESPOSTA DO SERVIDOR
             // ==============================
 
             const texto = await response.text();
@@ -122,7 +115,7 @@ if (myForm !== null) {
 
 
             // ==============================
-            // ERRO
+            // VERIFICA ERRO
             // ==============================
 
             if (!response.ok) {
@@ -132,6 +125,7 @@ if (myForm !== null) {
                     data.message ||
                     "Erro ao cadastrar usuário."
                 );
+
             }
 
 

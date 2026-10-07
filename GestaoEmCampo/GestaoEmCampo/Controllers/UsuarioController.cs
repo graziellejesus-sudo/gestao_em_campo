@@ -81,6 +81,7 @@ namespace GestaoEmCampo.Controllers
                     mensagem = "Email ou senha incorretos."
                 });
             }
+
             // Salva o ID do usuário na sessão
             HttpContext.Session.SetString(
                 "IdLogado",
@@ -173,21 +174,57 @@ namespace GestaoEmCampo.Controllers
                 });
             }
 
-            _context.Usuarios.Add(usuario);
+            try
+            {
+                // Adiciona o usuário
+                _context.Usuarios.Add(usuario);
 
-            _context.SaveChanges();
+                // Salva no banco
+                _context.SaveChanges();
 
-            return Created(
-                $"api/Usuario/{usuario.Id_Usuario}",
-                new
+                // Retorna sucesso
+                return Created(
+                    $"api/Usuario/{usuario.Id_Usuario}",
+                    new
+                    {
+                        mensagem = "Usuário cadastrado com sucesso.",
+                        id = usuario.Id_Usuario,
+                        nome = usuario.Nome,
+                        email = usuario.Email,
+                        cargo = usuario.Cargo
+                    }
+                );
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("=================================");
+                Console.WriteLine("ERRO AO CADASTRAR USUÁRIO");
+                Console.WriteLine("=================================");
+
+                Console.WriteLine(ex.Message);
+
+                if (ex.InnerException != null)
                 {
-                    mensagem = "Usuário cadastrado com sucesso.",
-                    id = usuario.Id_Usuario,
-                    nome = usuario.Nome,
-                    email = usuario.Email,
-                    cargo = usuario.Cargo
+                    Console.WriteLine("----------- INNER EXCEPTION -----------");
+                    Console.WriteLine(ex.InnerException.Message);
                 }
-            );
+
+                if (ex.InnerException?.InnerException != null)
+                {
+                    Console.WriteLine("------ INNER EXCEPTION 2 ------");
+                    Console.WriteLine(
+                        ex.InnerException.InnerException.Message
+                    );
+                }
+
+                Console.WriteLine("=================================");
+
+                return StatusCode(500, new
+                {
+                    mensagem = "Erro ao salvar usuário no banco de dados.",
+                    erro = ex.InnerException?.Message ?? ex.Message
+                });
+            }
         }
 
         // ============================================================

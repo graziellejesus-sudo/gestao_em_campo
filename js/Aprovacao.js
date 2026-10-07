@@ -1,471 +1,596 @@
-// =========================================================
-// URL DA API
-// =========================================================
+document.addEventListener("DOMContentLoaded", () => {
 
-const API_URL =
-    "https://localhost:7134/api/AprovarSolicitacao";
-
-
-// =========================================================
-// INICIAR QUANDO A PÁGINA ABRIR
-// =========================================================
-
-document.addEventListener(
-    "DOMContentLoaded",
-    function () {
-
-        carregarSolicitacoes();
-
-    }
-);
-
-
-// =========================================================
-// CARREGAR SOLICITAÇÕES
-// =========================================================
-
-async function carregarSolicitacoes() {
-
-    const lista =
+    const container =
         document.querySelector(".solicitacoes");
 
-    try {
 
-        const resposta =
-            await fetch(API_URL);
+    // ==========================================
+    // URL DA API
+    // ==========================================
 
-        if (!resposta.ok) {
+    const API_SOLICITACOES =
+        "https://localhost:7134/api/Solicitacao";
 
-            throw new Error(
-                "Erro ao buscar solicitações."
-            );
-        }
 
-        const solicitacoes =
-            await resposta.json();
+    // ==========================================
+    // VERIFICAR CONTAINER
+    // ==========================================
+
+    if (!container) {
+
+        console.error(
+            "ERRO: .solicitacoes não existe no HTML."
+        );
+
+        return;
+    }
+
+
+    // ==========================================
+    // CARREGAR SOLICITAÇÕES
+    // GET /api/Solicitacao
+    // ==========================================
+
+    async function carregarSolicitacoes() {
+
+        container.innerHTML = `
+            <p>Carregando solicitações...</p>
+        `;
+
 
         console.log(
-            "Solicitações:",
-            solicitacoes
+            "Buscando solicitações em:",
+            API_SOLICITACOES
         );
 
-        lista.innerHTML = "";
 
+        try {
 
-        if (
-            !solicitacoes ||
-            solicitacoes.length === 0
-        ) {
+            const resposta =
+                await fetch(
+                    API_SOLICITACOES,
+                    {
+                        method: "GET",
 
-            lista.innerHTML = `
-                <div class="card">
-
-                    <h2>
-                        Nenhuma solicitação encontrada.
-                    </h2>
-
-                </div>
-            `;
-
-            return;
-        }
-
-
-        solicitacoes.forEach(
-            solicitacao => {
-
-                criarCard(
-                    solicitacao,
-                    lista
+                        headers: {
+                            "Accept": "application/json"
+                        }
+                    }
                 );
 
+
+            console.log(
+                "Status GET:",
+                resposta.status
+            );
+
+
+            if (!resposta.ok) {
+
+                throw new Error(
+                    `Erro HTTP: ${resposta.status}`
+                );
             }
-        );
 
-    }
-    catch (erro) {
 
-        console.error(
-            "Erro:",
-            erro
-        );
+            const solicitacoes =
+                await resposta.json();
 
-        lista.innerHTML = `
-            <div class="card">
 
-                <h2>
-                    Erro ao carregar solicitações.
-                </h2>
+            console.log(
+                "Solicitações recebidas:",
+                solicitacoes
+            );
 
-                <p>
-                    Verifique se o servidor está funcionando.
-                </p>
 
-            </div>
-        `;
-    }
-}
+            if (!Array.isArray(solicitacoes)) {
 
+                throw new Error(
+                    "A API não retornou uma lista."
+                );
+            }
 
-// =========================================================
-// CRIAR CARD
-// =========================================================
 
-function criarCard(
-    solicitacao,
-    lista
-) {
+            // ==========================================
+            // NENHUMA SOLICITAÇÃO
+            // ==========================================
 
-    const id =
-        solicitacao.id_Solicitacao ??
-        solicitacao.id_solicitacao ??
-        solicitacao.Id_Solicitacao;
+            if (solicitacoes.length === 0) {
 
+                container.innerHTML = `
+                    <p class="sem-solicitacoes">
+                        Não existem solicitações cadastradas.
+                    </p>
+                `;
 
-    const tipo =
-        solicitacao.tipo ??
-        solicitacao.Tipo ??
-        "";
+                return;
+            }
 
 
-    const dataInicio =
-        solicitacao.data_Solicitada_Inicio ??
-        solicitacao.data_solicitada_inicio ??
-        solicitacao.Data_Solicitada_Inicio;
+            // ==========================================
+            // LIMPAR CONTAINER
+            // ==========================================
 
+            container.innerHTML = "";
 
-    const dataFim =
-        solicitacao.data_Solicitada_Fim ??
-        solicitacao.data_solicitada_fim ??
-        solicitacao.Data_Solicitada_Fim;
 
+            // ==========================================
+            // CRIAR CARDS
+            // ==========================================
 
-    const motivo =
-        solicitacao.motivo ??
-        solicitacao.Motivo ??
-        "";
+            solicitacoes.forEach(
+                (solicitacao) => {
 
+                    const card =
+                        document.createElement("div");
 
-    // Nome do funcionário
-    let funcionario = "Funcionário";
 
+                    card.className = "card";
 
-    if (
-        solicitacao.usuario &&
-        solicitacao.usuario.nome
-    ) {
 
-        funcionario =
-            solicitacao.usuario.nome;
+                    // ==================================
+                    // STATUS
+                    // ==================================
 
-    }
-    else if (
-        solicitacao.Usuario &&
-        solicitacao.Usuario.Nome
-    ) {
+                    const aprovada =
+                        solicitacao.statuss === true;
 
-        funcionario =
-            solicitacao.Usuario.Nome;
 
-    }
-    else if (
-        solicitacao.nomeUsuario
-    ) {
+                    const status =
+                        aprovada
+                            ? "Aprovada"
+                            : "Pendente";
 
-        funcionario =
-            solicitacao.nomeUsuario;
 
-    }
+                    const classeStatus =
+                        aprovada
+                            ? "aprovada"
+                            : "pendente";
 
 
-    const card =
-        document.createElement("div");
+                    // ==================================
+                    // DATAS
+                    // ==================================
 
+                    const dataInicio =
+                        formatarData(
+                            solicitacao.data_Solicitada_Inicio
+                        );
 
-    card.className = "card";
 
+                    const dataFim =
+                        formatarData(
+                            solicitacao.data_Solicitada_Fim
+                        );
 
-    card.id =
-        `solicitacao-${id}`;
 
+                    // ==================================
+                    // HTML DO CARD
+                    // ==================================
 
-    card.innerHTML = `
+                    card.innerHTML = `
 
-        <div class="card-topo">
+                        <div class="card-topo">
 
-            <h2>
-                Solicitação #${id}
-            </h2>
+                            <h2>
+                                Solicitação
+                                #${solicitacao.id_Solicitacao}
+                            </h2>
 
-            <span class="status pendente">
-                Pendente
-            </span>
+                            <span
+                                class="status ${classeStatus}"
+                            >
+                                ${status}
+                            </span>
 
-        </div>
+                        </div>
 
 
-        <div class="informacoes">
+                        <div class="informacoes">
 
-            <div class="campo">
+                            <div class="campo">
 
-                <strong>
-                    Funcionário
-                </strong>
+                                <strong>
+                                    Tipo
+                                </strong>
 
-                <span>
-                    ${funcionario}
-                </span>
+                                <span>
+                                    ${solicitacao.tipo ?? "-"}
+                                </span>
 
-            </div>
+                            </div>
 
 
-            <div class="campo">
+                            <div class="campo">
 
-                <strong>
-                    Tipo de solicitação
-                </strong>
+                                <strong>
+                                    Data inicial
+                                </strong>
 
-                <span>
-                    ${tipo}
-                </span>
+                                <span>
+                                    ${dataInicio}
+                                </span>
 
-            </div>
+                            </div>
 
 
-            <div class="campo">
+                            <div class="campo">
 
-                <strong>
-                    Data inicial
-                </strong>
+                                <strong>
+                                    Data final
+                                </strong>
 
-                <span>
-                    ${formatarData(dataInicio)}
-                </span>
+                                <span>
+                                    ${dataFim}
+                                </span>
 
-            </div>
+                            </div>
 
 
-            <div class="campo">
+                            <div class="campo">
 
-                <strong>
-                    Data final
-                </strong>
+                                <strong>
+                                    Motivo
+                                </strong>
 
-                <span>
-                    ${formatarData(dataFim)}
-                </span>
+                                <span>
+                                    ${solicitacao.motivo ?? "-"}
+                                </span>
 
-            </div>
+                            </div>
 
 
-            <div class="campo motivo">
+                            <div class="campo">
 
-                <strong>
-                    Motivo
-                </strong>
+                                <strong>
+                                    Usuário
+                                </strong>
 
-                <span>
-                    ${motivo}
-                </span>
+                                <span>
+                                    ${solicitacao.fk_Id_Usuario ?? "-"}
+                                </span>
 
-            </div>
+                            </div>
 
-        </div>
 
+                            <div class="campo">
 
-        <div class="botoes">
+                                <strong>
+                                    Escala
+                                </strong>
 
-            <button
-                class="btn-aprovar"
-                onclick="aprovarSolicitacao(${id})">
+                                <span>
+                                    ${solicitacao.fk_Id_Escala ?? "-"}
+                                </span>
 
-                Aprovar
+                            </div>
 
-            </button>
+                        </div>
 
 
-            <button
-                class="btn-recusar"
-                onclick="recusarSolicitacao(${id})">
+                        <!-- ==========================
+                             BOTÕES
+                        =========================== -->
 
-                Recusar
+                        <div class="acoes">
 
-            </button>
+                            <button
+                                type="button"
+                                class="btn-aprovar"
+                                data-id="${solicitacao.id_Solicitacao}"
+                                ${aprovada ? "disabled" : ""}
+                            >
+                                Aprovar
+                            </button>
 
-        </div>
 
-    `;
+                            <button
+                                type="button"
+                                class="btn-recusar"
+                                data-id="${solicitacao.id_Solicitacao}"
+                                ${aprovada ? "disabled" : ""}
+                            >
+                                Recusar
+                            </button>
 
+                        </div>
 
-    lista.appendChild(card);
-}
+                    `;
 
 
-// =========================================================
-// FORMATAR DATA
-// =========================================================
+                    container.appendChild(card);
 
-function formatarData(data) {
 
-    if (!data) {
-        return "-";
-    }
+                    // ==================================
+                    // BOTÃO APROVAR
+                    // ==================================
 
+                    const btnAprovar =
+                        card.querySelector(
+                            ".btn-aprovar"
+                        );
 
-    const somenteData =
-        data.toString().split("T")[0];
 
+                    btnAprovar.addEventListener(
+                        "click",
+                        () => {
 
-    const partes =
-        somenteData.split("-");
+                            const id =
+                                btnAprovar.dataset.id;
 
 
-    if (partes.length !== 3) {
-        return data;
-    }
+                            console.log(
+                                "Clicou em APROVAR. ID:",
+                                id
+                            );
 
 
-    return `
-        ${partes[2]}/${partes[1]}/${partes[0]}
-    `;
-}
+                            aprovarSolicitacao(id);
 
+                        }
+                    );
 
-// =========================================================
-// APROVAR
-// =========================================================
 
-async function aprovarSolicitacao(id) {
+                    // ==================================
+                    // BOTÃO RECUSAR
+                    // ==================================
 
-    const confirmar =
-        confirm(
-            "Deseja realmente aprovar esta solicitação?"
-        );
+                    const btnRecusar =
+                        card.querySelector(
+                            ".btn-recusar"
+                        );
 
 
-    if (!confirmar) {
-        return;
-    }
+                    btnRecusar.addEventListener(
+                        "click",
+                        () => {
 
+                            const id =
+                                btnRecusar.dataset.id;
 
-    try {
 
-        const resposta =
-            await fetch(
-                `${API_URL}/Aprovar/${id}`,
-                {
-                    method: "PUT",
+                            console.log(
+                                "Clicou em RECUSAR. ID:",
+                                id
+                            );
 
-                    headers: {
-                        "Content-Type":
-                            "application/json"
-                    }
+
+                            recusarSolicitacao(id);
+
+                        }
+                    );
+
                 }
             );
 
-
-        const dados =
-            await resposta.json();
-
-
-        if (!resposta.ok) {
-
-            alert(
-                dados.mensagem ||
-                "Não foi possível aprovar."
-            );
-
-            return;
         }
 
+        catch (erro) {
 
-        alert(
-            dados.mensagem ||
-            "Solicitação aprovada!"
-        );
-
-
-        carregarSolicitacoes();
-
-    }
-    catch (erro) {
-
-        console.error(
-            erro
-        );
-
-        alert(
-            "Erro ao conectar com o servidor."
-        );
-    }
-}
+            console.error(
+                "ERRO AO CARREGAR SOLICITAÇÕES:",
+                erro
+            );
 
 
-// =========================================================
-// RECUSAR
-// =========================================================
+            container.innerHTML = `
 
-async function recusarSolicitacao(id) {
+                <div class="erro">
 
-    const confirmar =
-        confirm(
-            "Deseja realmente recusar esta solicitação?"
-        );
+                    <strong>
+                        Não foi possível conectar com o servidor.
+                    </strong>
 
+                    <p>
+                        ${erro.message}
+                    </p>
 
-    if (!confirmar) {
-        return;
+                </div>
+
+            `;
+
+        }
+
     }
 
 
-    try {
+    // ==========================================
+    // APROVAR SOLICITAÇÃO
+    // PUT /api/Solicitacao/{id}/aprovar
+    // ==========================================
 
-        const resposta =
-            await fetch(
-                `${API_URL}/Recusar/${id}`,
-                {
-                    method: "PUT",
+    async function aprovarSolicitacao(id) {
 
-                    headers: {
-                        "Content-Type":
-                            "application/json"
+        console.log(
+            "Enviando aprovação para ID:",
+            id
+        );
+
+
+        try {
+
+            const resposta =
+                await fetch(
+                    `${API_SOLICITACOES}/${id}/aprovar`,
+                    {
+                        method: "PUT",
+
+                        headers: {
+                            "Content-Type":
+                                "application/json",
+
+                            "Accept":
+                                "application/json"
+                        }
                     }
-                }
+                );
+
+
+            console.log(
+                "Status PUT APROVAR:",
+                resposta.status
             );
 
 
-        const dados =
-            await resposta.json();
+            if (!resposta.ok) {
+
+                const erro =
+                    await resposta.text();
 
 
-        if (!resposta.ok) {
+                console.error(
+                    "Erro retornado pelo servidor:",
+                    erro
+                );
+
+
+                throw new Error(
+                    `Erro HTTP: ${resposta.status}`
+                );
+            }
+
 
             alert(
-                dados.mensagem ||
-                "Não foi possível recusar."
+                "Solicitação aprovada com sucesso!"
             );
 
-            return;
+
+            await carregarSolicitacoes();
+
+        }
+
+        catch (erro) {
+
+            console.error(
+                "ERRO AO APROVAR:",
+                erro
+            );
+
+
+            alert(
+                "Não foi possível aprovar a solicitação."
+            );
+
+        }
+
+    }
+
+
+    // ==========================================
+    // RECUSAR SOLICITAÇÃO
+    // PUT /api/Solicitacao/{id}/recusar
+    // ==========================================
+
+    async function recusarSolicitacao(id) {
+
+        console.log(
+            "Enviando recusa para ID:",
+            id
+        );
+
+
+        try {
+
+            const resposta =
+                await fetch(
+                    `${API_SOLICITACOES}/${id}/recusar`,
+                    {
+                        method: "PUT",
+
+                        headers: {
+                            "Content-Type":
+                                "application/json",
+
+                            "Accept":
+                                "application/json"
+                        }
+                    }
+                );
+
+
+            console.log(
+                "Status PUT RECUSAR:",
+                resposta.status
+            );
+
+
+            if (!resposta.ok) {
+
+                const erro =
+                    await resposta.text();
+
+
+                console.error(
+                    "Erro retornado pelo servidor:",
+                    erro
+                );
+
+
+                throw new Error(
+                    `Erro HTTP: ${resposta.status}`
+                );
+            }
+
+
+            alert(
+                "Solicitação recusada com sucesso!"
+            );
+
+
+            await carregarSolicitacoes();
+
+        }
+
+        catch (erro) {
+
+            console.error(
+                "ERRO AO RECUSAR:",
+                erro
+            );
+
+
+            alert(
+                "Não foi possível recusar a solicitação."
+            );
+
+        }
+
+    }
+
+
+    // ==========================================
+    // FORMATAR DATA
+    // ==========================================
+
+    function formatarData(data) {
+
+        if (!data) {
+
+            return "-";
         }
 
 
-        alert(
-            dados.mensagem ||
-            "Solicitação recusada!"
+        const dataFormatada =
+            new Date(data);
+
+
+        if (isNaN(dataFormatada.getTime())) {
+
+            return "-";
+        }
+
+
+        return dataFormatada.toLocaleDateString(
+            "pt-BR"
         );
-
-
-        carregarSolicitacoes();
 
     }
-    catch (erro) {
 
-        console.error(
-            erro
-        );
 
-        alert(
-            "Erro ao conectar com o servidor."
-        );
-    }
-}
+    // ==========================================
+    // INICIAR
+    // ==========================================
+
+    carregarSolicitacoes();
+
+});

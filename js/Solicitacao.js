@@ -16,7 +16,7 @@ formulario.addEventListener("submit", function (event) {
         return;
     }
 
-    fetch("https://localhost:7134/Solicitacao", {
+    fetch("https://localhost:7134/Api/Solicitacao", {
 
         method: "POST",
 

@@ -1,7 +1,7 @@
-
 /* =========================
    CONFIGURAÇÕES GERAIS
 ========================= */
+
 * {
     margin: 0;
     padding: 0;
@@ -21,6 +21,7 @@ body {
 
     color: #222;
 }
+
 
 /* =========================
    MENU LATERAL
@@ -48,6 +49,7 @@ body {
     z-index: 1000;
 }
 
+
 /* =========================
    LOGO
 ========================= */
@@ -73,7 +75,6 @@ body {
 
     margin-bottom: 12px;
 
-    /* Bordas levemente arredondadas */
     border-radius: 8px;
 }
 
@@ -86,6 +87,7 @@ body {
 
     text-align: center;
 }
+
 
 /* =========================
    LINKS DO MENU
@@ -127,6 +129,7 @@ body {
     background-color: rgba(255, 255, 255, 0.25);
 }
 
+
 /* =========================
    CONTEÚDO
 ========================= */
@@ -140,6 +143,7 @@ body {
 
     padding: 50px;
 }
+
 
 /* =========================
    TÍTULO
@@ -163,6 +167,7 @@ body {
     font-size: 17px;
 }
 
+
 /* =========================
    SOLICITAÇÕES
 ========================= */
@@ -174,15 +179,20 @@ body {
 
     gap: 25px;
 
+    width: 100%;
+
     max-width: 1100px;
 }
+
 
 /* =========================
    CARD
 ========================= */
 
 .card {
-    background-color: white;
+    width: 100%;
+
+    background-color: #ffffff;
 
     border-radius: 15px;
 
@@ -191,6 +201,12 @@ body {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 
     transition: 0.3s;
+
+    display: block;
+
+    visibility: visible;
+
+    opacity: 1;
 }
 
 .card:hover {
@@ -198,6 +214,7 @@ body {
 
     box-shadow: 0 12px 25px rgba(0, 0, 0, 0.16);
 }
+
 
 /* =========================
    TOPO DO CARD
@@ -215,13 +232,18 @@ body {
     padding-bottom: 15px;
 
     margin-bottom: 20px;
+
+    gap: 15px;
 }
 
 .card-topo h2 {
     color: #333;
 
     font-size: 21px;
+
+    font-weight: bold;
 }
+
 
 /* =========================
    STATUS
@@ -235,25 +257,28 @@ body {
     font-size: 13px;
 
     font-weight: bold;
+
+    white-space: nowrap;
 }
 
-.pendente {
+.status.pendente {
     background-color: #fff3cd;
 
     color: #856404;
 }
 
-.status.aprovado {
+.status.aprovada {
     background-color: #d1e7dd;
 
     color: #0f5132;
 }
 
-.status.recusado {
+.status.recusada {
     background-color: #f8d7da;
 
     color: #842029;
 }
+
 
 /* =========================
    INFORMAÇÕES
@@ -267,7 +292,14 @@ body {
     gap: 18px;
 
     margin-bottom: 25px;
+
+    width: 100%;
 }
+
+
+/* =========================
+   CAMPO
+========================= */
 
 .campo {
     display: flex;
@@ -275,19 +307,32 @@ body {
     flex-direction: column;
 
     gap: 6px;
+
+    min-width: 0;
 }
 
 .campo strong {
     color: #4b1fa8;
 
     font-size: 14px;
+
+    font-weight: bold;
 }
 
 .campo span {
     color: #444;
 
     font-size: 15px;
+
+    line-height: 1.5;
+
+    word-break: break-word;
 }
+
+
+/* =========================
+   MOTIVO
+========================= */
 
 .campo.motivo {
     grid-column: 1 / -1;
@@ -299,24 +344,57 @@ body {
     border-radius: 8px;
 }
 
-/* =========================
-   BOTÕES
-========================= */
+.campo.motivo span {
+    margin-top: 4px;
 
-.botoes {
-    display: flex;
+    line-height: 1.6;
+}
+
+
+/* ==================================================
+   BOTÕES
+   O JAVASCRIPT USA .acoes
+================================================== */
+
+.acoes {
+    display: flex !important;
 
     justify-content: flex-end;
 
+    align-items: center;
+
     gap: 12px;
+
+    width: 100%;
+
+    margin-top: 20px;
+
+    padding-top: 20px;
+
+    border-top: 1px solid #eeeeee;
 }
 
-.botoes button {
-    border: none;
 
-    padding: 11px 22px;
+/* =========================
+   TODOS OS BOTÕES
+========================= */
 
-    border-radius: 7px;
+.acoes button {
+    display: inline-block !important;
+
+    visibility: visible !important;
+
+    opacity: 1 !important;
+
+    border: none !important;
+
+    padding: 12px 24px !important;
+
+    min-width: 130px;
+
+    border-radius: 8px;
+
+    font-family: Arial, Helvetica, sans-serif;
 
     font-size: 15px;
 
@@ -324,40 +402,128 @@ body {
 
     cursor: pointer;
 
-    transition: 0.3s;
+    color: #ffffff !important;
+
+    background-image: none !important;
+
+    text-shadow: none;
+
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.20);
+
+    transition:
+        background-color 0.3s,
+        transform 0.2s,
+        box-shadow 0.2s;
 }
+
 
 /* =========================
-   APROVAR
+   BOTÃO APROVAR
 ========================= */
 
-.btn-aprovar {
-    background-color: #198754;
+.acoes button.btn-aprovar {
+    background-color: #198754 !important;
 
-    color: white;
+    color: #ffffff !important;
 }
 
-.btn-aprovar:hover {
-    background-color: #146c43;
+.acoes button.btn-aprovar:hover {
+    background-color: #146c43 !important;
+
+    color: #ffffff !important;
 
     transform: translateY(-2px);
+
+    box-shadow: 0 5px 12px rgba(25, 135, 84, 0.30);
 }
+
+.acoes button.btn-aprovar:active {
+    background-color: #0f5132 !important;
+
+    transform: translateY(0);
+}
+
 
 /* =========================
-   RECUSAR
+   BOTÃO RECUSAR
 ========================= */
 
-.btn-recusar {
-    background-color: #dc3545;
+.acoes button.btn-recusar {
+    background-color: #dc3545 !important;
 
-    color: white;
+    color: #ffffff !important;
 }
 
-.btn-recusar:hover {
-    background-color: #b02a37;
+.acoes button.btn-recusar:hover {
+    background-color: #b02a37 !important;
+
+    color: #ffffff !important;
 
     transform: translateY(-2px);
+
+    box-shadow: 0 5px 12px rgba(220, 53, 69, 0.30);
 }
+
+.acoes button.btn-recusar:active {
+    background-color: #842029 !important;
+
+    transform: translateY(0);
+}
+
+
+/* =========================
+   BOTÃO DESABILITADO
+========================= */
+
+.acoes button:disabled {
+    background-color: #adb5bd !important;
+
+    color: #ffffff !important;
+
+    opacity: 0.70 !important;
+
+    cursor: not-allowed;
+
+    box-shadow: none;
+
+    transform: none;
+}
+
+
+/* =========================
+   MENSAGENS
+========================= */
+
+.sem-solicitacoes {
+    background-color: #ffffff;
+
+    padding: 25px;
+
+    border-radius: 15px;
+
+    color: #555;
+
+    font-size: 16px;
+
+    text-align: center;
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.10);
+}
+
+.erro {
+    background-color: #f8d7da;
+
+    color: #842029;
+
+    padding: 20px;
+
+    border-radius: 10px;
+
+    font-size: 16px;
+
+    text-align: center;
+}
+
 
 /* =========================
    RESPONSIVIDADE
@@ -375,16 +541,18 @@ body {
         padding: 20px;
     }
 
+
     .logo-area {
         margin-bottom: 20px;
     }
 
+
     .logo-area img {
         width: 80px;
 
-        /* Mantém as bordas arredondadas no celular */
         border-radius: 8px;
     }
+
 
     .menu-lateral nav {
         flex-direction: row;
@@ -394,9 +562,11 @@ body {
         justify-content: center;
     }
 
+
     .menu-lateral nav a {
         width: auto;
     }
+
 
     .container {
         margin-left: 0;
@@ -406,26 +576,341 @@ body {
         padding: 30px 20px;
     }
 
+
     .titulo h1 {
         font-size: 28px;
     }
+
+
+    .titulo p {
+        font-size: 15px;
+    }
+
 
     .informacoes {
         grid-template-columns: 1fr;
     }
 
+
     .campo.motivo {
         grid-column: auto;
     }
 
-    .botoes {
-        justify-content: stretch;
+
+    /* =========================
+       BOTÕES NO CELULAR
+    ========================= */
+
+    .acoes {
+        flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 10px;
+    }
+
+
+    .acoes button {
+        width: 100%;
+
+        min-width: 0;
+    }
+
+
+    .card-topo {
+        align-items: flex-start;
 
         flex-direction: column;
     }
 
-    .botoes button {
-        width: 100%;
+
+    .status {
+        align-self: flex-start;
     }
 }
+/* =====================================================
+   CORREÇÃO DEFINITIVA DOS BOTÕES DE APROVAÇÃO
+===================================================== */
 
+div.acoes {
+    display: flex !important;
+    width: 100% !important;
+    justify-content: flex-end !important;
+    align-items: center !important;
+    gap: 12px !important;
+
+    margin-top: 20px !important;
+    padding-top: 20px !important;
+
+    border-top: 1px solid #eeeeee !important;
+
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+
+/* =====================================================
+   BOTÃO APROVAR
+===================================================== */
+
+div.acoes button.btn-aprovar {
+    display: inline-flex !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    width: auto !important;
+    min-width: 130px !important;
+    height: 45px !important;
+
+    padding: 0 24px !important;
+
+    background: #198754 !important;
+    background-color: #198754 !important;
+    background-image: none !important;
+
+    color: #ffffff !important;
+
+    border: 0 !important;
+    border-width: 0 !important;
+
+    border-radius: 8px !important;
+
+    opacity: 1 !important;
+    visibility: visible !important;
+
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 15px !important;
+    font-weight: bold !important;
+
+    cursor: pointer !important;
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.20) !important;
+
+    transition: all 0.2s ease !important;
+}
+
+
+/* HOVER APROVAR */
+
+div.acoes button.btn-aprovar:hover {
+    background: #146c43 !important;
+    background-color: #146c43 !important;
+
+    color: #ffffff !important;
+
+    opacity: 1 !important;
+
+    transform: translateY(-2px) !important;
+}
+
+
+/* =====================================================
+   BOTÃO RECUSAR
+===================================================== */
+
+div.acoes button.btn-recusar {
+    display: inline-flex !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    width: auto !important;
+    min-width: 130px !important;
+    height: 45px !important;
+
+    padding: 0 24px !important;
+
+    background: #dc3545 !important;
+    background-color: #dc3545 !important;
+    background-image: none !important;
+
+    color: #ffffff !important;
+
+    border: 0 !important;
+    border-width: 0 !important;
+
+    border-radius: 8px !important;
+
+    opacity: 1 !important;
+    visibility: visible !important;
+
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 15px !important;
+    font-weight: bold !important;
+
+    cursor: pointer !important;
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.20) !important;
+
+    transition: all 0.2s ease !important;
+}
+
+
+/* HOVER RECUSAR */
+
+div.acoes button.btn-recusar:hover {
+    background: #b02a37 !important;
+    background-color: #b02a37 !important;
+
+    color: #ffffff !important;
+
+    opacity: 1 !important;
+
+    transform: translateY(-2px) !important;
+}
+
+
+/* =====================================================
+   BOTÕES DESABILITADOS
+===================================================== */
+
+div.acoes button:disabled {
+    background: #adb5bd !important;
+    background-color: #adb5bd !important;
+
+    color: #ffffff !important;
+
+    opacity: 0.70 !important;
+
+    cursor: not-allowed !important;
+
+    box-shadow: none !important;
+
+    transform: none !important;
+}
+
+
+/* =====================================================
+   CELULAR
+===================================================== */
+
+@media (max-width: 768px) {
+
+    div.acoes {
+        flex-direction: column !important;
+
+        align-items: stretch !important;
+    }
+
+
+    div.acoes button.btn-aprovar,
+    div.acoes button.btn-recusar {
+        width: 100% !important;
+
+        min-width: 100% !important;
+    }
+}
+/* =====================================================
+   FORÇAR COR DOS BOTÕES - COLOCAR NO FINAL DO CSS
+===================================================== */
+
+.solicitacoes .acoes {
+    display: flex !important;
+    justify-content: flex-end !important;
+    align-items: center !important;
+    gap: 12px !important;
+    width: 100% !important;
+    margin-top: 20px !important;
+    padding-top: 20px !important;
+}
+
+
+/* APROVAR - ESTADO NORMAL */
+
+.solicitacoes .acoes .btn-aprovar,
+.solicitacoes .acoes button.btn-aprovar {
+    display: inline-block !important;
+
+    background: #198754 !important;
+    background-color: #198754 !important;
+
+    color: #ffffff !important;
+
+    border: 2px solid #198754 !important;
+
+    opacity: 1 !important;
+    visibility: visible !important;
+
+    min-width: 130px !important;
+    padding: 12px 24px !important;
+
+    border-radius: 8px !important;
+
+    font-family: Arial, sans-serif !important;
+    font-size: 15px !important;
+    font-weight: bold !important;
+
+    cursor: pointer !important;
+}
+
+
+/* APROVAR - QUANDO PASSAR O MOUSE */
+
+.solicitacoes .acoes .btn-aprovar:hover,
+.solicitacoes .acoes button.btn-aprovar:hover {
+    background: #146c43 !important;
+    background-color: #146c43 !important;
+
+    color: #ffffff !important;
+
+    border-color: #146c43 !important;
+}
+
+
+/* RECUSAR - ESTADO NORMAL */
+
+.solicitacoes .acoes .btn-recusar,
+.solicitacoes .acoes button.btn-recusar {
+    display: inline-block !important;
+
+    background: #dc3545 !important;
+    background-color: #dc3545 !important;
+
+    color: #ffffff !important;
+
+    border: 2px solid #dc3545 !important;
+
+    opacity: 1 !important;
+    visibility: visible !important;
+
+    min-width: 130px !important;
+    padding: 12px 24px !important;
+
+    border-radius: 8px !important;
+
+    font-family: Arial, sans-serif !important;
+    font-size: 15px !important;
+    font-weight: bold !important;
+
+    cursor: pointer !important;
+}
+
+
+/* RECUSAR - QUANDO PASSAR O MOUSE */
+
+.solicitacoes .acoes .btn-recusar:hover,
+.solicitacoes .acoes button.btn-recusar:hover {
+    background: #b02a37 !important;
+    background-color: #b02a37 !important;
+
+    color: #ffffff !important;
+
+    border-color: #b02a37 !important;
+}
+
+
+/* BOTÕES DESABILITADOS */
+
+.solicitacoes .acoes button:disabled {
+    background: #adb5bd !important;
+    background-color: #adb5bd !important;
+
+    color: #ffffff !important;
+
+    border-color: #adb5bd !important;
+
+    opacity: 0.7 !important;
+
+    cursor: not-allowed !important;
+}
