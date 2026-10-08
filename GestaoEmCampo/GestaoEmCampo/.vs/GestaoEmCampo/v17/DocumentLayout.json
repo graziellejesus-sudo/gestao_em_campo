@@ -102,19 +102,32 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 9,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "GestaoEmCampoContext.cs",
-              "DocumentMoniker": "E:\\Gestao\\gestao_em_campo\\GestaoEmCampo\\GestaoEmCampo\\Data\\GestaoEmCampoContext.cs",
-              "RelativeDocumentMoniker": "Data\\GestaoEmCampoContext.cs",
-              "ToolTip": "E:\\Gestao\\gestao_em_campo\\GestaoEmCampo\\GestaoEmCampo\\Data\\GestaoEmCampoContext.cs",
-              "RelativeToolTip": "Data\\GestaoEmCampoContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAABAAAAAAAAAA==",
+              "DocumentIndex": 7,
+              "Title": "Troca escalaController.cs",
+              "DocumentMoniker": "E:\\Gestao\\gestao_em_campo\\GestaoEmCampo\\GestaoEmCampo\\Controllers\\Troca escalaController.cs",
+              "RelativeDocumentMoniker": "Controllers\\Troca escalaController.cs",
+              "ToolTip": "E:\\Gestao\\gestao_em_campo\\GestaoEmCampo\\GestaoEmCampo\\Controllers\\Troca escalaController.cs",
+              "RelativeToolTip": "Controllers\\Troca escalaController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-30T10:54:54.02Z",
+              "WhenOpened": "2026-09-30T12:18:19.562Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "UsuarioController.cs",
+              "DocumentMoniker": "E:\\Gestao\\gestao_em_campo\\GestaoEmCampo\\GestaoEmCampo\\Controllers\\UsuarioController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UsuarioController.cs",
+              "ToolTip": "E:\\Gestao\\gestao_em_campo\\GestaoEmCampo\\GestaoEmCampo\\Controllers\\UsuarioController.cs",
+              "RelativeToolTip": "Controllers\\UsuarioController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAALIAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-30T11:51:53.061Z",
               "EditorCaption": ""
             },
             {
@@ -132,15 +145,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "AprovarSolicitacao.cs",
-              "DocumentMoniker": "E:\\Gestao\\gestao_em_campo\\GestaoEmCampo\\GestaoEmCampo\\Models\\AprovarSolicitacao.cs",
-              "RelativeDocumentMoniker": "Models\\AprovarSolicitacao.cs",
-              "ToolTip": "E:\\Gestao\\gestao_em_campo\\GestaoEmCampo\\GestaoEmCampo\\Models\\AprovarSolicitacao.cs",
-              "RelativeToolTip": "Models\\AprovarSolicitacao.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACYAAAADAAAAAAAAAA==",
+              "DocumentIndex": 8,
+              "Title": "SolicitacaoController.cs",
+              "DocumentMoniker": "E:\\Gestao\\gestao_em_campo\\GestaoEmCampo\\GestaoEmCampo\\Controllers\\SolicitacaoController.cs",
+              "RelativeDocumentMoniker": "Controllers\\SolicitacaoController.cs",
+              "ToolTip": "E:\\Gestao\\gestao_em_campo\\GestaoEmCampo\\GestaoEmCampo\\Controllers\\SolicitacaoController.cs",
+              "RelativeToolTip": "Controllers\\SolicitacaoController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-07T11:35:50.077Z",
+              "WhenOpened": "2026-10-07T12:16:24.827Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "GestaoEmCampoContext.cs",
+              "DocumentMoniker": "E:\\Gestao\\gestao_em_campo\\GestaoEmCampo\\GestaoEmCampo\\Data\\GestaoEmCampoContext.cs",
+              "RelativeDocumentMoniker": "Data\\GestaoEmCampoContext.cs",
+              "ToolTip": "E:\\Gestao\\gestao_em_campo\\GestaoEmCampo\\GestaoEmCampo\\Data\\GestaoEmCampoContext.cs",
+              "RelativeToolTip": "Data\\GestaoEmCampoContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-30T10:54:54.02Z",
               "EditorCaption": ""
             },
             {
@@ -158,13 +184,39 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "EscalaController.cs",
+              "DocumentMoniker": "E:\\Gestao\\gestao_em_campo\\GestaoEmCampo\\GestaoEmCampo\\Controllers\\EscalaController.cs",
+              "RelativeDocumentMoniker": "Controllers\\EscalaController.cs",
+              "ToolTip": "E:\\Gestao\\gestao_em_campo\\GestaoEmCampo\\GestaoEmCampo\\Controllers\\EscalaController.cs",
+              "RelativeToolTip": "Controllers\\EscalaController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-30T10:57:23.357Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AprovarSolicitacao.cs",
+              "DocumentMoniker": "E:\\Gestao\\gestao_em_campo\\GestaoEmCampo\\GestaoEmCampo\\Models\\AprovarSolicitacao.cs",
+              "RelativeDocumentMoniker": "Models\\AprovarSolicitacao.cs",
+              "ToolTip": "E:\\Gestao\\gestao_em_campo\\GestaoEmCampo\\GestaoEmCampo\\Models\\AprovarSolicitacao.cs",
+              "RelativeToolTip": "Models\\AprovarSolicitacao.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACYAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-07T11:35:50.077Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
               "Title": "Solicitacao.cs",
               "DocumentMoniker": "E:\\Gestao\\gestao_em_campo\\GestaoEmCampo\\GestaoEmCampo\\Models\\Solicitacao.cs",
               "RelativeDocumentMoniker": "Models\\Solicitacao.cs",
               "ToolTip": "E:\\Gestao\\gestao_em_campo\\GestaoEmCampo\\GestaoEmCampo\\Models\\Solicitacao.cs",
               "RelativeToolTip": "Models\\Solicitacao.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-09-30T10:54:50.304Z",
               "EditorCaption": ""
@@ -177,61 +229,9 @@
               "RelativeDocumentMoniker": "Models\\Troca_escala.cs",
               "ToolTip": "E:\\Gestao\\gestao_em_campo\\GestaoEmCampo\\GestaoEmCampo\\Models\\Troca_escala.cs",
               "RelativeToolTip": "Models\\Troca_escala.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAcAAAAAAAAAA==",
+              "ViewState": "AgIAABwAAAAAAAAAAAAkwD8AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-09-30T12:19:17.914Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "UsuarioController.cs",
-              "DocumentMoniker": "E:\\Gestao\\gestao_em_campo\\GestaoEmCampo\\GestaoEmCampo\\Controllers\\UsuarioController.cs",
-              "RelativeDocumentMoniker": "Controllers\\UsuarioController.cs",
-              "ToolTip": "E:\\Gestao\\gestao_em_campo\\GestaoEmCampo\\GestaoEmCampo\\Controllers\\UsuarioController.cs",
-              "RelativeToolTip": "Controllers\\UsuarioController.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAALIAAAAlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-30T11:51:53.061Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Troca escalaController.cs",
-              "DocumentMoniker": "E:\\Gestao\\gestao_em_campo\\GestaoEmCampo\\GestaoEmCampo\\Controllers\\Troca escalaController.cs",
-              "RelativeDocumentMoniker": "Controllers\\Troca escalaController.cs",
-              "ToolTip": "E:\\Gestao\\gestao_em_campo\\GestaoEmCampo\\GestaoEmCampo\\Controllers\\Troca escalaController.cs",
-              "RelativeToolTip": "Controllers\\Troca escalaController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIwAAAAwAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-30T12:18:19.562Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "SolicitacaoController.cs",
-              "DocumentMoniker": "E:\\Gestao\\gestao_em_campo\\GestaoEmCampo\\GestaoEmCampo\\Controllers\\SolicitacaoController.cs",
-              "RelativeDocumentMoniker": "Controllers\\SolicitacaoController.cs",
-              "ToolTip": "E:\\Gestao\\gestao_em_campo\\GestaoEmCampo\\GestaoEmCampo\\Controllers\\SolicitacaoController.cs",
-              "RelativeToolTip": "Controllers\\SolicitacaoController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-07T12:16:24.827Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "EscalaController.cs",
-              "DocumentMoniker": "E:\\Gestao\\gestao_em_campo\\GestaoEmCampo\\GestaoEmCampo\\Controllers\\EscalaController.cs",
-              "RelativeDocumentMoniker": "Controllers\\EscalaController.cs",
-              "ToolTip": "E:\\Gestao\\gestao_em_campo\\GestaoEmCampo\\GestaoEmCampo\\Controllers\\EscalaController.cs",
-              "RelativeToolTip": "Controllers\\EscalaController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAxAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-30T10:57:23.357Z",
               "EditorCaption": ""
             },
             {
@@ -270,8 +270,7 @@
               "RelativeToolTip": "appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-09-30T10:54:43.074Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-09-30T10:54:43.074Z"
             },
             {
               "$type": "Document",
@@ -283,8 +282,7 @@
               "RelativeToolTip": "Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAADYAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-30T10:54:34.574Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-09-30T10:54:34.574Z"
             },
             {
               "$type": "Document",
@@ -295,8 +293,7 @@
               "ToolTip": "E:\\Gestao\\gestao_em_campo\\GestaoEmCampo\\GestaoEmCampo\\GestaoEmCampo.csproj",
               "RelativeToolTip": "GestaoEmCampo.csproj",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-10-07T10:54:51.793Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-10-07T10:54:51.793Z"
             },
             {
               "$type": "Document",

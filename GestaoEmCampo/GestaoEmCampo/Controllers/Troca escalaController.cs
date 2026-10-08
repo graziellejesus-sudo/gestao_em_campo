@@ -17,24 +17,33 @@ namespace GestaoEmCampo.Controllers
             _context = context;
         }
 
-        // LISTAR TODAS AS SOLICITAÇÕES
+
+        // ==========================================
+        // GET
+        // LISTAR TODAS AS TROCAS
+        // ==========================================
 
         [HttpGet]
         public async Task<IActionResult> Listar()
         {
             var trocas = await _context.Trocas_Escala
+                .AsNoTracking()
                 .ToListAsync();
 
             return Ok(trocas);
         }
 
-        // BUSCAR SOLICITAÇÃO POR ID
-     
+
+        // ==========================================
+        // GET
+        // BUSCAR TROCA POR ID
+        // ==========================================
 
         [HttpGet("{id}")]
         public async Task<IActionResult> Buscar(int id)
         {
             var troca = await _context.Trocas_Escala
+                .AsNoTracking()
                 .FirstOrDefaultAsync(
                     t => t.Id_Troca == id
                 );
@@ -43,53 +52,88 @@ namespace GestaoEmCampo.Controllers
             {
                 return NotFound(new
                 {
-                    mensagem = "Solicitação de troca não encontrada."
+                    mensagem =
+                        "Solicitação de troca não encontrada."
                 });
             }
 
             return Ok(troca);
         }
 
-        // CRIAR SOLICITAÇÃO DE TROCA
-        
+
+        // ==========================================
+        // POST
+        // CRIAR SOLICITAÇÃO
+        // ==========================================
 
         [HttpPost]
         public async Task<IActionResult> Criar(
             [FromBody] Troca_escala troca)
         {
+            // ==========================================
+            // VALIDAR OBJETO
+            // ==========================================
+
             if (troca == null)
             {
                 return BadRequest(new
                 {
-                    mensagem = "Informe os dados da troca."
+                    mensagem =
+                        "Informe os dados da troca."
                 });
             }
+
+
+            // ==========================================
+            // VALIDAR USUÁRIO
+            // ==========================================
 
             if (troca.Id_Usuario <= 0)
             {
                 return BadRequest(new
                 {
-                    mensagem = "Usuário inválido."
+                    mensagem =
+                        "Usuário inválido."
                 });
             }
 
-            if (string.IsNullOrWhiteSpace(troca.EscalaAtual))
+
+            // ==========================================
+            // VALIDAR ESCALA ATUAL
+            // ==========================================
+
+            if (string.IsNullOrWhiteSpace(
+                troca.EscalaAtual))
             {
                 return BadRequest(new
                 {
-                    mensagem = "Informe a escala atual."
+                    mensagem =
+                        "Informe a escala atual."
                 });
             }
 
-            if (string.IsNullOrWhiteSpace(troca.NovaEscala))
+
+            // ==========================================
+            // VALIDAR NOVA ESCALA
+            // ==========================================
+
+            if (string.IsNullOrWhiteSpace(
+                troca.NovaEscala))
             {
                 return BadRequest(new
                 {
-                    mensagem = "Informe a nova escala."
+                    mensagem =
+                        "Informe a nova escala."
                 });
             }
 
-            if (troca.EscalaAtual == troca.NovaEscala)
+
+            // ==========================================
+            // VERIFICAR ESCALAS IGUAIS
+            // ==========================================
+
+            if (troca.EscalaAtual ==
+                troca.NovaEscala)
             {
                 return BadRequest(new
                 {
@@ -98,17 +142,70 @@ namespace GestaoEmCampo.Controllers
                 });
             }
 
-            // Toda nova solicitação começa como Pendente
+
+            // ==========================================
+            // VALIDAR DATA
+            // ==========================================
+
+            if (troca.DataTroca == default)
+            {
+                return BadRequest(new
+                {
+                    mensagem =
+                        "Informe a data desejada para a troca."
+                });
+            }
+
+
+            // ==========================================
+            // VALIDAR MOTIVO
+            // ==========================================
+
+            if (string.IsNullOrWhiteSpace(
+                troca.Motivo))
+            {
+                return BadRequest(new
+                {
+                    mensagem =
+                        "Informe o motivo da troca."
+                });
+            }
+
+
+            // ==========================================
+            // STATUS AUTOMÁTICO
+            // ==========================================
+
             troca.Status = "Pendente";
+
+
+            // ==========================================
+            // SALVAR
+            // ==========================================
 
             _context.Trocas_Escala.Add(troca);
 
             await _context.SaveChangesAsync();
 
-            return Ok(troca);
+
+            // ==========================================
+            // RETORNAR RESULTADO
+            // ==========================================
+
+            return Ok(new
+            {
+                mensagem =
+                    "Solicitação de troca criada com sucesso.",
+
+                troca = troca
+            });
         }
-        // ALTERAR STATUS DA SOLICITAÇÃO
- 
+
+
+        // ==========================================
+        // PUT
+        // EDITAR SOLICITAÇÃO
+        // ==========================================
 
         [HttpPut("{id}")]
         public async Task<IActionResult> Editar(
@@ -119,58 +216,94 @@ namespace GestaoEmCampo.Controllers
             {
                 return BadRequest(new
                 {
-                    mensagem = "Informe os dados da solicitação."
+                    mensagem =
+                        "Informe os dados da solicitação."
                 });
             }
+
 
             var troca = await _context.Trocas_Escala
                 .FirstOrDefaultAsync(
                     t => t.Id_Troca == id
                 );
 
+
             if (troca == null)
             {
                 return NotFound(new
                 {
-                    mensagem = "Solicitação não encontrada."
+                    mensagem =
+                        "Solicitação não encontrada."
                 });
             }
 
-            troca.Id_Usuario = dados.Id_Usuario;
-            troca.EscalaAtual = dados.EscalaAtual;
-            troca.NovaEscala = dados.NovaEscala;
-            troca.Status = dados.Status;
+
+            troca.Id_Usuario =
+                dados.Id_Usuario;
+
+            troca.EscalaAtual =
+                dados.EscalaAtual;
+
+            troca.NovaEscala =
+                dados.NovaEscala;
+
+            troca.DataTroca =
+                dados.DataTroca;
+
+            troca.Motivo =
+                dados.Motivo;
+
+            troca.Status =
+                dados.Status;
+
 
             await _context.SaveChangesAsync();
 
-            return Ok(troca);
+
+            return Ok(new
+            {
+                mensagem =
+                    "Solicitação alterada com sucesso.",
+
+                troca = troca
+            });
         }
+
+
+        // ==========================================
+        // DELETE
         // EXCLUIR SOLICITAÇÃO
-       
+        // ==========================================
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Excluir(int id)
+        public async Task<IActionResult> Excluir(
+            int id)
         {
             var troca = await _context.Trocas_Escala
                 .FirstOrDefaultAsync(
                     t => t.Id_Troca == id
                 );
 
+
             if (troca == null)
             {
                 return NotFound(new
                 {
-                    mensagem = "Solicitação não encontrada."
+                    mensagem =
+                        "Solicitação não encontrada."
                 });
             }
+
 
             _context.Trocas_Escala.Remove(troca);
 
             await _context.SaveChangesAsync();
 
+
             return Ok(new
             {
-                mensagem = "Solicitação excluída com sucesso."
+                mensagem =
+                    "Solicitação excluída com sucesso."
             });
         }
     }

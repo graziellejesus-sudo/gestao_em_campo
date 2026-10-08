@@ -779,6 +779,14 @@
         "additionalProperties": false
       },
       "Troca_escala": {
+        "required": [
+          "dataTroca",
+          "escalaAtual",
+          "id_Usuario",
+          "motivo",
+          "novaEscala",
+          "status"
+        ],
         "type": "object",
         "properties": {
           "id_Troca": {
@@ -790,16 +798,24 @@
             "format": "int32"
           },
           "escalaAtual": {
-            "type": "string",
-            "nullable": true
+            "minLength": 1,
+            "type": "string"
           },
           "novaEscala": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "dataTroca": {
             "type": "string",
-            "nullable": true
+            "format": "date-time"
+          },
+          "motivo": {
+            "minLength": 1,
+            "type": "string"
           },
           "status": {
-            "type": "string",
-            "nullable": true
+            "minLength": 1,
+            "type": "string"
           }
         },
         "additionalProperties": false
