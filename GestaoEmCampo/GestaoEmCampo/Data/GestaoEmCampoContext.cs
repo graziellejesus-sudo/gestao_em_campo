@@ -17,7 +17,7 @@ namespace GestaoEmCampo.Data
 
         public DbSet<Solicitacao> Solicitacoes { get; set; }
 
-        public DbSet<Troca_escala> Trocas_Escala { get; set; }
+        public DbSet<TrocaEscala> Trocas_Escala { get; set; }
 
         public DbSet<AprovarSolicitacao> AprovarSolicitacoes { get; set; }
 

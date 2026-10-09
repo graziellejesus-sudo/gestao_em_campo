@@ -428,10 +428,10 @@
         }
       }
     },
-    "/api/Troca_escala": {
+    "/api/TrocaEscala": {
       "get": {
         "tags": [
-          "Troca_escala"
+          "TrocaEscala"
         ],
         "responses": {
           "200": {
@@ -441,23 +441,23 @@
       },
       "post": {
         "tags": [
-          "Troca_escala"
+          "TrocaEscala"
         ],
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Troca_escala"
+                "$ref": "#/components/schemas/TrocaEscala"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Troca_escala"
+                "$ref": "#/components/schemas/TrocaEscala"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Troca_escala"
+                "$ref": "#/components/schemas/TrocaEscala"
               }
             }
           }
@@ -469,10 +469,10 @@
         }
       }
     },
-    "/api/Troca_escala/{id}": {
+    "/api/TrocaEscala/{id}": {
       "get": {
         "tags": [
-          "Troca_escala"
+          "TrocaEscala"
         ],
         "parameters": [
           {
@@ -493,7 +493,7 @@
       },
       "put": {
         "tags": [
-          "Troca_escala"
+          "TrocaEscala"
         ],
         "parameters": [
           {
@@ -510,17 +510,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Troca_escala"
+                "$ref": "#/components/schemas/TrocaEscala"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Troca_escala"
+                "$ref": "#/components/schemas/TrocaEscala"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Troca_escala"
+                "$ref": "#/components/schemas/TrocaEscala"
               }
             }
           }
@@ -533,7 +533,7 @@
       },
       "delete": {
         "tags": [
-          "Troca_escala"
+          "TrocaEscala"
         ],
         "parameters": [
           {
@@ -778,14 +778,14 @@
         },
         "additionalProperties": false
       },
-      "Troca_escala": {
+      "TrocaEscala": {
         "required": [
           "dataTroca",
           "escalaAtual",
           "id_Usuario",
           "motivo",
           "novaEscala",
-          "status"
+          "statuss"
         ],
         "type": "object",
         "properties": {
@@ -813,7 +813,7 @@
             "minLength": 1,
             "type": "string"
           },
-          "status": {
+          "statuss": {
             "minLength": 1,
             "type": "string"
           }

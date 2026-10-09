@@ -256,9 +256,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "GestaoEmCampo.Controllers.Troca_escalaController",
+    "ContainingType": "GestaoEmCampo.Controllers.TrocaEscalaController",
     "Method": "Listar",
-    "RelativePath": "api/Troca_escala",
+    "RelativePath": "api/TrocaEscala",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -266,25 +266,25 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "GestaoEmCampo.Controllers.Troca_escalaController",
+    "ContainingType": "GestaoEmCampo.Controllers.TrocaEscalaController",
     "Method": "Criar",
-    "RelativePath": "api/Troca_escala",
+    "RelativePath": "api/TrocaEscala",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
         "Name": "troca",
-        "Type": "GestaoEmCampo.Models.Troca_escala",
+        "Type": "GestaoEmCampo.Models.TrocaEscala",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "GestaoEmCampo.Controllers.Troca_escalaController",
+    "ContainingType": "GestaoEmCampo.Controllers.TrocaEscalaController",
     "Method": "Buscar",
-    "RelativePath": "api/Troca_escala/{id}",
+    "RelativePath": "api/TrocaEscala/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -298,9 +298,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "GestaoEmCampo.Controllers.Troca_escalaController",
+    "ContainingType": "GestaoEmCampo.Controllers.TrocaEscalaController",
     "Method": "Editar",
-    "RelativePath": "api/Troca_escala/{id}",
+    "RelativePath": "api/TrocaEscala/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -312,16 +312,16 @@
       },
       {
         "Name": "dados",
-        "Type": "GestaoEmCampo.Models.Troca_escala",
+        "Type": "GestaoEmCampo.Models.TrocaEscala",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "GestaoEmCampo.Controllers.Troca_escalaController",
+    "ContainingType": "GestaoEmCampo.Controllers.TrocaEscalaController",
     "Method": "Excluir",
-    "RelativePath": "api/Troca_escala/{id}",
+    "RelativePath": "api/TrocaEscala/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,

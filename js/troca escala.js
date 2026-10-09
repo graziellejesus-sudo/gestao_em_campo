@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // ==========================================
 
     const API_URL =
-        "https://localhost:7134/api/Troca_escala";
+        "https://localhost:7134/api/TrocaEscala";
 
 
     // ==========================================

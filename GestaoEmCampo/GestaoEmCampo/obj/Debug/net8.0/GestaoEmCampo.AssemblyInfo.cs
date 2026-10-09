@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GestaoEmCampo")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8fce09f8bf60610025d1b1eca7d65143a7d765f2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c3c07a62a4b06b8455b9de4e3212d2e18928620c")]
 [assembly: System.Reflection.AssemblyProductAttribute("GestaoEmCampo")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GestaoEmCampo")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

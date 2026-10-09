@@ -3,8 +3,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GestaoEmCampo.Models
 {
-    [Table("Trocas_Escala")]
-    public class Troca_escala
+    [Table("Troca_escala")]
+    public class TrocaEscala
     {
         // ==========================================
         // ID DA TROCA
@@ -59,6 +59,6 @@ namespace GestaoEmCampo.Models
         // ==========================================
 
         [Required]
-        public string Status { get; set; } = "Pendente";
+        public string Statuss{ get; set; } = "Pendente";
     }
 }

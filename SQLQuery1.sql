@@ -60,7 +60,10 @@ CREATE TABLE Troca_escala (
     Id_Usuario INTEGER NOT NULL,
     EscalaAtual VARCHAR(100) NOT NULL,
     NovaEscala VARCHAR(100) NOT NULL,
-    Status VARCHAR(50) NOT NULL
+    Statuss VARCHAR(50) NOT NULL
+    DataTroca DATE,
+    Motivo VARCHAR(255),
+    
 );
 
 
@@ -215,7 +218,7 @@ VALUES
 /* ========================================================= */
 
 INSERT INTO Troca_escala
-(Id_Usuario, EscalaAtual, NovaEscala, Status)
+(Id_Usuario, EscalaAtual, NovaEscala, statuss,DataTroca,Motivo)
 VALUES
 
 (1,

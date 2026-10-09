@@ -7,11 +7,11 @@ namespace GestaoEmCampo.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class Troca_escalaController : ControllerBase
+    public class TrocaEscalaController : ControllerBase
     {
         private readonly GestaoEmCampoContext _context;
 
-        public Troca_escalaController(
+        public TrocaEscalaController(
             GestaoEmCampoContext context)
         {
             _context = context;
@@ -68,7 +68,7 @@ namespace GestaoEmCampo.Controllers
 
         [HttpPost]
         public async Task<IActionResult> Criar(
-            [FromBody] Troca_escala troca)
+            [FromBody] TrocaEscala troca)
         {
             // ==========================================
             // VALIDAR OBJETO
@@ -176,7 +176,7 @@ namespace GestaoEmCampo.Controllers
             // STATUS AUTOMÁTICO
             // ==========================================
 
-            troca.Status = "Pendente";
+            troca.Statuss= "Pendente";
 
 
             // ==========================================
@@ -210,7 +210,7 @@ namespace GestaoEmCampo.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> Editar(
             int id,
-            [FromBody] Troca_escala dados)
+            [FromBody] TrocaEscala dados)
         {
             if (dados == null)
             {
@@ -253,8 +253,8 @@ namespace GestaoEmCampo.Controllers
             troca.Motivo =
                 dados.Motivo;
 
-            troca.Status =
-                dados.Status;
+            troca.Statuss =
+                dados.Statuss;
 
 
             await _context.SaveChangesAsync();
