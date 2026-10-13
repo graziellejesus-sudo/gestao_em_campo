@@ -117,15 +117,18 @@ document.addEventListener("DOMContentLoaded", () => {
             // ==========================================
             // CRIAR CARDS
             // ==========================================
+              
+            const solicitacoesPendentes = solicitacoes.filter(
+    (solicitacao) => solicitacao.statuss !== true
+);
 
-            solicitacoes.forEach(
-                (solicitacao) => {
+solicitacoesPendentes.forEach(
+    (solicitacao) => {
 
-                    const card =
-                        document.createElement("div");
+        const card =
+            document.createElement("div");
 
-
-                    card.className = "card";
+        card.className = "card";
 
 
                     // ==================================
@@ -509,33 +512,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
             console.log(
-                "Status PUT RECUSAR:",
-                resposta.status
-            );
+    "Status PUT RECUSAR:",
+    resposta.status
+);
 
+if (!resposta.ok) {
+    const erro = await resposta.text();
 
-            if (!resposta.ok) {
+    console.error(
+        "Erro retornado pelo servidor:",
+        erro
+    );
 
-                const erro =
-                    await resposta.text();
+    throw new Error(
+        `Erro HTTP: ${resposta.status}`
+    );
+}
 
+// NOVO TESTE
+const respostaTexto = await resposta.clone().text();
 
-                console.error(
-                    "Erro retornado pelo servidor:",
-                    erro
-                );
+console.log(
+    "Resposta do backend:",
+    respostaTexto
+);
 
-
-                throw new Error(
-                    `Erro HTTP: ${resposta.status}`
-                );
-            }
-
-
-            alert(
-                "Solicitação recusada com sucesso!"
-            );
-
+alert("Solicitação recusada com sucesso!");
 
             await carregarSolicitacoes();
 

@@ -102,7 +102,7 @@ ON DELETE NO ACTION;
 /* TABELA DE APROVAÇÃO DE SOLICITAÇÕES */
 /* ========================================================= */
 
-CREATE TABLE Aprovar_Solicitacao (
+CREATE TABLE AprovarSolicitacao (
     Id_Aprovacao INTEGER IDENTITY(1,1) PRIMARY KEY,
     Fk_Id_Solicitacao INTEGER NOT NULL,
     Fk_Id_Gestor INTEGER NOT NULL,

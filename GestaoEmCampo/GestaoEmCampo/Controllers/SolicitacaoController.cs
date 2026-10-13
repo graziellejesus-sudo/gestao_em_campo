@@ -95,44 +95,54 @@ namespace GestaoEmCampo.Controllers
         {
             try
             {
-                var solicitacao = await _context.Solicitacoes.FirstOrDefaultAsync(s => s.Id_Solicitacao == id);
+                var solicitacao = await _context.Solicitacoes
+                    .FirstOrDefaultAsync(s => s.Id_Solicitacao == id);
 
-                if (solicitacao == null) { return NotFound(new { mensagem = "Solicitação não encontrada." }); }
+                if (solicitacao == null)
+                {
+                    return NotFound(new
+                    {
+                        mensagem = "Solicitação não encontrada."
+                    });
+                }
 
-                // ====================================== // ALTERAR STATUS PARA RECUSADA // ======================================
-
+                // Atualiza a tabela Solicitacoes
                 solicitacao.Statuss = false;
 
+                // Procura o registro de aprovação relacionado
+                var aprovacao = await _context.AprovarSolicitacoes
+                    .FirstOrDefaultAsync(a => a.FkIdSolicitacao == id);
+
+                // Atualiza a tabela Aprovar_Solicitacao, se existir registro
+                if (aprovacao != null)
+                {
+                    aprovacao.Statuss = "Reprovado";
+                    aprovacao.DataAprovacao = DateTime.Now;
+                }
+
+                // Salva as alterações
                 await _context.SaveChangesAsync();
-
-                // ====================================== // BUSCAR NOVAMENTE // ======================================
-
-                var solicitacaoAtualizada = await _context.Solicitacoes.FirstOrDefaultAsync(s => s.Id_Solicitacao == id);
 
                 return Ok(new
                 {
                     mensagem = "Solicitação recusada com sucesso!",
-
-                    solicitacao = solicitacaoAtualizada
+                    idSolicitacao = id,
+                    statusSolicitacao = solicitacao.Statuss,
+                    statusAprovacao = aprovacao?.Statuss
                 });
             }
             catch (Exception erro)
             {
-                Console.WriteLine("=================================");
-
-                Console.WriteLine("ERRO AO RECUSAR SOLICITAÇÃO");
-
                 Console.WriteLine(erro.ToString());
-
-                Console.WriteLine("=================================");
 
                 return StatusCode(500, new
                 {
                     mensagem = "Erro ao recusar solicitação.",
-
                     erro = erro.Message
                 });
             }
+
+
         }
     }
-}
+}      
