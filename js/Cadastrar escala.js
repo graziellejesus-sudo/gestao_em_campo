@@ -175,9 +175,7 @@ formulario.addEventListener("submit", async function (event) {
 // BOTÃO CANCELAR
 // ============================================
 
+
 function voltarPainel() {
-
-    window.location.href =
-        "../html/Painel escala.html";
-
+    window.location.href = "inicio.html";
 }

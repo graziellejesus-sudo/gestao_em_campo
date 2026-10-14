@@ -163,7 +163,7 @@ namespace GestaoEmCampo.Controllers
             }
 
             // Verifica se o email já existe
-            var emailExiste = _context.Usuarios
+            bool emailExiste = _context.Usuarios
                 .Any(u => u.Email == usuario.Email);
 
             if (emailExiste)

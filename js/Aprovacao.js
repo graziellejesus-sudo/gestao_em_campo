@@ -402,81 +402,52 @@ solicitacoesPendentes.forEach(
     // PUT /api/Solicitacao/{id}/aprovar
     // ==========================================
 
-    async function aprovarSolicitacao(id) {
+    async function recusarSolicitacao(id) {
+    const confirmar = confirm(
+        "Tem certeza de que deseja recusar esta solicitação?"
+    );
 
-        console.log(
-            "Enviando aprovação para ID:",
-            id
+    if (!confirmar) return;
+
+    try {
+        const resposta = await fetch(
+            `${API_SOLICITACOES}/${id}/recusar`,
+            {
+                method: "PUT",
+                headers: {
+                    "Accept": "application/json"
+                }
+            }
         );
 
+        const resultado = await resposta.json();
 
-        try {
-
-            const resposta =
-                await fetch(
-                    `${API_SOLICITACOES}/${id}/aprovar`,
-                    {
-                        method: "PUT",
-
-                        headers: {
-                            "Content-Type":
-                                "application/json",
-
-                            "Accept":
-                                "application/json"
-                        }
-                    }
-                );
-
-
-            console.log(
-                "Status PUT APROVAR:",
-                resposta.status
+        if (!resposta.ok) {
+            throw new Error(
+                resultado.mensagem || "Erro ao recusar solicitação."
             );
-
-
-            if (!resposta.ok) {
-
-                const erro =
-                    await resposta.text();
-
-
-                console.error(
-                    "Erro retornado pelo servidor:",
-                    erro
-                );
-
-
-                throw new Error(
-                    `Erro HTTP: ${resposta.status}`
-                );
-            }
-
-
-            alert(
-                "Solicitação aprovada com sucesso!"
-            );
-
-
-            await carregarSolicitacoes();
-
         }
 
-        catch (erro) {
+        alert("Solicitação recusada com sucesso!");
 
-            console.error(
-                "ERRO AO APROVAR:",
-                erro
-            );
+        // Retira o card da tela após a confirmação do servidor
+        const botao = document.querySelector(
+            `.btn-recusar[data-id="${id}"]`
+        );
 
-
-            alert(
-                "Não foi possível aprovar a solicitação."
-            );
-
+        if (botao) {
+            botao.closest(".card")?.remove();
         }
 
+    } catch (erro) {
+        console.error("Erro ao recusar:", erro);
+
+        alert(
+            "Não foi possível recusar a solicitação: " +
+            erro.message
+        );
     }
+}
 
 
     // ==========================================

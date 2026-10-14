@@ -60,7 +60,7 @@ CREATE TABLE Troca_escala (
     Id_Usuario INTEGER NOT NULL,
     EscalaAtual VARCHAR(100) NOT NULL,
     NovaEscala VARCHAR(100) NOT NULL,
-    Statuss VARCHAR(50) NOT NULL
+    Statuss VARCHAR(50) NOT NULL,
     DataTroca DATE,
     Motivo VARCHAR(255),
     
@@ -224,16 +224,16 @@ VALUES
 (1,
  'Manhã - 06:00 às 14:00',
  'Tarde - 14:00 às 22:00',
- 'Pendente'),
+ 'Pendente','2026-10-01', 'teste'),
 
 (2,
  'Tarde - 14:00 às 22:00',
  'Noite - 22:00 às 06:00',
- 'Pendente'),
+ 'Pendente','2026-10-01', 'teste'),
 
 (4,
  'Noite - 22:00 às 06:00',
  'Manhã - 06:00 às 14:00',
- 'Aprovada');
+ 'Aprovada','2026-10-01', 'teste');
 
 GO
