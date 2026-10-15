@@ -46,43 +46,88 @@ namespace GestaoEmCampo.Controllers
         {
             try
             {
-                var solicitacao = await _context.Solicitacoes.FirstOrDefaultAsync(s => s.Id_Solicitacao == id);
+                // 1. Obter o ID do usuário logado na sessão
+                var idLogadoTexto = HttpContext.Session.GetString("IdLogado");
 
-                if (solicitacao == null) { return NotFound(new { mensagem = "Solicitação não encontrada." }); }
+                if (!int.TryParse(idLogadoTexto, out int idGestor))
+                {
+                    return Unauthorized(new
+                    {
+                        mensagem = "Sessão expirada. Faça login novamente."
+                    });
+                }
 
-                // ====================================== // ALTERAR STATUS PARA APROVADA // ======================================
+                // 2. Verificar se o usuário existe e é gestor
+                var gestor = await _context.Usuarios
+                    .FirstOrDefaultAsync(u => u.Id_Usuario == idGestor);
 
+                if (gestor == null ||
+                    !string.Equals(
+                        gestor.Cargo,
+                        "Gestor",
+                        StringComparison.OrdinalIgnoreCase))
+                {
+                    return Forbid();
+                }
+
+                // 3. Buscar a solicitação
+                var solicitacao = await _context.Solicitacoes
+                    .FirstOrDefaultAsync(s => s.Id_Solicitacao == id);
+
+                if (solicitacao == null)
+                {
+                    return NotFound(new
+                    {
+                        mensagem = "Solicitação não encontrada."
+                    });
+                }
+
+                // 4. Atualizar a solicitação
                 solicitacao.Statuss = true;
 
-                // ====================================== // SALVAR NO BANCO // ======================================
+                // 5. Buscar registro de aprovação existente
+                var aprovacao = await _context.AprovarSolicitacoes
+                    .FirstOrDefaultAsync(a => a.FkIdSolicitacao == id);
 
+                if (aprovacao == null)
+                {
+                    // Criar registro da decisão
+                    aprovacao = new AprovarSolicitacao
+                    {
+                        FkIdSolicitacao = id,
+                        FkIdGestor = idGestor,
+                        Statuss = "Aprovado",
+                        DataAprovacao = DateTime.Now
+                    };
+
+                    _context.AprovarSolicitacoes.Add(aprovacao);
+                }
+                else
+                {
+                    aprovacao.FkIdGestor = idGestor;
+                    aprovacao.Statuss = "Aprovado";
+                    aprovacao.DataAprovacao = DateTime.Now;
+                }
+
+                // 6. Salvar nas duas tabelas
                 await _context.SaveChangesAsync();
-
-                // ====================================== // BUSCAR NOVAMENTE PARA CONFIRMAR // ======================================
-
-                var solicitacaoAtualizada = await _context.Solicitacoes.FirstOrDefaultAsync(s => s.Id_Solicitacao == id);
 
                 return Ok(new
                 {
                     mensagem = "Solicitação aprovada com sucesso!",
-
-                    solicitacao = solicitacaoAtualizada
+                    idSolicitacao = id,
+                    idGestor = idGestor,
+                    status = aprovacao.Statuss,
+                    dataAprovacao = aprovacao.DataAprovacao
                 });
             }
             catch (Exception erro)
             {
-                Console.WriteLine("=================================");
-
-                Console.WriteLine("ERRO AO APROVAR SOLICITAÇÃO");
-
                 Console.WriteLine(erro.ToString());
-
-                Console.WriteLine("=================================");
 
                 return StatusCode(500, new
                 {
                     mensagem = "Erro ao aprovar solicitação.",
-
                     erro = erro.Message
                 });
             }
@@ -95,6 +140,31 @@ namespace GestaoEmCampo.Controllers
         {
             try
             {
+                // 1. Obter o ID do usuário logado
+                var idLogadoTexto = HttpContext.Session.GetString("IdLogado");
+
+                if (!int.TryParse(idLogadoTexto, out int idGestor))
+                {
+                    return Unauthorized(new
+                    {
+                        mensagem = "Sessão expirada. Faça login novamente."
+                    });
+                }
+
+                // 2. Verificar se o usuário existe e é gestor
+                var gestor = await _context.Usuarios
+                    .FirstOrDefaultAsync(u => u.Id_Usuario == idGestor);
+
+                if (gestor == null ||
+                    !string.Equals(
+                        gestor.Cargo,
+                        "Gestor",
+                        StringComparison.OrdinalIgnoreCase))
+                {
+                    return Forbid();
+                }
+
+                // 3. Buscar a solicitação
                 var solicitacao = await _context.Solicitacoes
                     .FirstOrDefaultAsync(s => s.Id_Solicitacao == id);
 
@@ -106,29 +176,42 @@ namespace GestaoEmCampo.Controllers
                     });
                 }
 
-                // Atualiza a tabela Solicitacoes
+                // 4. Atualizar a solicitação
                 solicitacao.Statuss = false;
 
-                // Procura o registro de aprovação relacionado
+                // 5. Buscar registro da decisão
                 var aprovacao = await _context.AprovarSolicitacoes
                     .FirstOrDefaultAsync(a => a.FkIdSolicitacao == id);
 
-                // Atualiza a tabela Aprovar_Solicitacao, se existir registro
-                if (aprovacao != null)
+                if (aprovacao == null)
                 {
+                    aprovacao = new AprovarSolicitacao
+                    {
+                        FkIdSolicitacao = id,
+                        FkIdGestor = idGestor,
+                        Statuss = "Reprovado",
+                        DataAprovacao = DateTime.Now
+                    };
+
+                    _context.AprovarSolicitacoes.Add(aprovacao);
+                }
+                else
+                {
+                    aprovacao.FkIdGestor = idGestor;
                     aprovacao.Statuss = "Reprovado";
                     aprovacao.DataAprovacao = DateTime.Now;
                 }
 
-                // Salva as alterações
+                // 6. Salvar nas duas tabelas
                 await _context.SaveChangesAsync();
 
                 return Ok(new
                 {
                     mensagem = "Solicitação recusada com sucesso!",
                     idSolicitacao = id,
-                    statusSolicitacao = solicitacao.Statuss,
-                    statusAprovacao = aprovacao?.Statuss
+                    idGestor = idGestor,
+                    status = aprovacao.Statuss,
+                    dataAprovacao = aprovacao.DataAprovacao
                 });
             }
             catch (Exception erro)
@@ -141,8 +224,6 @@ namespace GestaoEmCampo.Controllers
                     erro = erro.Message
                 });
             }
-
-
         }
     }
-}      
+}

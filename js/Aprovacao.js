@@ -1,569 +1,403 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    const container =
-        document.querySelector(".solicitacoes");
+    const container = document.querySelector(".solicitacoes");
 
-
-    // ==========================================
     // URL DA API
-    // ==========================================
-
     const API_SOLICITACOES =
         "https://localhost:7134/api/Solicitacao";
 
-
-    // ==========================================
     // VERIFICAR CONTAINER
-    // ==========================================
-
     if (!container) {
-
         console.error(
             "ERRO: .solicitacoes não existe no HTML."
         );
-
         return;
     }
-
 
     // ==========================================
     // CARREGAR SOLICITAÇÕES
     // GET /api/Solicitacao
     // ==========================================
-
     async function carregarSolicitacoes() {
 
         container.innerHTML = `
             <p>Carregando solicitações...</p>
         `;
 
-
         console.log(
             "Buscando solicitações em:",
             API_SOLICITACOES
         );
 
-
         try {
 
-            const resposta =
-                await fetch(
-                    API_SOLICITACOES,
-                    {
-                        method: "GET",
-
-                        headers: {
-                            "Accept": "application/json"
-                        }
+            const resposta = await fetch(
+                API_SOLICITACOES,
+                {
+                    method: "GET",
+                    credentials: "include",
+                    headers: {
+                        "Accept": "application/json"
                     }
-                );
-
-
-            console.log(
-                "Status GET:",
-                resposta.status
+                }
             );
 
+            console.log("Status GET:", resposta.status);
 
             if (!resposta.ok) {
+                const erro = await resposta.text();
 
                 throw new Error(
-                    `Erro HTTP: ${resposta.status}`
+                    `Erro HTTP: ${resposta.status}` +
+                    (erro ? ` - ${erro}` : "")
                 );
             }
 
-
-            const solicitacoes =
-                await resposta.json();
-
+            const solicitacoes = await resposta.json();
 
             console.log(
                 "Solicitações recebidas:",
                 solicitacoes
             );
 
-
             if (!Array.isArray(solicitacoes)) {
-
                 throw new Error(
                     "A API não retornou uma lista."
                 );
             }
 
+            // FILTRAR SOLICITAÇÕES NÃO APROVADAS
+            const solicitacoesPendentes =
+                solicitacoes.filter(
+                    (solicitacao) =>
+                        solicitacao.statuss !== true
+                );
 
-            // ==========================================
-            // NENHUMA SOLICITAÇÃO
-            // ==========================================
-
-            if (solicitacoes.length === 0) {
-
+            if (solicitacoesPendentes.length === 0) {
                 container.innerHTML = `
                     <p class="sem-solicitacoes">
-                        Não existem solicitações cadastradas.
+                        Não existem solicitações pendentes.
                     </p>
                 `;
-
                 return;
             }
 
-
-            // ==========================================
-            // LIMPAR CONTAINER
-            // ==========================================
-
             container.innerHTML = "";
 
-
-            // ==========================================
             // CRIAR CARDS
-            // ==========================================
-              
-            const solicitacoesPendentes = solicitacoes.filter(
-    (solicitacao) => solicitacao.statuss !== true
-);
+            solicitacoesPendentes.forEach((solicitacao) => {
 
-solicitacoesPendentes.forEach(
-    (solicitacao) => {
+                const card = document.createElement("div");
+                card.className = "card";
 
-        const card =
-            document.createElement("div");
+                const aprovada =
+                    solicitacao.statuss === true;
 
-        card.className = "card";
+                const status = aprovada
+                    ? "Aprovada"
+                    : "Pendente";
 
+                const classeStatus = aprovada
+                    ? "aprovada"
+                    : "pendente";
 
-                    // ==================================
-                    // STATUS
-                    // ==================================
+                const dataInicio = formatarData(
+                    solicitacao.data_Solicitada_Inicio
+                );
 
-                    const aprovada =
-                        solicitacao.statuss === true;
+                const dataFim = formatarData(
+                    solicitacao.data_Solicitada_Fim
+                );
 
+                card.innerHTML = `
+                    <div class="card-topo">
+                        <h2>
+                            Solicitação
+                            #${solicitacao.id_Solicitacao}
+                        </h2>
 
-                    const status =
-                        aprovada
-                            ? "Aprovada"
-                            : "Pendente";
+                        <span class="status ${classeStatus}">
+                            ${status}
+                        </span>
+                    </div>
 
+                    <div class="informacoes">
 
-                    const classeStatus =
-                        aprovada
-                            ? "aprovada"
-                            : "pendente";
+                        <div class="campo">
+                            <strong>Tipo</strong>
+                            <span>${solicitacao.tipo ?? "-"}</span>
+                        </div>
 
+                        <div class="campo">
+                            <strong>Data inicial</strong>
+                            <span>${dataInicio}</span>
+                        </div>
 
-                    // ==================================
-                    // DATAS
-                    // ==================================
+                        <div class="campo">
+                            <strong>Data final</strong>
+                            <span>${dataFim}</span>
+                        </div>
 
-                    const dataInicio =
-                        formatarData(
-                            solicitacao.data_Solicitada_Inicio
-                        );
+                        <div class="campo">
+                            <strong>Motivo</strong>
+                            <span>${solicitacao.motivo ?? "-"}</span>
+                        </div>
 
-
-                    const dataFim =
-                        formatarData(
-                            solicitacao.data_Solicitada_Fim
-                        );
-
-
-                    // ==================================
-                    // HTML DO CARD
-                    // ==================================
-
-                    card.innerHTML = `
-
-                        <div class="card-topo">
-
-                            <h2>
-                                Solicitação
-                                #${solicitacao.id_Solicitacao}
-                            </h2>
-
-                            <span
-                                class="status ${classeStatus}"
-                            >
-                                ${status}
+                        <div class="campo">
+                            <strong>Usuário</strong>
+                            <span>
+                                ${solicitacao.fk_Id_Usuario ?? "-"}
                             </span>
-
                         </div>
 
-
-                        <div class="informacoes">
-
-                            <div class="campo">
-
-                                <strong>
-                                    Tipo
-                                </strong>
-
-                                <span>
-                                    ${solicitacao.tipo ?? "-"}
-                                </span>
-
-                            </div>
-
-
-                            <div class="campo">
-
-                                <strong>
-                                    Data inicial
-                                </strong>
-
-                                <span>
-                                    ${dataInicio}
-                                </span>
-
-                            </div>
-
-
-                            <div class="campo">
-
-                                <strong>
-                                    Data final
-                                </strong>
-
-                                <span>
-                                    ${dataFim}
-                                </span>
-
-                            </div>
-
-
-                            <div class="campo">
-
-                                <strong>
-                                    Motivo
-                                </strong>
-
-                                <span>
-                                    ${solicitacao.motivo ?? "-"}
-                                </span>
-
-                            </div>
-
-
-                            <div class="campo">
-
-                                <strong>
-                                    Usuário
-                                </strong>
-
-                                <span>
-                                    ${solicitacao.fk_Id_Usuario ?? "-"}
-                                </span>
-
-                            </div>
-
-
-                            <div class="campo">
-
-                                <strong>
-                                    Escala
-                                </strong>
-
-                                <span>
-                                    ${solicitacao.fk_Id_Escala ?? "-"}
-                                </span>
-
-                            </div>
-
+                        <div class="campo">
+                            <strong>Escala</strong>
+                            <span>
+                                ${solicitacao.fk_Id_Escala ?? "-"}
+                            </span>
                         </div>
 
+                    </div>
 
-                        <!-- ==========================
-                             BOTÕES
-                        =========================== -->
+                    <div class="acoes">
+                        <button
+                            type="button"
+                            class="btn-aprovar"
+                            data-id="${solicitacao.id_Solicitacao}"
+                        >
+                            Aprovar
+                        </button>
 
-                        <div class="acoes">
+                        <button
+                            type="button"
+                            class="btn-recusar"
+                            data-id="${solicitacao.id_Solicitacao}"
+                        >
+                            Recusar
+                        </button>
+                    </div>
+                `;
 
-                            <button
-                                type="button"
-                                class="btn-aprovar"
-                                data-id="${solicitacao.id_Solicitacao}"
-                                ${aprovada ? "disabled" : ""}
-                            >
-                                Aprovar
-                            </button>
+                container.appendChild(card);
 
+                // ==========================================
+                // BOTÃO APROVAR
+                // ==========================================
+                const btnAprovar = card.querySelector(
+                    ".btn-aprovar"
+                );
 
-                            <button
-                                type="button"
-                                class="btn-recusar"
-                                data-id="${solicitacao.id_Solicitacao}"
-                                ${aprovada ? "disabled" : ""}
-                            >
-                                Recusar
-                            </button>
+                btnAprovar.addEventListener(
+                    "click",
+                    async () => {
 
-                        </div>
+                        const id = btnAprovar.dataset.id;
 
-                    `;
-
-
-                    container.appendChild(card);
-
-
-                    // ==================================
-                    // BOTÃO APROVAR
-                    // ==================================
-
-                    const btnAprovar =
-                        card.querySelector(
-                            ".btn-aprovar"
+                        console.log(
+                            "Clicou em APROVAR. ID:",
+                            id
                         );
 
+                        btnAprovar.disabled = true;
 
-                    btnAprovar.addEventListener(
-                        "click",
-                        () => {
-
-                            const id =
-                                btnAprovar.dataset.id;
-
-
-                            console.log(
-                                "Clicou em APROVAR. ID:",
-                                id
-                            );
-
-
-                            aprovarSolicitacao(id);
-
+                        try {
+                            await aprovarSolicitacao(id);
+                        } finally {
+                            if (btnAprovar.isConnected) {
+                                btnAprovar.disabled = false;
+                            }
                         }
-                    );
+                    }
+                );
 
+                // ==========================================
+                // BOTÃO RECUSAR
+                // ==========================================
+                const btnRecusar = card.querySelector(
+                    ".btn-recusar"
+                );
 
-                    // ==================================
-                    // BOTÃO RECUSAR
-                    // ==================================
+                btnRecusar.addEventListener(
+                    "click",
+                    async () => {
 
-                    const btnRecusar =
-                        card.querySelector(
-                            ".btn-recusar"
+                        const id = btnRecusar.dataset.id;
+
+                        console.log(
+                            "Clicou em RECUSAR. ID:",
+                            id
                         );
 
+                        btnRecusar.disabled = true;
 
-                    btnRecusar.addEventListener(
-                        "click",
-                        () => {
-
-                            const id =
-                                btnRecusar.dataset.id;
-
-
-                            console.log(
-                                "Clicou em RECUSAR. ID:",
-                                id
-                            );
-
-
-                            recusarSolicitacao(id);
-
+                        try {
+                            await recusarSolicitacao(id);
+                        } finally {
+                            if (btnRecusar.isConnected) {
+                                btnRecusar.disabled = false;
+                            }
                         }
-                    );
+                    }
+                );
 
-                }
-            );
+            });
 
-        }
-
-        catch (erro) {
+        } catch (erro) {
 
             console.error(
                 "ERRO AO CARREGAR SOLICITAÇÕES:",
                 erro
             );
 
-
             container.innerHTML = `
-
                 <div class="erro">
-
                     <strong>
-                        Não foi possível conectar com o servidor.
+                        Não foi possível carregar as solicitações.
                     </strong>
-
-                    <p>
-                        ${erro.message}
-                    </p>
-
+                    <p>${erro.message}</p>
                 </div>
-
             `;
-
         }
-
     }
-
 
     // ==========================================
     // APROVAR SOLICITAÇÃO
     // PUT /api/Solicitacao/{id}/aprovar
     // ==========================================
+    async function aprovarSolicitacao(id) {
 
-    async function recusarSolicitacao(id) {
     const confirmar = confirm(
-        "Tem certeza de que deseja recusar esta solicitação?"
+        "Tem certeza de que deseja aprovar esta solicitação?"
     );
 
-    if (!confirmar) return;
+    if (!confirmar) {
+        return;
+    }
 
     try {
+        console.log("Enviando aprovação para ID:", id);
+
         const resposta = await fetch(
-            `${API_SOLICITACOES}/${id}/recusar`,
+            `${API_SOLICITACOES}/${id}/aprovar`,
             {
                 method: "PUT",
+                credentials: "include",
                 headers: {
                     "Accept": "application/json"
                 }
             }
         );
 
-        const resultado = await resposta.json();
+        const textoResposta = await resposta.text();
+
+        console.log("STATUS HTTP APROVAR:", resposta.status);
+        console.log("RESPOSTA DA API:", textoResposta);
 
         if (!resposta.ok) {
             throw new Error(
-                resultado.mensagem || "Erro ao recusar solicitação."
+                `HTTP ${resposta.status}: ${textoResposta}`
             );
         }
 
-        alert("Solicitação recusada com sucesso!");
+        alert("Solicitação aprovada com sucesso!");
 
-        // Retira o card da tela após a confirmação do servidor
-        const botao = document.querySelector(
-            `.btn-recusar[data-id="${id}"]`
-        );
-
-        if (botao) {
-            botao.closest(".card")?.remove();
-        }
+        await carregarSolicitacoes();
 
     } catch (erro) {
-        console.error("Erro ao recusar:", erro);
+        console.error("ERRO COMPLETO AO APROVAR:", erro);
 
-        alert(
-            "Não foi possível recusar a solicitação: " +
-            erro.message
-        );
+        alert("Erro ao aprovar: " + erro.message);
     }
 }
-
 
     // ==========================================
     // RECUSAR SOLICITAÇÃO
     // PUT /api/Solicitacao/{id}/recusar
     // ==========================================
-
     async function recusarSolicitacao(id) {
 
-        console.log(
-            "Enviando recusa para ID:",
-            id
+        const confirmar = confirm(
+            "Tem certeza de que deseja recusar esta solicitação?"
         );
 
+        if (!confirmar) {
+            return;
+        }
 
         try {
 
-            const resposta =
-                await fetch(
-                    `${API_SOLICITACOES}/${id}/recusar`,
-                    {
-                        method: "PUT",
+            console.log(
+                "Enviando recusa para ID:",
+                id
+            );
 
-                        headers: {
-                            "Content-Type":
-                                "application/json",
-
-                            "Accept":
-                                "application/json"
-                        }
+            const resposta = await fetch(
+                `${API_SOLICITACOES}/${id}/recusar`,
+                {
+                    method: "PUT",
+                    credentials: "include",
+                    headers: {
+                        "Accept": "application/json"
                     }
-                );
+                }
+            );
 
+            const textoResposta = await resposta.text();
 
             console.log(
-    "Status PUT RECUSAR:",
-    resposta.status
-);
+                "STATUS HTTP RECUSAR:",
+                resposta.status
+            );
 
-if (!resposta.ok) {
-    const erro = await resposta.text();
+            console.log(
+                "RESPOSTA DA API:",
+                textoResposta
+            );
 
-    console.error(
-        "Erro retornado pelo servidor:",
-        erro
-    );
+            if (!resposta.ok) {
+                throw new Error(
+                    `HTTP ${resposta.status}: ${textoResposta}`
+                );
+            }
 
-    throw new Error(
-        `Erro HTTP: ${resposta.status}`
-    );
-}
-
-// NOVO TESTE
-const respostaTexto = await resposta.clone().text();
-
-console.log(
-    "Resposta do backend:",
-    respostaTexto
-);
-
-alert("Solicitação recusada com sucesso!");
+            alert("Solicitação recusada com sucesso!");
 
             await carregarSolicitacoes();
 
-        }
+        } catch (erro) {
 
-        catch (erro) {
-
-            console.error(
-                "ERRO AO RECUSAR:",
-                erro
-            );
-
+            console.error("ERRO AO RECUSAR:", erro);
 
             alert(
-                "Não foi possível recusar a solicitação."
+                "Não foi possível recusar a solicitação: " +
+                erro.message
             );
-
         }
-
     }
-
 
     // ==========================================
     // FORMATAR DATA
     // ==========================================
-
     function formatarData(data) {
 
         if (!data) {
-
             return "-";
         }
 
-
-        const dataFormatada =
-            new Date(data);
-
+        const dataFormatada = new Date(data);
 
         if (isNaN(dataFormatada.getTime())) {
-
             return "-";
         }
-
 
         return dataFormatada.toLocaleDateString(
             "pt-BR"
         );
-
     }
-
 
     // ==========================================
     // INICIAR
     // ==========================================
-
     carregarSolicitacoes();
 
 });
