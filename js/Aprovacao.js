@@ -60,6 +60,32 @@ document.addEventListener("DOMContentLoaded", () => {
                 solicitacoes
             );
 
+            // ==========================================
+            // DIAGNÓSTICO DO CAMPO STATUS
+            // ==========================================
+            console.log(
+                "Primeira solicitação:",
+                solicitacoes[0]
+            );
+
+            console.log(
+                "Valores do campo statuss:",
+                solicitacoes.map(s => s.statuss)
+            );
+
+            console.log(
+                "Tipos do campo statuss:",
+                solicitacoes.map(s => typeof s.statuss)
+            );
+
+            console.log(
+                "Campos disponíveis na primeira solicitação:",
+                solicitacoes[0]
+                    ? Object.keys(solicitacoes[0])
+                    : []
+            );
+
+            // VERIFICAR SE A API DEVOLVEU UMA LISTA
             if (!Array.isArray(solicitacoes)) {
                 throw new Error(
                     "A API não retornou uma lista."
@@ -72,6 +98,16 @@ document.addEventListener("DOMContentLoaded", () => {
                     (solicitacao) =>
                         solicitacao.statuss !== true
                 );
+
+            console.log(
+                "Quantidade total:",
+                solicitacoes.length
+            );
+
+            console.log(
+                "Quantidade pendente:",
+                solicitacoesPendentes.length
+            );
 
             if (solicitacoesPendentes.length === 0) {
                 container.innerHTML = `
@@ -266,49 +302,49 @@ document.addEventListener("DOMContentLoaded", () => {
     // ==========================================
     async function aprovarSolicitacao(id) {
 
-    const confirmar = confirm(
-        "Tem certeza de que deseja aprovar esta solicitação?"
-    );
-
-    if (!confirmar) {
-        return;
-    }
-
-    try {
-        console.log("Enviando aprovação para ID:", id);
-
-        const resposta = await fetch(
-            `${API_SOLICITACOES}/${id}/aprovar`,
-            {
-                method: "PUT",
-                credentials: "include",
-                headers: {
-                    "Accept": "application/json"
-                }
-            }
+        const confirmar = confirm(
+            "Tem certeza de que deseja aprovar esta solicitação?"
         );
 
-        const textoResposta = await resposta.text();
-
-        console.log("STATUS HTTP APROVAR:", resposta.status);
-        console.log("RESPOSTA DA API:", textoResposta);
-
-        if (!resposta.ok) {
-            throw new Error(
-                `HTTP ${resposta.status}: ${textoResposta}`
-            );
+        if (!confirmar) {
+            return;
         }
 
-        alert("Solicitação aprovada com sucesso!");
+        try {
+            console.log("Enviando aprovação para ID:", id);
 
-        await carregarSolicitacoes();
+            const resposta = await fetch(
+                `${API_SOLICITACOES}/${id}/aprovar`,
+                {
+                    method: "PUT",
+                    credentials: "include",
+                    headers: {
+                        "Accept": "application/json"
+                    }
+                }
+            );
 
-    } catch (erro) {
-        console.error("ERRO COMPLETO AO APROVAR:", erro);
+            const textoResposta = await resposta.text();
 
-        alert("Erro ao aprovar: " + erro.message);
+            console.log("STATUS HTTP APROVAR:", resposta.status);
+            console.log("RESPOSTA DA API:", textoResposta);
+
+            if (!resposta.ok) {
+                throw new Error(
+                    `HTTP ${resposta.status}: ${textoResposta}`
+                );
+            }
+
+            alert("Solicitação aprovada com sucesso!");
+
+            await carregarSolicitacoes();
+
+        } catch (erro) {
+            console.error("ERRO COMPLETO AO APROVAR:", erro);
+
+            alert("Erro ao aprovar: " + erro.message);
+        }
     }
-}
 
     // ==========================================
     // RECUSAR SOLICITAÇÃO
@@ -325,11 +361,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         try {
-
-            console.log(
-                "Enviando recusa para ID:",
-                id
-            );
+            console.log("Enviando recusa para ID:", id);
 
             const resposta = await fetch(
                 `${API_SOLICITACOES}/${id}/recusar`,
@@ -365,7 +397,6 @@ document.addEventListener("DOMContentLoaded", () => {
             await carregarSolicitacoes();
 
         } catch (erro) {
-
             console.error("ERRO AO RECUSAR:", erro);
 
             alert(
@@ -390,9 +421,7 @@ document.addEventListener("DOMContentLoaded", () => {
             return "-";
         }
 
-        return dataFormatada.toLocaleDateString(
-            "pt-BR"
-        );
+        return dataFormatada.toLocaleDateString("pt-BR");
     }
 
     // ==========================================

@@ -142,6 +142,7 @@ namespace GestaoEmCampo.Controllers
             {
                 // 1. Obter o ID do usuário logado
                 var idLogadoTexto = HttpContext.Session.GetString("IdLogado");
+                Console.WriteLine($"IdLogado recebido: {idLogadoTexto ?? "NULL"}");
 
                 if (!int.TryParse(idLogadoTexto, out int idGestor))
                 {
