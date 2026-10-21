@@ -41,6 +41,7 @@ namespace GestaoEmCampo.Controllers
 
         // ========================================== // PUT // APROVAR SOLICITAÇÃO // ==========================================
 
+
         [HttpPut("{id}/aprovar")]
         public async Task<IActionResult> Aprovar(int id)
         {
@@ -48,6 +49,8 @@ namespace GestaoEmCampo.Controllers
             {
                 // 1. Obter o ID do usuário logado na sessão
                 var idLogadoTexto = HttpContext.Session.GetString("IdLogado");
+
+                Console.WriteLine($"IdLogado na sessão: {idLogadoTexto ?? "NULL"}");
 
                 if (!int.TryParse(idLogadoTexto, out int idGestor))
                 {
@@ -57,20 +60,28 @@ namespace GestaoEmCampo.Controllers
                     });
                 }
 
-                // 2. Verificar se o usuário existe e é gestor
+                // 2. Buscar o usuário no banco
                 var gestor = await _context.Usuarios
                     .FirstOrDefaultAsync(u => u.Id_Usuario == idGestor);
 
+                Console.WriteLine($"Gestor encontrado: {gestor != null}");
+                Console.WriteLine($"ID pesquisado: {idGestor}");
+                Console.WriteLine($"Cargo encontrado: [{gestor?.Cargo ?? "NULL"}]");
+
+                // 3. Verificar se é gestor
                 if (gestor == null ||
                     !string.Equals(
-                        gestor.Cargo,
-                        "Gestor",
+                        gestor.Cargo?.Trim(),
+                        "Gestão",
                         StringComparison.OrdinalIgnoreCase))
                 {
-                    return Forbid();
+                    return StatusCode(403, new
+                    {
+                        mensagem = "Apenas usuários com cargo de Gestor podem realizar esta operação."
+                    });
                 }
 
-                // 3. Buscar a solicitação
+                // 4. Buscar a solicitação
                 var solicitacao = await _context.Solicitacoes
                     .FirstOrDefaultAsync(s => s.Id_Solicitacao == id);
 
@@ -82,16 +93,15 @@ namespace GestaoEmCampo.Controllers
                     });
                 }
 
-                // 4. Atualizar a solicitação
+                // 5. Atualizar o status
                 solicitacao.Statuss = true;
 
-                // 5. Buscar registro de aprovação existente
+                // 6. Buscar ou criar o registro de aprovação
                 var aprovacao = await _context.AprovarSolicitacoes
                     .FirstOrDefaultAsync(a => a.FkIdSolicitacao == id);
 
                 if (aprovacao == null)
                 {
-                    // Criar registro da decisão
                     aprovacao = new AprovarSolicitacao
                     {
                         FkIdSolicitacao = id,
@@ -109,7 +119,7 @@ namespace GestaoEmCampo.Controllers
                     aprovacao.DataAprovacao = DateTime.Now;
                 }
 
-                // 6. Salvar nas duas tabelas
+                // 7. Salvar no banco
                 await _context.SaveChangesAsync();
 
                 return Ok(new
@@ -133,7 +143,9 @@ namespace GestaoEmCampo.Controllers
             }
         }
 
+
         // ========================================== // PUT // RECUSAR SOLICITAÇÃO // ==========================================
+
 
         [HttpPut("{id}/recusar")]
         public async Task<IActionResult> Recusar(int id)
@@ -142,7 +154,8 @@ namespace GestaoEmCampo.Controllers
             {
                 // 1. Obter o ID do usuário logado
                 var idLogadoTexto = HttpContext.Session.GetString("IdLogado");
-                Console.WriteLine($"IdLogado recebido: {idLogadoTexto ?? "NULL"}");
+
+                Console.WriteLine($"IdLogado na sessão: {idLogadoTexto ?? "NULL"}");
 
                 if (!int.TryParse(idLogadoTexto, out int idGestor))
                 {
@@ -152,20 +165,28 @@ namespace GestaoEmCampo.Controllers
                     });
                 }
 
-                // 2. Verificar se o usuário existe e é gestor
+                // 2. Buscar o usuário no banco
                 var gestor = await _context.Usuarios
                     .FirstOrDefaultAsync(u => u.Id_Usuario == idGestor);
 
+                Console.WriteLine($"Gestor encontrado: {gestor != null}");
+                Console.WriteLine($"ID pesquisado: {idGestor}");
+                Console.WriteLine($"Cargo encontrado: [{gestor?.Cargo ?? "NULL"}]");
+
+                // 3. Verificar se é gestor
                 if (gestor == null ||
                     !string.Equals(
-                        gestor.Cargo,
-                        "Gestor",
+                        gestor.Cargo?.Trim(),
+                        "Gestão",
                         StringComparison.OrdinalIgnoreCase))
                 {
-                    return Forbid();
+                    return StatusCode(403, new
+                    {
+                        mensagem = "Apenas usuários com cargo de Gestor podem realizar esta operação."
+                    });
                 }
 
-                // 3. Buscar a solicitação
+                // 4. Buscar a solicitação
                 var solicitacao = await _context.Solicitacoes
                     .FirstOrDefaultAsync(s => s.Id_Solicitacao == id);
 
@@ -177,10 +198,10 @@ namespace GestaoEmCampo.Controllers
                     });
                 }
 
-                // 4. Atualizar a solicitação
+                // 5. Atualizar o status
                 solicitacao.Statuss = false;
 
-                // 5. Buscar registro da decisão
+                // 6. Buscar ou criar o registro da decisão
                 var aprovacao = await _context.AprovarSolicitacoes
                     .FirstOrDefaultAsync(a => a.FkIdSolicitacao == id);
 
@@ -203,7 +224,7 @@ namespace GestaoEmCampo.Controllers
                     aprovacao.DataAprovacao = DateTime.Now;
                 }
 
-                // 6. Salvar nas duas tabelas
+                // 7. Salvar no banco
                 await _context.SaveChangesAsync();
 
                 return Ok(new
@@ -226,5 +247,6 @@ namespace GestaoEmCampo.Controllers
                 });
             }
         }
+
     }
-}
+}    
