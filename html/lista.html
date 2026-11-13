@@ -1,0 +1,176 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escalas Cadastradas</title>
+    <link rel="stylesheet" href="../css/lista.css">
+</head>
+<body>
+
+<main class="conteudo">
+
+    <header class="cabecalho">
+        <div>
+            <h1>Escalas Cadastradas</h1>
+            <p>Consulte e gerencie as escalas dos funcionários.</p>
+        </div>
+
+        <button class="btn-primary" onclick="novaEscala()">
+            + Cadastrar Escala
+        </button>
+    </header>
+
+    <!-- INDICADORES -->
+    <section class="resumo">
+
+        <div class="resumo-card">
+            <span>Total de escalas</span>
+            <strong id="totalEscalas">0</strong>
+        </div>
+
+        <div class="resumo-card">
+            <span>Escalas baixadas</span>
+            <strong id="totalSim">0</strong>
+        </div>
+
+        <div class="resumo-card">
+            <span>Escalas não baixadas</span>
+            <strong id="totalNao">0</strong>
+        </div>
+
+    </section>
+
+    <!-- LISTAGEM -->
+    <section class="card">
+
+        <h2>Lista de escalas</h2>
+
+        <div class="filtros">
+
+            <input
+                type="text"
+                id="pesquisa"
+                placeholder="Pesquisar funcionário..."
+            >
+
+            <select id="filtroBaixada">
+                <option value="">Todas as escalas</option>
+                <option value="Sim">Escala baixada</option>
+                <option value="Não">Não baixada</option>
+            </select>
+
+        </div>
+
+        <div class="tabela-container">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Funcionário</th>
+                        <th>Data de início</th>
+                        <th>Horário de início</th>
+                        <th>Data de fim</th>
+                        <th>Horário de fim</th>
+                        <th>Escala baixada?</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+
+                <tbody id="listaEscalas"></tbody>
+
+            </table>
+
+            <div id="mensagemVazia" class="vazio">
+                Nenhuma escala cadastrada.
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- MODAL -->
+<div class="modal" id="modalEscala">
+
+    <div class="modal-conteudo">
+
+        <div class="modal-cabecalho">
+            <h2 id="tituloModal">Cadastrar Escala</h2>
+
+            <button class="fechar" onclick="fecharModal()">
+                &times;
+            </button>
+        </div>
+
+        <form id="formCadastrarEscala">
+
+            <input type="hidden" id="idEscala">
+
+            <div class="campo">
+                <label for="nomeFuncionario">Nome do funcionário</label>
+                <input
+                    type="text"
+                    id="nomeFuncionario"
+                    placeholder="Nome do funcionário"
+                    required
+                >
+            </div>
+
+            <div class="campo">
+                <label for="dataInicio">Data de início</label>
+                <input type="date" id="dataInicio" required>
+            </div>
+
+            <div class="campo">
+                <label for="horaInicio">Horário de início</label>
+                <input type="time" id="horaInicio" required>
+            </div>
+
+            <div class="campo">
+                <label for="dataFim">Data de fim</label>
+                <input type="date" id="dataFim" required>
+            </div>
+
+            <div class="campo">
+                <label for="horaFim">Horário de fim</label>
+                <input type="time" id="horaFim" required>
+            </div>
+
+            <div class="campo">
+                <label for="baixada">Escala baixada?</label>
+
+                <select id="baixada" required>
+                    <option value="">Selecione uma opção</option>
+                    <option value="Sim">Sim</option>
+                    <option value="Não">Não</option>
+                </select>
+            </div>
+
+            <div class="botoes-modal">
+
+                <button type="button" class="btn-cancelar"
+                        onclick="fecharModal()">
+                    Cancelar
+                </button>
+
+                <button type="submit" class="btn-primary" id="btnSalvar">
+                    Salvar escala
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+<script src="javascript.js"></script>
+
+</body>
+</html>
